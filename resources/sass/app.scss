@@ -6,9 +6,54 @@
 @import 'variables';
 
 // Bootstrap
-@import 'node_modules/bootstrap/scss/bootstrap.scss';
+@import 'node_modules/bootstrap/scss/bootstrap';
 
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+// Font-Awesome
+
+@import 'node_modules/font-awesome/scss/font-awesome';
+
+html{
+  height: 100vh;
+}
+
+body{
+  min-height: 100vh;
+}
+
+.navbar{
+  background-image:linear-gradient(to right, $blue-dark, $blue-light);
+}
+#body{
+  min-height: 600px;
+}
+
+#sidebar{
+  min-height: 100%;
+
+  .list-group-item{
+    border: none;
+    width: 100%;
+    background-color: #F8F9FA;
+    color: black;
+  }
+
+  .fa{
+    font-size: 16px;
+  }
+
+  .list-group{
+    height: 100%;
+    width: 100%;
+  }
+
+  a:hover{
+    background-color: $secondary-blue;
+    color: $primary-blue;
+  }
+}
+
+header{
+  .fa-bell{
+    color: #FFFFFF;
+  }
 }
