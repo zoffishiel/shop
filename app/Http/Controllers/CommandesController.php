@@ -16,7 +16,8 @@ class CommandesController extends Controller
     public function addCommande(Request $request)
     {
       $string = strtoupper(str_random(3)) . random_int(1000000,9999999);
-      return $string;
+      // return $string;
+      return response()->json($string, 200);
     }
 
     public function dropCommande($id)

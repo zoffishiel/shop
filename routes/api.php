@@ -20,3 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/commandes', 'CommandesController@index');
 Route::get('/users', 'UsersController@index');
 Route::get('/vendeur/collections', 'UsersController@getCollections');
+
+Route::get('/commandes/add', 'CommandesController@addCommande');
