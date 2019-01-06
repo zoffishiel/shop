@@ -13,6 +13,13 @@ class ClientsController extends Controller
       return response()->json($clients, 200);
     }
 
+    // Get Client by ID
+    public function getClient($id)
+    {
+      $client = Clients::find($id);
+      return response()->json($client, 200);
+    }
+    
     // Add Client
     public function addClient(Request $request)
     {

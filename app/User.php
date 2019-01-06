@@ -30,7 +30,18 @@ class User extends Authenticatable
 
     public $timestamps = false;
 
-    public function collections(){
+    public function collections()
+    {
       return $this->hasMany('App\Collections', 'vendeur');
+    }
+
+    public function commandes()
+    {
+      return $this->hasMany('App\Commandes', 'vendeur');
+    }
+
+    public function clients()
+    {
+      return $this->hasMany('App\Clients', 'vendeur');
     }
 }

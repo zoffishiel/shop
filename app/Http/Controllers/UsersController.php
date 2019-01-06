@@ -22,12 +22,13 @@ class UsersController extends Controller
 
     public function dropUser($id)
     {
-      $user = User::find($id);
-      if(is_null($user)){
-        return 0;
-      }else{
-        $user->delete();
-        return 1;
-      }
+      $user = User::find($id)->delete();
+      return $user ? 1 : 0;
+
+    }
+
+    public function getCommandes()
+    {
+      return response()->json(Auth::user()->commandes());
     }
 }

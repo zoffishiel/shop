@@ -31,12 +31,8 @@ class ArticlesController extends Controller
     public function updateArticle(Request $request)
     {
       $article = Articles::find($request->input("id"));
-      if(is_null($article)){
-        return 0;
-      }else{
-        $article->update($request->all());
-        return 1;
-      }
+      $res = $article->update($request->all());
+      return $res ? 1 : 0;
     }
 
     // Delete Article
