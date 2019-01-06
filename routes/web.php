@@ -61,3 +61,5 @@ Route::get('/logout', function(){
   Auth::logout();
   return Redirect::to('/login');
 });
+
+Route::get('/profile', 'ProfileController@index')->name('profile');
