@@ -24,7 +24,13 @@
         "vue-template-compiler": "^2.5.21"
     },
     "dependencies": {
+<<<<<<< HEAD
         "font-awesome": "^4.7.0",
         "laravel-elixir": "^6.0.0-18"
+=======
+        "bootstrap": "^4.2.1",
+        "laravel-elixir": "^6.0.0-18",
+        "node-sass": "^4.11.0"
+>>>>>>> f11e66e79367df03b549b0c875fa9db79afed26e
     }
 }
