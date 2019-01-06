@@ -2,9 +2,6 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito:200,600');
 
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
-@import url('https://use.fontawesome.com/releases/v5.6.3/css/all.css');
-
 // Variables
 @import 'variables';
 
@@ -27,7 +24,7 @@ body{
 }
 
 .navbar{
-  background-image:linear-gradient(to right, $blue-dark, $blue-light);
+  background-image: linear-gradient(to right, $blue-dark, $blue-light);
 }
 #body{
   min-height: 600px;
