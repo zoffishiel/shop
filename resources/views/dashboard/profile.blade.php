@@ -7,9 +7,12 @@
       background-image: none;
       background-color: white;
     }
-    header a,i{
-      color: black !important;
-    }
+  .navbar-brand, .nav-link, .nav-item i{
+    color: black !important;
+  }
+  .solde{
+    color : orange;
+  }
   </style>
 @endsection
 @section('content')
@@ -32,24 +35,28 @@
                             </h5>
 
                             <h6>
-                                Web Developer and Designer
+                                Soldes
                             </h6>
-                            <p class="proile-rating">RANKINGS :
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                            </p>
+                            <div class="row">
+                              <div class="col-4 solde">
+                                Garantie : 500dh
+                              </div>
+                              <div class="col-4 solde">
+                                Actuel : 500dh
+                              </div>
+                              <div class="col-4 solde">
+                                Total : 500dh
+                              </div>
+                            </div>
                             <div class="col-md-12" style="display:inline">
 
 
                                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                                     <li class="nav-item">
-                                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Infos Personnel</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
+                                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Banque</a>
                                     </li>
                                 </ul>
                             </div>
@@ -62,11 +69,10 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-work">
-                            <p>WORK LINK</p>
+                            <p>LIENS</p>
                             <hr size="30">
-                            <a href=""><i class="fa fa-link"></i>Website Link</a><br />
+                            <a href=""><i class="fa fa-link"></i>Site Web</a><br />
                             <a href="" data-toggle="modal" data-target="#Facebook"><i class="fa fa-facebook-square"></i>Facebook</a><br />
-                            <a href="" data-toggle="modal" data-target="#whatsapp"><i class="fa fa-whatsapp"></i>Whatsapp</a><br />
                             <a href="" data-toggle="modal" data-target="#instagram"><i class="fa fa-instagram"></i>Instagram</a>
                             <p>SKILLS</p>
                             <hr size="30">
@@ -82,7 +88,7 @@
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title"><i class="fab fa-facebook-square"></i>Facebook :</h5>
+                                    <h5 class="modal-title"><i class="fa fa-facebook-square"></i>Facebook :</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -102,7 +108,7 @@
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title"><i class="fab fa-whatsapp"></i>Whatsapp :</h5>
+                                    <h5 class="modal-title"><i class="fa fa-whatsapp"></i>Whatsapp :</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -122,7 +128,7 @@
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title"><i class="fab fa-instagram"></i>Instagram :</h5>
+                                    <h5 class="modal-title"><i class="fa fa-instagram"></i>Instagram :</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -143,15 +149,7 @@
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <label>User Id</label>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <p>dianne12</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <label>Name</label>
+                                        <label>Nom</label>
                                     </div>
                                     <div class="col-md-4">
                                         <p>dianne pierce</p>
@@ -168,68 +166,46 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <label>Phone</label>
+                                        <label>Téléphone</label>
                                     </div>
                                     <div class="col-md-4">
-                                        <p>(886)-234-1498</p>
+                                        <p>(212)-234-1498</p>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <label>Profession</label>
+                                        <label>Rôle</label>
                                     </div>
                                     <div class="col-md-4">
-                                        <p>Web Developer and Designer</p>
+                                        <p>{{ Auth::user()->role }}</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <label>Experience</label>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <p>Expert</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <label>Hourly Rate</label>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <p>10$/hr</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <label>Total Projects</label>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <p>230</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <label>English Level</label>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <p>Expert</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <label>Availability</label>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <p>6 months</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <label>Your Bio</label><br />
-                                        <p>Your detail description</p>
-                                    </div>
-                                </div>
+                                  <div class="row">
+                                      <div class="col-md-4">
+                                          <label>Banque</label>
+                                      </div>
+                                      <div class="col-md-4">
+                                          <p>CIH</p>
+                                      </div>
+                                  </div>
+                                  <div class="row">
+                                      <div class="col-md-4">
+                                          <label>RIB</label>
+                                      </div>
+                                      <div class="col-md-4">
+                                          <p>1234567</p>
+                                      </div>
+                                  </div>
+                                  <div class="row">
+                                      <div class="col-md-4">
+                                          <label>Numéro Compte</label>
+                                      </div>
+                                      <div class="col-md-4">
+                                          <p>23686013125136</p>
+                                      </div>
+                                  </div>
                             </div>
                         </div>
                     </div>
@@ -237,4 +213,12 @@
             </form>
         </div>
     </div>
+@endsection
+
+@section('js')
+  <script type="text/javascript">
+    $(function(){
+
+    });
+  </script>
 @endsection

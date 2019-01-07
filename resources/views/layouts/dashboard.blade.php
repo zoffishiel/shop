@@ -22,7 +22,7 @@
     @yield('css')
   </head>
   <body>
-    <header class="navbar navbar-expand-lg navbar-dark border-bottom">
+    <header class="navbar navbar-expand-lg navbar-light border-bottom">
       <div class="container">
         <a href="{{ route('dashboard.index') }}" class="navbar-brand">LOGO</a>
         <ul class="navbar-nav ml-auto">
@@ -41,12 +41,16 @@
     </header>
 
       <div class="row container-fluid" id="body">
-        <div class="col-md-2 bg-light" id="sidebar">
+        <div class="col-md-2" id="sidebar">
           <h5 class="text-center mt-4">STORE</h5>
           <div class="list-group pt-3">
             <a href="{{ route('dashboard.index') }}" class="list-group-item">
               <i class="fa fa-dashboard mr-3"></i>
               Dashboard
+            </a>
+            <a href="{{ route('dashboard.commandes') }}" class="list-group-item">
+              <i class="fa fa-shopping-cart mr-3"></i>
+              Commandes
             </a>
             <a href="{{ route('dashboard.categories') }}" class="list-group-item">
               <i class="fa fa-archive mr-3"></i>
@@ -59,11 +63,6 @@
             <a href="{{ route('dashboard.utilisateurs') }}" class="list-group-item">
               <i class="fa fa-users mr-3"></i>
               Utilisateurs
-            </a>
-
-            <a href="{{ route('dashboard.commandes') }}" class="list-group-item">
-              <i class="fa fa-shopping-cart mr-3"></i>
-              Commandes
             </a>
             <a href="{{ route('dashboard.clients') }}" class="list-group-item">
               <i class="fa fa-user mr-3"></i>
