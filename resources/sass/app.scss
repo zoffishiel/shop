@@ -8,55 +8,6 @@
 // Bootstrap
 @import 'node_modules/bootstrap/scss/bootstrap.scss';
 
-// Profile
-@import "./profile.scss";
-
 // Font-Awesome
 
 @import 'node_modules/font-awesome/scss/font-awesome';
-
-html{
-  height: 100vh;
-}
-
-body{
-  min-height: 100vh;
-}
-
-.navbar{
-  background-image: linear-gradient(to right, $blue-dark, $blue-light);
-}
-#body{
-  min-height: 600px;
-}
-
-#sidebar{
-  min-height: 100%;
-
-  .list-group-item{
-    border: none;
-    width: 100%;
-    background-color: #F8F9FA;
-    color: black;
-  }
-
-  .fa{
-    font-size: 16px;
-  }
-
-  .list-group{
-    height: 100%;
-    width: 100%;
-  }
-
-  a:hover{
-    background-color: $secondary-blue;
-    color: $primary-blue;
-  }
-}
-
-header{
-  .fa-bell{
-    color: #FFFFFF;
-  }
-}

@@ -55,11 +55,10 @@ Route::group(["prefix" => '/dashboard', 'middleware' => 'auth'], function(){
   Route::get('/parametres', function(){
     return view('dashboard.parametres');
   })->name('dashboard.parametres');
+  Route::get('/profile', 'ProfileController@index')->name('dashboard.profile');
 });
 
 Route::get('/logout', function(){
   Auth::logout();
   return Redirect::to('/login');
 });
-
-Route::get('/profile', 'ProfileController@index')->name('profile');

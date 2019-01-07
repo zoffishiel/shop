@@ -13,3 +13,9 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js')
    .sass('resources/sass/app.scss', 'public/css');
+
+// Profile Styling
+mix.sass('resources/sass/profile.scss', 'public/css');
+
+// Dashboard Styling
+mix.sass('resources/sass/dashboard.scss', 'public/css');

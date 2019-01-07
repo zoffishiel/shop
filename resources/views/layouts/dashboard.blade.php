@@ -13,6 +13,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
     <style media="screen">
       .nav-link{
         color: #FFFFFF;
@@ -31,7 +32,7 @@
           <li class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown">{{ Auth::user()->nom }}</a>
             <div class="dropdown-menu dropdown-menu-right">
-              <a href="#" class="dropdown-item"><i class="fa fa-user-circle-o mr-2"></i>Profile</a>
+              <a href="{{ route('dashboard.profile') }}" class="dropdown-item"><i class="fa fa-user-circle-o mr-2"></i>Profile</a>
               <a href="/logout" class="dropdown-item"><i class="fa fa-sign-out mr-2"></i>Déconnexion</a>
             </div>
           </li>

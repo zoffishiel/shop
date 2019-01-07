@@ -6,12 +6,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Laravel</title>
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>{{ config('app.name', 'Store') }}</title>
 
     <!-- Fonts -->
     {{-- <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css"> --}}
-    <link rel="stylesheet" href="{{ mix('/css/app.css')}}">
+    <link rel="stylesheet" href="{{ asset('/css/app.css')}}">
+    <link rel="stylesheet" href="{{ asset('/css/profile.css') }}">
 
 </head>
 
@@ -65,10 +67,10 @@
                         <div class="profile-work">
                             <p>WORK LINK</p>
                             <hr size="30">
-                            <a href=""><i class="fas fa-link"></i>Website Link</a><br />
-                            <a href="" data-toggle="modal" data-target="#Facebook"><i class="fab fa-facebook-square"></i>Facebook</a><br />
-                            <a href="" data-toggle="modal" data-target="#whatsapp"><i class="fab fa-whatsapp"></i>Whatsapp</a><br />
-                            <a href="" data-toggle="modal" data-target="#instagram"><i class="fab fa-instagram"></i>Instagram</a>
+                            <a href=""><i class="fa fa-link"></i>Website Link</a><br />
+                            <a href="" data-toggle="modal" data-target="#Facebook"><i class="fa fa-facebook-square"></i>Facebook</a><br />
+                            <a href="" data-toggle="modal" data-target="#whatsapp"><i class="fa fa-whatsapp"></i>Whatsapp</a><br />
+                            <a href="" data-toggle="modal" data-target="#instagram"><i class="fa fa-instagram"></i>Instagram</a>
                             <p>SKILLS</p>
                             <hr size="30">
 

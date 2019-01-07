@@ -36458,19 +36458,43 @@ if (token) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed (from ./node_modules/css-loader/index.js):\nModuleBuildError: Module build failed (from ./node_modules/sass-loader/lib/loader.js):\n\r\n@import 'node_modules/bootstrap/scss/bootstrap';\r\n                                              ^\r\n      Expected \"{\".\n@import 'node_modules/bootstrap/scss/bootstrap';\r\n                                               ^\n  stdin 13:48  root stylesheet\r\n      in C:\\Users\\Zakariae\\Desktop\\project\\resources\\sass\\app.scss (line 13, column 48)\n    at runLoaders (C:\\Users\\Zakariae\\Desktop\\project\\node_modules\\webpack\\lib\\NormalModule.js:301:20)\n    at C:\\Users\\Zakariae\\Desktop\\project\\node_modules\\loader-runner\\lib\\LoaderRunner.js:364:11\n    at C:\\Users\\Zakariae\\Desktop\\project\\node_modules\\loader-runner\\lib\\LoaderRunner.js:230:18\n    at context.callback (C:\\Users\\Zakariae\\Desktop\\project\\node_modules\\loader-runner\\lib\\LoaderRunner.js:111:13)\n    at render (C:\\Users\\Zakariae\\Desktop\\project\\node_modules\\sass-loader\\lib\\loader.js:52:13)\n    at Function.$2 (C:\\Users\\Zakariae\\Desktop\\project\\node_modules\\sass\\sass.dart.js:24226:48)\n    at vC.$2 (C:\\Users\\Zakariae\\Desktop\\project\\node_modules\\sass\\sass.dart.js:15402:16)\n    at tz.vc (C:\\Users\\Zakariae\\Desktop\\project\\node_modules\\sass\\sass.dart.js:8914:42)\n    at tz.vb (C:\\Users\\Zakariae\\Desktop\\project\\node_modules\\sass\\sass.dart.js:8916:32)\n    at ie.ul (C:\\Users\\Zakariae\\Desktop\\project\\node_modules\\sass\\sass.dart.js:8222:46)\n    at t6.$0 (C:\\Users\\Zakariae\\Desktop\\project\\node_modules\\sass\\sass.dart.js:8367:7)\n    at Object.ex (C:\\Users\\Zakariae\\Desktop\\project\\node_modules\\sass\\sass.dart.js:1533:80)\n    at ah.ba (C:\\Users\\Zakariae\\Desktop\\project\\node_modules\\sass\\sass.dart.js:8285:3)\n    at iu.ba (C:\\Users\\Zakariae\\Desktop\\project\\node_modules\\sass\\sass.dart.js:8215:25)\n    at iu.cC (C:\\Users\\Zakariae\\Desktop\\project\\node_modules\\sass\\sass.dart.js:8202:6)\n    at oy.cC (C:\\Users\\Zakariae\\Desktop\\project\\node_modules\\sass\\sass.dart.js:7992:35)\n    at Object.m (C:\\Users\\Zakariae\\Desktop\\project\\node_modules\\sass\\sass.dart.js:1406:19)\n    at C:\\Users\\Zakariae\\Desktop\\project\\node_modules\\sass\\sass.dart.js:5043:51\n    at w1.a (C:\\Users\\Zakariae\\Desktop\\project\\node_modules\\sass\\sass.dart.js:1417:71)\n    at w1.$2 (C:\\Users\\Zakariae\\Desktop\\project\\node_modules\\sass\\sass.dart.js:8007:23)\n    at uC.$2 (C:\\Users\\Zakariae\\Desktop\\project\\node_modules\\sass\\sass.dart.js:8002:25)\n    at tz.vc (C:\\Users\\Zakariae\\Desktop\\project\\node_modules\\sass\\sass.dart.js:8914:42)\n    at tz.vb (C:\\Users\\Zakariae\\Desktop\\project\\node_modules\\sass\\sass.dart.js:8916:32)\n    at ie.ul (C:\\Users\\Zakariae\\Desktop\\project\\node_modules\\sass\\sass.dart.js:8222:46)\n    at t6.$0 (C:\\Users\\Zakariae\\Desktop\\project\\node_modules\\sass\\sass.dart.js:8367:7)\n    at Object.ex (C:\\Users\\Zakariae\\Desktop\\project\\node_modules\\sass\\sass.dart.js:1533:80)\n    at ah.ba (C:\\Users\\Zakariae\\Desktop\\project\\node_modules\\sass\\sass.dart.js:8285:3)\n    at iu.ba (C:\\Users\\Zakariae\\Desktop\\project\\node_modules\\sass\\sass.dart.js:8215:25)\n    at iu.cC (C:\\Users\\Zakariae\\Desktop\\project\\node_modules\\sass\\sass.dart.js:8202:6)\n    at oz.$0 (C:\\Users\\Zakariae\\Desktop\\project\\node_modules\\sass\\sass.dart.js:7997:24)\n    at Object.GQ (C:\\Users\\Zakariae\\Desktop\\project\\node_modules\\sass\\sass.dart.js:1561:5)\n    at n0.H1 (C:\\Users\\Zakariae\\Desktop\\project\\node_modules\\sass\\sass.dart.js:1563:7)\n    at oD.$0 (C:\\Users\\Zakariae\\Desktop\\project\\node_modules\\sass\\sass.dart.js:7966:22)\n    at HL (C:\\Users\\Zakariae\\Desktop\\project\\node_modules\\sass\\sass.dart.js:581:52)\n    at Immediate.<anonymous> (C:\\Users\\Zakariae\\Desktop\\project\\node_modules\\sass\\sass.dart.js:590:51)\n    at runCallback (timers.js:705:18)");
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/sass/dashboard.scss":
+/*!***************************************!*\
+  !*** ./resources/sass/dashboard.scss ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/sass/profile.scss":
+/*!*************************************!*\
+  !*** ./resources/sass/profile.scss ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 
 /***/ 0:
-/*!*************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/app.scss ***!
-  \*************************************************************/
+/*!***************************************************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/profile.scss ./resources/sass/dashboard.scss ***!
+  \***************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! C:\Users\Zakariae\Desktop\project\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Zakariae\Desktop\project\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Zakariae\Desktop\project\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Zakariae\Desktop\project\resources\sass\profile.scss */"./resources/sass/profile.scss");
+module.exports = __webpack_require__(/*! C:\Users\Zakariae\Desktop\project\resources\sass\dashboard.scss */"./resources/sass/dashboard.scss");
 
 
 /***/ })
