@@ -1,0 +1,45 @@
+html {
+  height: 100vh;
+}
+
+body {
+  min-height: 100vh;
+}
+
+.navbar {
+  background-image: linear-gradient(to right, #3a7bd5, #00d2ff);
+}
+
+#body {
+  min-height: 600px;
+}
+
+#sidebar {
+  min-height: 100%;
+}
+
+#sidebar .list-group-item {
+  border: none;
+  width: 100%;
+  background-color: #F8F9FA;
+  color: black;
+}
+
+#sidebar .fa {
+  font-size: 16px;
+}
+
+#sidebar .list-group {
+  height: 100%;
+  width: 100%;
+}
+
+#sidebar a:hover {
+  background-color: #E3F2FD;
+  color: #2196F3;
+}
+
+header .fa-bell {
+  color: #FFFFFF;
+}
+
