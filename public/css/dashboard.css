@@ -4,24 +4,25 @@ html {
 
 body {
   min-height: 100vh;
-}
-
-.navbar {
-  background-image: linear-gradient(to right, #3a7bd5, #00d2ff);
+  background-color: #F8F9FA;
 }
 
 #body {
   min-height: 600px;
 }
 
+header {
+  background-color: white;
+}
+
 #sidebar {
   min-height: 100%;
+  background-color: white;
 }
 
 #sidebar .list-group-item {
   border: none;
   width: 100%;
-  background-color: #F8F9FA;
   color: black;
 }
 
@@ -37,9 +38,5 @@ body {
 #sidebar a:hover {
   background-color: #E3F2FD;
   color: #2196F3;
-}
-
-header .fa-bell {
-  color: #FFFFFF;
 }
 

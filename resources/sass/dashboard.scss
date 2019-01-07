@@ -7,22 +7,23 @@ html{
 
 body{
   min-height: 100vh;
+  background-color: $body-bg;
 }
 
-.navbar{
-  background-image: linear-gradient(to right, $blue-dark, $blue-light);
-}
 #body{
   min-height: 600px;
 }
 
+header{
+  background-color: white;
+}
+
 #sidebar{
   min-height: 100%;
-
+  background-color: white;
   .list-group-item{
     border: none;
     width: 100%;
-    background-color: #F8F9FA;
     color: black;
   }
 
@@ -38,11 +39,5 @@ body{
   a:hover{
     background-color: $secondary-blue;
     color: $primary-blue;
-  }
-}
-
-header{
-  .fa-bell{
-    color: #FFFFFF;
   }
 }
