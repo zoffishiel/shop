@@ -21,4 +21,17 @@ Route::get('/commandes', 'CommandesController@index');
 Route::get('/users', 'UsersController@index');
 Route::get('/vendeur/collections', 'UsersController@getCollections');
 
+Route::get('/categories', 'CategoriesController@index');
+Route::get('/products', 'ProductsController@index');
+
+Route::group(['prefix' => '/add'], function(){
+  Route::post('/product','ProductsController@addProduct');
+  Route::post('/category','CategoriesController@addCategory');
+});
+
+Route::group(['prefix' => 'drop'], function(){
+  Route::get('/product/{id}', 'ProductsController@dropProduct');
+  Route::get('/category/{id}', 'CategoriesController@dropCategory');
+});
+
 Route::get('/commandes/add', 'CommandesController@addCommande');
