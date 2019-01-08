@@ -2,6 +2,7 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('/css/profile.css') }}">
+<link rel="stylesheet" href="{{ asset('/css/animate.css') }}">
 <style media="screen">
     .navbar{
       background-image: none;
@@ -24,41 +25,43 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
-                            <img src="{{ asset('/img/user.jpeg') }}" alt="" />
+                            <img src="{{ Auth::user()->img }}" alt="" />
 
                         </div>
                     </div>
+
+
                     <div class="col-md-6">
                         <div class="profile-head">
                             <h5 id="name">
-                                dianne pierce
+                                {{ Auth::user()->nom }}
                             </h5><br>
                             <div class="row">
-                                <div class="col-4 solde" >
+                                <div class="col-4 solde">
                                     <div class="card" style="width: 10rem;">
                                         <div class="card-body">
                                             <h5 class="card-title">Garantie </h5>
-                                            <p class="card-text"> 500dh</p>
+                                            <p class="card-text"> {{ Auth::user()->garantie }} DH</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-4 solde">
 
-                                  <div class="card" style="width: 10rem;" >
-                                      <div class="card-body">
-                                          <h5 class="card-title">Actuel </h5>
-                                          <p class="card-text"> 500dh</p>
-                                      </div>
-                                  </div>
+                                    <div class="card " style="width: 10rem;">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Actuel </h5>
+                                            <p class="card-text"> {{ Auth::user()->actuel }} DH</p>
+                                        </div>
+                                    </div>
 
                                 </div>
                                 <div class="col-4 solde">
-                                  <div class="card" style="width: 10rem;" >
-                                      <div class="card-body">
-                                          <h5 class="card-title">Total</h5>
-                                          <p class="card-text"> 500dh</p>
-                                      </div>
-                                  </div>
+                                    <div class="card" style="width: 10rem;">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Total</h5>
+                                            <p class="card-text"> {{ Auth::user()->total }} DH</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-12" style="display:inline">
@@ -75,8 +78,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2">
-                        <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile" />
+                    <div class="col-md-2 mx-auto" id='vlidate'>
+                        {{-- <input type="submit" class="" name="btnAddMore" value="Edit Profile" /> --}}
+                        <button type="button" name="button" class="profile-edit-btn" value="" >Edit Profile</button>
                     </div>
                 </div>
                 <div class="row">
@@ -164,32 +168,35 @@
                                     <div class="col-md-4">
                                         <label>Nom</label>
                                     </div>
-                                    <div class="col-md-4">
-                                        <p>dianne pierce</p>
+                                    <div class="col-md-4 profile_mod">
+                                        <p>{{ Auth::user()->nom }}</p>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4" >
                                         <label>Email</label>
                                     </div>
-                                    <div class="col-md-4">
-                                        <p>dianne.pierce69
-                                            @example.com</p>
+                                    <div class="col-md-4 profile_mod">
+                                        <p>
+                                            {{ Auth::user()->email }}
+                                        </p>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-4">
                                         <label>Téléphone</label>
                                     </div>
-                                    <div class="col-md-4">
-                                        <p>(212)-234-1498</p>
+                                    <div class="col-md-4 profile_mod">
+                                        <p>
+                                            {{ Auth::user()->tel }}
+                                        </p>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-4">
                                         <label>Rôle</label>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 profile_mod">
                                         <p>{{ Auth::user()->role }}</p>
                                     </div>
                                 </div>
@@ -199,24 +206,30 @@
                                     <div class="col-md-4">
                                         <label>Banque</label>
                                     </div>
-                                    <div class="col-md-4">
-                                        <p>CIH</p>
+                                    <div class="col-md-4 profile_mod">
+                                        <p>
+                                            {{ Auth::user()->banque }}
+                                        </p>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-4">
                                         <label>RIB</label>
                                     </div>
-                                    <div class="col-md-4">
-                                        <p>1234567</p>
+                                    <div class="col-md-4 profile_mod">
+                                        <p>
+                                            {{ Auth::user()->rib }}
+                                        </p>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-4">
                                         <label>Numéro Compte</label>
                                     </div>
-                                    <div class="col-md-4">
-                                        <p>23686013125136</p>
+                                    <div class="col-md-4 profile_mod">
+                                        <p>
+                                            {{ Auth::user()->num_cpt }}
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -229,9 +242,30 @@
     @endsection
 
     @section('js')
+    <script src="{{ mix('js/app.js') }}"></script>
+    <script src="{{ asset('js/dashboard.js') }}" charset="utf-8"></script>
     <script type="text/javascript">
-        $(function() {
+
+        $(document).ready(function() {
+            $(".profile-edit-btn").click(function() {
+              $("#vlidate profile-edit-btn").hide();
+                $("#vlidate").html('<button type="button" class="profile-edit-btn btn-success profile_save"><i class="fas fa-save"></i></button>').addClass('animated fadeIn');
+                $(".profile_mod p").html('<input type="text" class="form-control" id="FbLink" placeholder="....">').addClass('animated fadeInUp');
+            });
+
+            $(".profile_save").click(function() {
+                  // location.reload();
+                  $('p').hide()
+
+            });
+
+            // $(".card").addClass('animated fadeInUp');
+            // $(".emp-profile").addClass('animated fadeIn');
 
         });
     </script>
+
+
+
+
     @endsection
