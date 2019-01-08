@@ -23,6 +23,11 @@ class ProductsController extends Controller
       }
     }
 
+    public function addProduct(Request $request){
+      $product = Products::create($request->all());
+      return $product ? 1 : 0;
+    }
+
     public function dropProduct($id){
       $product = Products::find($id);
       if(is_null($product)){
