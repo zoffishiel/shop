@@ -62,7 +62,11 @@
   <script src="{{ asset('js/dashboard.js') }}" charset="utf-8"></script>
   <script type="text/javascript">
     $(function(){
-      $("#commandes").bootstrapTable({});
+      $("#commandes").bootstrapTable({
+        url : '/api/commandes',
+        search: true,
+        refresh: true,
+      });
     });
   </script>
 @endsection

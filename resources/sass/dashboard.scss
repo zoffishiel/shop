@@ -38,7 +38,7 @@ header{
   .list-group-item{
     border: none;
     width: 100%;
-    color: black;
+    color: $primary-blue;
   }
 
   .fa{
@@ -49,7 +49,9 @@ header{
     height: 100%;
     width: 100%;
   }
-
+  .active{
+    background-color: $secondary-blue;
+  }
   a:hover{
     background-color: $secondary-blue;
     color: $primary-blue;
