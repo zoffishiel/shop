@@ -27,6 +27,5 @@
         "font-awesome": "^4.7.0",
         "laravel-elixir": "^6.0.0-18",
         "node-sass": "^4.11.0"
-
     }
 }
