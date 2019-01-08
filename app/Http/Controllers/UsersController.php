@@ -9,6 +9,9 @@ use App\User;
 class UsersController extends Controller
 {
 
+    public function __construct(){
+      $this->middleware('auth');
+    }
     public function index()
     {
       $users = User::All();
@@ -31,5 +34,5 @@ class UsersController extends Controller
     {
       return response()->json(Auth::user()->commandes());
     }
-    
+
 }
