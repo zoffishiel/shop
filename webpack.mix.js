@@ -18,4 +18,5 @@ mix.js('resources/js/app.js', 'public/js')
 mix.sass('resources/sass/profile.scss', 'public/css');
 
 // Dashboard Styling
-mix.sass('resources/sass/dashboard.scss', 'public/css');
+mix.js('resources/js/dashboard.js', 'public/js')
+  .sass('resources/sass/dashboard.scss', 'public/css');

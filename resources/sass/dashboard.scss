@@ -18,9 +18,23 @@ header{
   background-color: white;
 }
 
+#sidebar.active{
+    min-width: 80px;
+    max-width: 80px;
+    text-align: center;
+    .list-group-item{
+      padding-left: 16px !important;
+    }
+    .fa{
+      font-size: 20px;
+    }
+}
+
 #sidebar{
   min-height: 100%;
+  transition: all 0.5s ease-in-out;
   background-color: white;
+
   .list-group-item{
     border: none;
     width: 100%;
