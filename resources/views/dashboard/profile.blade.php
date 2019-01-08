@@ -1,8 +1,8 @@
 @extends('layouts.dashboard')
 
 @section('css')
-  <link rel="stylesheet" href="{{ asset('/css/profile.css') }}">
-  <style media="screen">
+<link rel="stylesheet" href="{{ asset('/css/profile.css') }}">
+<style media="screen">
     .navbar{
       background-image: none;
       background-color: white;
@@ -32,21 +32,34 @@
                         <div class="profile-head">
                             <h5 id="name">
                                 dianne pierce
-                            </h5>
-
-                            <h6>
-                                Soldes
-                            </h6>
+                            </h5><br>
                             <div class="row">
-                              <div class="col-4 solde">
-                                Garantie : 500dh
-                              </div>
-                              <div class="col-4 solde">
-                                Actuel : 500dh
-                              </div>
-                              <div class="col-4 solde">
-                                Total : 500dh
-                              </div>
+                                <div class="col-4 solde" >
+                                    <div class="card" style="width: 10rem;">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Garantie </h5>
+                                            <p class="card-text"> 500dh</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4 solde">
+
+                                  <div class="card" style="width: 10rem;" >
+                                      <div class="card-body">
+                                          <h5 class="card-title">Actuel </h5>
+                                          <p class="card-text"> 500dh</p>
+                                      </div>
+                                  </div>
+
+                                </div>
+                                <div class="col-4 solde">
+                                  <div class="card" style="width: 10rem;" >
+                                      <div class="card-body">
+                                          <h5 class="card-title">Total</h5>
+                                          <p class="card-text"> 500dh</p>
+                                      </div>
+                                  </div>
+                                </div>
                             </div>
                             <div class="col-md-12" style="display:inline">
 
@@ -115,7 +128,7 @@
                                 </div>
                                 <div class="modal-body">
                                     <label for="whatsapplink">Link :</label>
-                                    <input type="text" class="form-control" id="whatsapplink" >
+                                    <input type="text" class="form-control" id="whatsapplink">
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
@@ -135,7 +148,7 @@
                                 </div>
                                 <div class="modal-body">
                                     <label for="instagramlink">Link :</label>
-                                    <input type="text" class="form-control" id="instagram" >
+                                    <input type="text" class="form-control" id="instagram">
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
@@ -182,30 +195,30 @@
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                  <div class="row">
-                                      <div class="col-md-4">
-                                          <label>Banque</label>
-                                      </div>
-                                      <div class="col-md-4">
-                                          <p>CIH</p>
-                                      </div>
-                                  </div>
-                                  <div class="row">
-                                      <div class="col-md-4">
-                                          <label>RIB</label>
-                                      </div>
-                                      <div class="col-md-4">
-                                          <p>1234567</p>
-                                      </div>
-                                  </div>
-                                  <div class="row">
-                                      <div class="col-md-4">
-                                          <label>Numéro Compte</label>
-                                      </div>
-                                      <div class="col-md-4">
-                                          <p>23686013125136</p>
-                                      </div>
-                                  </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label>Banque</label>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <p>CIH</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label>RIB</label>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <p>1234567</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label>Numéro Compte</label>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <p>23686013125136</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -213,12 +226,12 @@
             </form>
         </div>
     </div>
-@endsection
+    @endsection
 
-@section('js')
-  <script type="text/javascript">
-    $(function(){
+    @section('js')
+    <script type="text/javascript">
+        $(function() {
 
-    });
-  </script>
-@endsection
+        });
+    </script>
+    @endsection

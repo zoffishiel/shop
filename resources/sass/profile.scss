@@ -106,3 +106,13 @@
   color: #ab2aa7;
   margin-right: 20px;
 }
+.card{
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  text-align:center ;
+}
+.card-text{
+  color:$primary-blue;
+  font-style:bold;
+  font-size :18px;
+}

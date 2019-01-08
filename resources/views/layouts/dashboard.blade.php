@@ -42,7 +42,7 @@
 
       <div class="row container-fluid" id="body">
         <div class="col-md-2" id="sidebar">
-          <h5 class="text-center mt-4">STORE</h5>
+        
           <div class="list-group pt-3">
             <a href="{{ route('dashboard.index') }}" class="list-group-item">
               <i class="fa fa-dashboard mr-3"></i>

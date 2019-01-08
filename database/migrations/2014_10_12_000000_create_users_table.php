@@ -28,6 +28,9 @@ class CreateUsersTable extends Migration
             $table->string('site')->nullable();
             $table->string('facebook')->nullable();
             $table->string('instagram')->nullable();
+            $table->float('total')->nullable();
+            $table->float('actuel')->nullable();
+            $table->float('garantie')->nullable();
             $table->engine = 'InnoDB';
         });
     }
