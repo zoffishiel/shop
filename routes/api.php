@@ -34,6 +34,6 @@ Route::group(['prefix' => 'drop'], function(){
   Route::get('/category/{id}', 'CategoriesController@dropCategory');
 });
 
-Route::get('/commandes/add', 'CommandesController@addCommande');
+Route::post('/commandes/add', 'CommandesController@addCommande');
 
  // Route::get('/profile','ProfileController@UserProfile');
