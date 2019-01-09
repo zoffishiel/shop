@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Commandes;
 
@@ -10,8 +11,25 @@ class CommandesController extends Controller
 {
     public function index()
     {
-      $commandes = Commandes::All();
-      return response()->json($commandes, 200);
+      if(!Auth::check()){
+        return response("Unauthorized Access", 401);
+      }
+      
+      if(Auth::user()->role == "admin")
+      {
+        $commandes = Commandes::All();
+        return response()->json($commandes, 200);
+
+      }elseif(Auth::user()->role == "vendeur"){
+        return response()->json(Auth::user()->commandes());
+
+      }elseif(Auth::user()->role == "livreur"){
+        $commandes = Commandes::where("ville", Auth::user()->ville);
+        return response()->json($commandes, 200);
+
+      }else{
+        return response("Unauthorized Access", 401);
+      }
     }
 
     public function addCommande(Request $request)
