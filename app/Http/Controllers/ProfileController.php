@@ -30,5 +30,8 @@ class ProfileController extends Controller
      return View::make("dashboard.profile", compact("user"));
 
     }
+    public function AddSocial(){
+      return 0;
+    }
     //select nom,email,tel,role,banque,rib,num_cpt,site,facebook,instagram from users;
 }
