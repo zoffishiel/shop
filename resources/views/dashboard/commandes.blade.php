@@ -17,7 +17,6 @@
       </thead>
     </table>
   </div>
-
 @endsection
 
 @section('js')

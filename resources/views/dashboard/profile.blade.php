@@ -25,7 +25,11 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
-                            <img src="{{ Auth::user()->img }}" alt="" />
+                            <img src="@if (empty(Auth::user()->img))
+                              {{ asset('img/user.jpeg') }}
+                            @else
+                              {{ Auth::user()->img }}
+                            @endif" alt="" />
 
                         </div>
                     </div>
@@ -112,7 +116,7 @@
                                 </div>
                                 <div class="modal-body">
                                     <label for="FbLink">Link :</label>
-                                    <input type="text" class="form-control" id="FbLink" placeholder="https://www.facebook.com/.....">
+                                    <input type="text" class="form-control" id="FbLink" placeholder="https://www.facebook.com/...">
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
@@ -242,15 +246,13 @@
     @endsection
 
     @section('js')
-    <script src="{{ mix('js/app.js') }}"></script>
-    <script src="{{ asset('js/dashboard.js') }}" charset="utf-8"></script>
     <script type="text/javascript">
 
         $(document).ready(function() {
             $(".profile-edit-btn").click(function() {
               $("#vlidate profile-edit-btn").hide();
                 $("#vlidate").html('<button type="button" class="profile-edit-btn btn-success profile_save"><i class="fas fa-save"></i></button>').addClass('animated fadeIn');
-                $(".profile_mod p").html('<input type="text" class="form-control" id="FbLink" placeholder="....">').addClass('animated fadeInUp');
+                $(".profile_mod p").html('<input type="text" class="form-control" placeholder="">').addClass('animated fadeInUp');
             });
 
             $(".profile_save").click(function() {

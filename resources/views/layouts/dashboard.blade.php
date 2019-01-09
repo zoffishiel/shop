@@ -87,6 +87,8 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/dashboard.js') }}" charset="utf-8"></script>
+    <script src="{{ asset('js/jquery-ui.js') }}" charset="utf-8"></script>
     @yield('js')
   </body>
 </html>
