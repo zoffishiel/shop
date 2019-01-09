@@ -23,7 +23,7 @@ class Kernel extends HttpKernel
         // Add those lines to use user session in controllers
         \App\Http\Middleware\EncryptCookies::class,
         \Illuminate\Session\Middleware\StartSession::class,
-        \App\Http\Middleware\VerifyCsrfToken::class,
+        // \App\Http\Middleware\VerifyCsrfToken::class,
         // ==================================================
 
     ];
