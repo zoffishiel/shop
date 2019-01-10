@@ -4,6 +4,8 @@ Catégories : tableau de catégories, ajouter, modifier ou supprimer les catégo
 
 Produits : tableau des produits (image, nom, prix général, prix vente, quantité). Ajouter des produits pour l’admin. Pour vendeur des Cards.
 
+Ajouter Produit : form, upload multiple images
+
 Services de livraison : pour admin, tableau des services disponible (ajouter, modifier, supprimer)
 
 Produits détails : afficher les détails du produit (titre, description, prix, quantité, images, vidéo, prix général, prix vente).
@@ -16,7 +18,7 @@ Messages :  tableau des messages
 
 Utilisateurs : tableau des utilisateurs
 
-Commandes : tableau des commandes (order by date : incomplete older first).
+Commandes : tableau des commandes (order by date + incomplete older first).
 
 Ajouter : Ajouter une commande.
 
