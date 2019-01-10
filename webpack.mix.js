@@ -22,5 +22,7 @@ mix.js('resources/js/dashboard.js', 'public/js')
   .sass('resources/sass/dashboard.scss', 'public/css');
 
 // Chart js
-
 mix.js('node_modules/chart.js/dist/Chart.bundle.min.js', 'public/js');
+
+// users table
+mix.js('resources/js/users.js', 'public/js');

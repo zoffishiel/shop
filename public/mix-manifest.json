@@ -4,5 +4,6 @@
     "/css/app.css": "/css/app.css",
     "/css/profile.css": "/css/profile.css",
     "/css/dashboard.css": "/css/dashboard.css",
-    "/js/dashboard.js": "/js/dashboard.js"
+    "/js/dashboard.js": "/js/dashboard.js",
+    "/js/users.js": "/js/users.js"
 }
