@@ -1,0 +1,23 @@
+Index : solde pour vendeur et livreur, tableau des commandes, chart de revenues pour l'année.
+
+Catégories : tableau de catégories, ajouter, modifier ou supprimer les catégories pour admin. Pour vendeur des Cards.
+
+Produits : tableau des produits (image, nom, prix général, prix vente, quantité). Ajouter des produits pour l’admin. Pour vendeur des Cards.
+
+Services de livraison : pour admin, tableau des services disponible (ajouter, modifier, supprimer)
+
+Produits détails : afficher les détails du produit (titre, description, prix, quantité, images, vidéo, prix général, prix vente).
+
+Paramètres :  paramètres général du site (changer logo, modifier slider, change le nom du site, …)
+
+Collections : Cards des produits que le vendeur a ajouté dans sa collection.
+
+Messages :  tableau des messages
+
+Utilisateurs : tableau des utilisateurs
+
+Commandes : tableau des commandes (order by date : incomplete older first).
+
+Ajouter : Ajouter une commande.
+
+Clients :  List des clients de chaque vendeur. Admin tous les clients.
