@@ -251,7 +251,7 @@
         $(document).ready(function() {
             $(".profile-edit-btn").click(function() {
               $("#vlidate profile-edit-btn").hide();
-                $("#vlidate").html('<button type="button" class="profile-edit-btn btn-success profile_save"><i class="fas fa-save"></i></button>').addClass('animated fadeIn');
+                $("#vlidate").html('<button type="button" class="profile-edit-btn btn-success profile_save"><i class="fa fa-save"></i></button>').addClass('animated fadeIn');
                 $(".profile_mod p").html('<input type="text" class="form-control" placeholder="">').addClass('animated fadeInUp');
             });
 
