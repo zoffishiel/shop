@@ -43,38 +43,38 @@
 
       <div class="row container-fluid" id="body">
         <div class="col-md-2" id="sidebar">
-          <h5 class="text-center mt-4 sidebar-text">STORE</h5>
+
           <div class="list-group pt-3">
             <a href="{{ route('dashboard.index') }}" class="list-group-item @if(Route::currentRouteName() == 'dashboard.index') active @endif ">
-              <i class="fa fa-dashboard mr-3"></i>
-              <i class="sidebar-text">Dashboard</i>
+              <i class="fa fa-dashboard mr-3 float-left"></i>
+              <i class="sidebar-text ">Dashboard</i>
             </a>
             <a href="{{ route('dashboard.commandes') }}" class="list-group-item @if(Route::currentRouteName() == 'dashboard.commandes') active @endif">
-              <i class="fa fa-shopping-cart mr-3"></i>
+              <i class="fa fa-shopping-cart mr-3 float-left"></i>
               <i class="sidebar-text">Commandes</i>
             </a>
             <a href="{{ route('dashboard.categories') }}" class="list-group-item @if(Request::is('dashboard/')) active @endif">
-              <i class="fa fa-archive mr-3"></i>
+              <i class="fa fa-archive mr-3 float-left"></i>
               <i class="sidebar-text">Catégories</i>
             </a>
             <a href="{{ route('dashboard.produits') }}" class="list-group-item @if(Request::is('dashboard/produits')) active @endif">
-              <i class="fa fa-tag mr-3"></i>
+              <i class="fa fa-tag mr-3 float-left"></i>
               <i class="sidebar-text">Produits</i>
             </a>
             <a href="{{ route('dashboard.utilisateurs') }}" class="list-group-item @if(Request::is('dashboard/utilisateurs')) active @endif">
-              <i class="fa fa-users mr-3"></i>
+              <i class="fa fa-users mr-3 float-left"></i>
               <i class="sidebar-text">Utilisateurs</i>
             </a>
             <a href="{{ route('dashboard.clients') }}" class="list-group-item @if(Request::is('dashboard/clients')) active @endif">
-              <i class="fa fa-user mr-3"></i>
+              <i class="fa fa-user mr-3 float-left"></i>
               <i class="sidebar-text">Clients</i>
             </a>
             <a href="{{ route('dashboard.messages') }}" class="list-group-item @if(Request('dashboard/messages')) active @endif">
-              <i class="fa fa-envelope mr-3"></i>
+              <i class="fa fa-envelope mr-3 float-left"></i>
               <i class="sidebar-text">Messages</i>
             </a>
             <a href="{{ route('dashboard.parametres') }}" class="list-group-item @if(Request::is('dashboard/parametres')) active @endif">
-              <i class="fa fa-cog mr-3"></i>
+              <i class="fa fa-cog mr-3 float-left"></i>
               <i class="sidebar-text">Paramètres</i>
             </a>
 

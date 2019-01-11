@@ -26,3 +26,5 @@ mix.js('node_modules/chart.js/dist/Chart.bundle.min.js', 'public/js');
 
 // users table
 mix.js('resources/js/users.js', 'public/js');
+
+mix.browserSync('127.0.0.1:8000');

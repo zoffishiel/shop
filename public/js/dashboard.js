@@ -94,14 +94,17 @@
 /***/ (function(module, exports) {
 
 $(function () {
-  $("#sidebar-toggle").on("click", function () {
+  $("#sidebar-toggle").on("click", function (e) {
+    e.preventDefault();
     $("#sidebar").toggleClass("active");
-    $('.sidebar-text').toggle(500);
 
     if ($("#main").hasClass("col-md-10")) {
-      $("#main").switchClass("col-md-10", "col-md-11", 500);
+      $('.sidebar-text').hide();
+      $("#main").switchClass("col-md-10", "col-md-11", 300);
     } else {
-      $("#main").switchClass("col-md-11", "col-md-10", 500);
+      if ($("#main").switchClass("col-md-11", "col-md-10", 300)) {
+        $('.sidebar-text').show(700);
+      }
     }
   });
 });
@@ -115,7 +118,7 @@ $(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Zakariae\Desktop\project\resources\js\dashboard.js */"./resources/js/dashboard.js");
+module.exports = __webpack_require__(/*! /home/mahdi/Documents/Shop/resources/js/dashboard.js */"./resources/js/dashboard.js");
 
 
 /***/ })

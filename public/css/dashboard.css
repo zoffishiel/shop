@@ -8,7 +8,7 @@ body {
 }
 
 #body {
-  min-height: 600px;
+  min-height: 100vh;
 }
 
 header {
@@ -19,6 +19,7 @@ header {
   min-width: 80px;
   max-width: 80px;
   text-align: center;
+  min-height: 100% !important;
 }
 
 #sidebar.active .list-group-item {
@@ -30,7 +31,7 @@ header {
 }
 
 #sidebar {
-  min-height: 100%;
+  min-height: 100vh;
   transition: all 0.5s ease-in-out;
   background-color: white;
 }
@@ -57,5 +58,15 @@ header {
 #sidebar a:hover {
   background-color: #E3F2FD;
   color: #2196F3;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  text-align: center;
+}
+
+#revenus-canvas {
+  height: 100px;
 }
 

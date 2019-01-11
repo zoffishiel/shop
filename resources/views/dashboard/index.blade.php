@@ -10,10 +10,10 @@
 @endsection
 
 @section('content')
-  <div class="row">
-    <div class="col-md-9 offset-md-1">
+  <div class="row mx-auto ">
+    <div class="col-md-12 ">
       <div class="row">
-        <div class="col-md-3 offset-md-1 card">
+        <div class="col-md-3  card">
           <div class="card-body text-center">
             <h5 class="card-title">Solde Garentie</h5>
             <p>0 DH</p>
@@ -35,7 +35,30 @@
     </div>
   </div>
 
-<div class="mt-5">
+  <div class="row mt-4  ">
+
+      <div class="col-md-6 ">
+        <div class="card">
+          <h5 class="text-center mt-3">Revenus</h5>
+          <div class="card-content">
+            <canvas id="revenus-canvas"  ></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <h5 class="text-center mt-3">Ventes et Achats</h5>
+          <div class="card-content">
+            <canvas id="Ventes-canvas"></canvas>
+          </div>
+        </div>
+      </div>
+  </div>
+  <div class="row mt-3">
+
+  </div>
+
+<div class="mt-3">
   <div class="card text-center">
     <h4 class="card-title mt-3">Commandes</h4>
     <div class="card-body">
@@ -53,16 +76,7 @@
   </div>
 </div>
 
-<div class="row mt-5">
-  <div class="col-md-6">
-    <div class="card">
-      <h5 class="text-center mt-3">Revenus</h5>
-      <div class="card-content">
-        <canvas id="revenus-canvas"></canvas>
-      </div>
-    </div>
-  </div>
-</div>
+
 @endsection
 
 @section('js')
@@ -82,7 +96,7 @@ var myChart = new Chart(ctx, {
         labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
         datasets: [{
             label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
+            data: [12, 4, 3, 5, 2, 3],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -99,7 +113,7 @@ var myChart = new Chart(ctx, {
                 'rgba(153, 102, 255, 1)',
                 'rgba(255, 159, 64, 1)'
             ],
-            borderWidth: 1
+            borderWidth: 2
         }]
     },
     options: {
@@ -108,6 +122,33 @@ var myChart = new Chart(ctx, {
                 ticks: {
                     beginAtZero:true
                 }
+            }]
+        }
+    }
+});
+var ctx2 = document.getElementById("Ventes-canvas").getContext('2d');
+var myLineChart = new Chart(ctx2, {
+    type: 'line',
+    data: {
+        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        datasets: [{
+            label: '# Number of sels',
+            data: [12, 19, 3, 15, 22, 13],
+            backgroundColor: [
+
+                'rgba(54, 162, 235, 0.7)',
+            ],
+            borderColor: [
+                'rgba(54, 162, 235, 1)',
+                'rgba(75, 192, 192, 1)',
+            ],
+            borderWidth: 2
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                stacked: true
             }]
         }
     }

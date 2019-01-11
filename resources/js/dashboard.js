@@ -1,11 +1,16 @@
 $(function(){
-  $("#sidebar-toggle").on("click", function(){
+  $("#sidebar-toggle").on("click", function(e){
+    e.preventDefault();
     $("#sidebar").toggleClass("active");
-    $('.sidebar-text').toggle(500);
+
     if($("#main").hasClass("col-md-10")){
-      $("#main").switchClass("col-md-10", "col-md-11", 500);
+      $('.sidebar-text').hide();
+      $("#main").switchClass("col-md-10", "col-md-11", 300);
     }else {
-      $("#main").switchClass("col-md-11", "col-md-10", 500);
+
+      if($("#main").switchClass("col-md-11", "col-md-10", 300)){
+      $('.sidebar-text').show(700);
+      }
     }
   });
 });
