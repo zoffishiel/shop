@@ -42,7 +42,7 @@
     </header>
 
       <div class="row container-fluid" id="body">
-        <div class="col-md-2" id="sidebar">
+        <div class="col-md-2 " id="sidebar">
 
           <div class="list-group pt-3">
             <a href="{{ route('dashboard.index') }}" class="list-group-item @if(Route::currentRouteName() == 'dashboard.index') active @endif ">
