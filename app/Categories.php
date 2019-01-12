@@ -13,6 +13,6 @@ class Categories extends Model
     public $timestamps = false;
 
     public function products(){
-      return $this->hashMany('App\Products', 'cid');
+      return $this->hasMany('App\Products', 'cid');
     }
 }
