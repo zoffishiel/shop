@@ -21,6 +21,7 @@
 <body>
     <div id="Data">
         <div class="container emp-profile">
+          <h3 class="mb-5 text-center">Profile</h3>
             <form method="post">
                 <div class="row">
                     <div class="col-md-4">
@@ -37,10 +38,7 @@
 
                     <div class="col-md-6">
                         <div class="profile-head">
-                            <h5 id="name">
-                                {{ Auth::user()->nom }}
-                            </h5><br>
-                            <div class="row">
+                            <div class="row mt-5">
                                 <div class="col-4 solde">
                                     <div class="card" style="width: 10rem;">
                                         <div class="card-body">
@@ -95,14 +93,6 @@
                             <a href=""><i class="fa fa-link"></i>Site Web</a><br />
                             <a href="" data-toggle="modal" data-target="#Facebook"><i class="fa fa-facebook-square"></i>Facebook</a><br />
                             <a href="" data-toggle="modal" data-target="#instagram"><i class="fa fa-instagram"></i>Instagram</a>
-                            <p>SKILLS</p>
-                            <hr size="30">
-
-                            <a href="">Communication</a><br />
-                            <a href="">Collaboration</a><br />
-                            <a href="">E-commerce</a><br />
-                            <a href="">Designer</a><br />
-                            <a href="">Programmer</a><br />
                         </div>
                     </div>
                     <div class="modal fade" tabindex="-1" role="dialog" id="Facebook">
