@@ -21,6 +21,16 @@
             <div class="col-md-9">
                 <div class="col-md-9 mt-3">
                     <div class="form-group">
+                        <label for="titre" class=" ml-3 float-left ">Categorie :</label>
+                        <select class="form-control" name="">
+                          @foreach ($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->nom }}</option>
+                          @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-9 mt-3">
+                    <div class="form-group">
                         <label for="titre" class=" ml-3 float-left ">titre :</label>
                         <input type="text" class="form-control " id="titre">
                     </div>
@@ -28,21 +38,24 @@
                 <div class="col-md-9 mt-3">
                     <div class="form-group">
                         <label for="description" class=" ml-3 float-left ">description :</label>
-                        <input type="text" class="form-control " id="description">
+                        <textarea class="form-control" name="description" rows="6" cols="80"></textarea>
                     </div>
                 </div>
-                <div class="col-md-9 mt-3">
-                    <div class="form-group">
-                        <label for="prix_general" class=" ml-3 float-left ">prix general :</label>
-                        <input type="text" class="form-control " id="prix_general">
-                    </div>
+                <div class="row col-md-9">
+                  <div class="col-md-6 mt-3">
+                      <div class="form-group">
+                          <label for="prix_general" class=" ml-3 float-left ">prix general :</label>
+                          <input type="text" class="form-control " id="prix_general">
+                      </div>
+                  </div>
+                  <div class="col-md-6 mt-3">
+                      <div class="form-group">
+                          <label for="prix_vente" class=" ml-3 float-left ">prix vente :</label>
+                          <input type="text" class="form-control " id="prix_vente">
+                      </div>
+                  </div>
                 </div>
-                <div class="col-md-9 mt-3">
-                    <div class="form-group">
-                        <label for="prix_vente" class=" ml-3 float-left ">prix vente :</label>
-                        <input type="text" class="form-control " id="prix_vente">
-                    </div>
-                </div>
+
                 <div class="col-md-9 mt-3">
                     <div class="form-group">
                         <label for="qte" class=" ml-3 float-left ">Quantite :</label>
@@ -57,14 +70,14 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title"><i class="fas fa-plus mr-3"></i>Ajouter des Images/Video :</h5>
+                    <h5 class="modal-title">Ajouter des Images/Video :</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="col-md-12">
-                        {{-- <form action="/file-upload" class="dropzone" id="dropzone"></form> --}}
+                        <form action="/file-upload" class="dropzone" id="dropzone"></form>
                         <input type="file" name="images" value="" multiple>
                     </div>
                 </div>
