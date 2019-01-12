@@ -44,9 +44,7 @@ Route::group(["prefix" => '/dashboard', 'middleware' => 'auth'], function(){
     return view('dashboard.categories');
   })->name('dashboard.categories');
 
-  Route::get('/addproduits', function(){
-    return view('dashboard.addproduits');
-  })->name('dashboard.addproduits');
+  Route::get('/addproduits', 'ProductsController@addPage')->name('dashboard.addproduits');
 
   Route::get('/messages', function(){
     return view('dashboard.messages');
