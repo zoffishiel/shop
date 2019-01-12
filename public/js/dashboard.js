@@ -100,7 +100,7 @@ $(function () {
 
     if ($("#main").hasClass("col-md-10")) {
       $('.sidebar-text').hide();
-      $("#main").switchClass("col-md-10", "col-md-11", 300);
+      $("#main").switchClass("col-md-10", "col-md-11", 700);
     } else {
       if ($("#main").switchClass("col-md-11", "col-md-10", 300)) {
         $('.sidebar-text').show(700);
@@ -118,7 +118,7 @@ $(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/mahdi/Documents/Shop/resources/js/dashboard.js */"./resources/js/dashboard.js");
+module.exports = __webpack_require__(/*! C:\Users\Zakariae\Desktop\project\resources\js\dashboard.js */"./resources/js/dashboard.js");
 
 
 /***/ })
