@@ -8,8 +8,7 @@
   <div class="mt-3 card p-3">
     <h4 class="mb-4 mt-3 text-center">Commandes (0)</h4>
     <div id="toolbar" class="btn-group">
-      <button type="button" class="btn btn-danger" name="button"><i class="fa fa-trash"></i></button>
-      <button type="button" class="btn btn-primary" name="button"><i class="fa fa-plus"></i></button>
+      <a href="{{ route('dashboard.add_commande') }}" class="btn btn-success" name="button"><i class="fa fa-plus"></i> Ajouter</a>
     </div>
     <table id="commandes" class="table hover striped">
       <thead>
