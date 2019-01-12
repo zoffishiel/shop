@@ -18,4 +18,11 @@ class MessagesController extends Controller
       $message = Messages::create($request->all());
       return $message ? 1 : 0;
     }
+
+    public function replyMessage(Request $request,$id)
+    {
+      $message = Messages::find($id);
+      $res = $message->update($request->all());
+      return $res ? 1 : 0;
+    }
 }

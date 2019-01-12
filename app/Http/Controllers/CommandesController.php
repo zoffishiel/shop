@@ -14,7 +14,7 @@ class CommandesController extends Controller
       if(!Auth::check()){
         return response("Unauthorized Access", 401);
       }
-      
+
       if(Auth::user()->role == "admin")
       {
         $commandes = Commandes::All();
@@ -30,6 +30,12 @@ class CommandesController extends Controller
       }else{
         return response("Unauthorized Access", 401);
       }
+    }
+
+    public function getCommande($id)
+    {
+      $commande = Commandes::find($id);
+      return response()->json($commande, 200);
     }
 
     public function addCommande(Request $request)
@@ -60,16 +66,16 @@ class CommandesController extends Controller
       }
     }
 
-    public function dropCommande($id)
-    {
-      $commande = Commandes::find($id);
-      if(is_null($commande)){
-        return 0;
-      }else{
-        $commande->delete();
-        return 1;
-      }
-    }
+    // public function dropCommande(Request $request)
+    // {
+    //   $commande = Commandes::find($request->all());
+    //   if(is_null($commande)){
+    //     return 0;
+    //   }else{
+    //     $commande->delete();
+    //     return 1;
+    //   }
+    // }
 
     public function updateStatus($id, $status)
     {

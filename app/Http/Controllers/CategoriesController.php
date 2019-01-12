@@ -3,28 +3,39 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Validator;
 use App\Categories;
+use App\Http\Resources\Categories as CategoriesResource;
 
 class CategoriesController extends Controller
 {
     public function index()
     {
         $categories = Categories::All();
-        return response()->json($categories, 200);
+        return CategoriesResource::collection($categories);
     }
 
     // Get Category
     public function getCategory($id)
     {
-      $category = Categories::find($id);
-      return response()->json($category, 200);
+      $products = Categories::find($id)->products();
+      return response()->json($products, 200);
     }
 
     // Add Category
     public function addCategory(Request $request)
     {
-      $res = Categories::create($request->all());
-      return response()->json($res, 200);
+      $rules = [
+        "nom" => ["required", "string", "max:100"],
+      ];
+      $validator = Validator::make($request->all(), $rules);
+      if($validator->fails()){
+        return 0;
+      }else{
+        $res = Categories::create($request->all());
+        return 1;
+      }
+
     }
 
     // Update Category
@@ -32,22 +43,18 @@ class CategoriesController extends Controller
     {
       $category = Categories::find($request->input('id'));
       if(is_null($category)){
-        return 0;
+        return response("Catégorie Introuvable");
       }else{
         $category->update($request->all());
-        return 1;
+        return response("Catégorie est modifié");
       }
     }
 
     // Delete Category
-    public function dropCategory($id)
+    public function dropCategory(Request $request)
     {
-      $category = Categories::find($id);
-      if(is_null($category)){
-        return 0;
-      }else{
-        $category->delete();
-        return 1;
-      }
+      $category = Categories::whereIn('id', $request->input('ids'))->delete();
+      return $category ? 1 : 0;
+
     }
 }

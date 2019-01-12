@@ -19,9 +19,9 @@ class ServiceLivraisonController extends Controller
       return $service ? 1 : 0;
     }
 
-    function dropService($id)
-    {
-      $service = ServiceLivraison::find($id)->delete();
-      return $service ? 1 : 0;
-    }
+    // function dropService(Request $request)
+    // {
+    //   $service = ServiceLivraison::find($id)->delete();
+    //   return $service ? 1 : 0;
+    // }
 }

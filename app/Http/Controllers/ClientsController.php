@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Clients;
 
@@ -9,8 +10,16 @@ class ClientsController extends Controller
 {
     public function index()
     {
-      $clients = Clients::All();
-      return response()->json($clients, 200);
+      if(Auth::user()->role == "admin"){
+        $clients = Clients::All();
+        return response()->json($clients, 200);
+      }elseif(Auth::user()->role == "vendeur"){
+        $clients = Clients::where('vendeur', Auth::user()->id);
+        return response()->json($clients, 200);
+      }else{
+        return response("Unauthorized Access", 401);
+      }
+
     }
 
     // Get Client by ID
@@ -19,7 +28,7 @@ class ClientsController extends Controller
       $client = Clients::find($id);
       return response()->json($client, 200);
     }
-    
+
     // Add Client
     public function addClient(Request $request)
     {
@@ -28,14 +37,9 @@ class ClientsController extends Controller
     }
 
     // Drop Client
-    public function dropClient($id)
+    public function dropClient(Request $request)
     {
-      $client = Clients::find($id);
-      if(is_null($client)){
-        return 0;
-      }else{
-        $client->delete();
-        return 1;
-      }
+      $clients = Clients::find($request->all());
+
     }
 }

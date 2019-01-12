@@ -7,9 +7,9 @@ use App\Tracking;
 
 class TrackingController extends Controller
 {
-    public function track(Request $request)
+    public function track($track_number)
     {
-      $track = Tracking::find($request->input('tracking_number'));
+      $track = Tracking::find($track_number);
       if(is_null($track)){
         return 0;
       }else{

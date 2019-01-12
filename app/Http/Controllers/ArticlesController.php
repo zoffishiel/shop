@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request
+use Illuminate\Http\Request;
+use Validator;
 use App\Articles;
 
 class ArticlesController extends Controller
@@ -23,23 +24,44 @@ class ArticlesController extends Controller
     // Add Article
     public function addArticle(Request $request)
     {
-      $res = Articles::create($request->all());
-      return response()->json($res, 200);
+      $rules = [
+        "titre" => ["required", "string", "max:255"],
+        "content" => ["required", "string"],
+      ];
+      $validator = Validator::make($request->all(), $rules);
+      if($validator->fails()){
+        return response()->json($validator->errors(), 200);
+      }else{
+        $res = Articles::create($request->all());
+        return response()->json($res, 200);
+      }
     }
 
     // Update Article
     public function updateArticle(Request $request)
     {
       $article = Articles::find($request->input("id"));
-      $res = $article->update($request->all());
-      return $res ? 1 : 0;
+      if(is_null($article)){
+        return response("Article non trouver");
+      }else{
+        $rules = [
+          "titre" => ["string", "max:255"],
+          "content" => ["string"],
+        ];
+        $validator Validator::make($request->all(), $rules);
+        if($validator->fails()){
+          return response()->json($validator->errors(), 200);
+        }else{
+          $res = $article->update($request->except("id"));
+          return $res ? response("L'article est modifier", 200) : response("Erreur de modification", 200);
+        }    
+      }
     }
 
     // Delete Article
-    public function dropArticle($id)
+    public function dropArticle(Request $request)
     {
-      $article = Articles::find($id);
-      $res =  $article->delete();
-      return $res;
+      $article = Articles::find($request->input("ids"));
+
     }
 }

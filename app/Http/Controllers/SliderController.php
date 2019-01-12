@@ -13,6 +13,12 @@ class SliderController extends Controller
       return response()->json($sliders, 200);
     }
 
+    public function getSlider($id)
+    {
+      $slider = Slider::find($id);
+      return response()->json($slider, 200);
+    }
+
     public function addSlider()
     {
 
@@ -23,9 +29,9 @@ class SliderController extends Controller
 
     }
 
-    public function dropSlider($id)
-    {
-      $slider = Slider::find($id)->delete();
-      return $slider ? 1 : 0;
-    }
+    // public function dropSlider($id)
+    // {
+    //   $slider = Slider::find($id)->delete();
+    //   return $slider ? 1 : 0;
+    // }
 }

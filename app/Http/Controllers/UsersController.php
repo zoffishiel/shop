@@ -14,8 +14,23 @@ class UsersController extends Controller
     }
     public function index()
     {
-      $users = User::All();
-      return response()->json($users, 200);
+      if(Auth::user()->role == "admin"){
+        $users = User::All();
+        return response()->json($users, 200);
+      }else{
+        return response("Unauthorized Access", 401);
+      }
+    }
+
+    public function getUser($id)
+    {
+      if(Auth::user()->role == "admin"){
+        $user = User::find($id);
+        return response()->json($user, 200);
+      }else{
+        return response("Unauthorized Access", 401);
+      }
+
     }
 
     public function getCollections()
@@ -23,10 +38,25 @@ class UsersController extends Controller
       return response()->json(Auth::user()->collections());
     }
 
-    public function dropUser($id)
+    public function dropUser(Request $request)
     {
-      $user = User::find($id)->delete();
-      return $user ? 1 : 0;
+      if(Auth::user()->role == "admin"){
+        $user = User::whereIn('id', $request->input('ids'))->delete();
+        return $user ? 1 : 0;
+      }else{
+        return response("Unauthorized Access", 401);
+      }
+    }
+
+    public function updateInfos(Request $request)
+    {
+      $user = User::find(Auth::user()->id);
+      $res = $user->update($request->all());
+      if($res){
+        return response("Infos Updated", 200);
+      }else{
+        return response("Error Updating infos", 200);
+      }
     }
 
 }

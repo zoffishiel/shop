@@ -2,15 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Products;
+use Validator;
+use View;
 
 class ProductsController extends Controller
 {
     public function index()
     {
-      $products = Products::All();
-      return response()->json($products, 200);
+      if(Auth::user()->role == "admin"){
+        $products = Products::All();
+        return response()->json($products, 200);
+      }else{
+        $products = Products::paginate();
+        return $products;
+      }
+    }
+
+    public function addPage()
+    {
+      $categories = \App\Categories::All();
+      return View::make('dashboard.addproduits', compact('categories'));
     }
 
     public function getProduct($id)
@@ -24,17 +38,38 @@ class ProductsController extends Controller
     }
 
     public function addProduct(Request $request){
-      $product = Products::create($request->all());
-      return $product ? 1 : 0;
+      $rules = [
+        'cid' => ['required', 'numeric'],
+        'titre' => ['required', 'string', 'max:200'],
+        'description' => ['string'],
+        'main_image' => ['required', 'mimetypes:image/jpeg,image/png'],
+        'video' => ['string', 'max:255'],
+        'prix_general' => ['required', 'numeric', 'between:0,10000.0'],
+        'prix_vente' => ['required', 'numeric', 'between:0,10000.0'],
+      ];
+      $validator = Validator::make($request->except("images"), $rules);
+      if($validator->fails()){
+        return response()->json($validator->errors(), 200);
+      }else{
+        $path = $request->file('main_image')->store('img', ['disk' => 'images']);
+        $request['image'] = $path;
+        $product = Products::create($request->except(['images', 'main_image']));
+        if($product){
+          if(!empty($request->file('images'))){
+            $paths = [];
+            foreach ($request->file('images') as $image) {
+              Images::create(['pid' => $product['id'], 'path' => $image->store('img', ['disk' => 'images'])]);
+            }
+          }
+          return 1;
+        }else{
+          return 0;
+        }
+      }
+
     }
 
-    public function dropProduct($id){
-      $product = Products::find($id);
-      if(is_null($product)){
-        return 0;
-      }else{
-        $product->delete();
-        return 1;
-      }
+    public function dropProduct(Request $request){
+      $product = Products::find($request->all());
     }
 }
