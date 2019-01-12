@@ -46,6 +46,11 @@ Route::group(["prefix" => '/dashboard', 'middleware' => 'auth'], function(){
 
   Route::get('/addproduits', 'ProductsController@addPage')->name('dashboard.addproduits');
 
+  Route::get('/addclients', function(){
+    return view('dashboard.addclients');
+  })->name('dashboard.addclients');
+  // addclients
+
   Route::get('/messages', function(){
     return view('dashboard.messages');
   })->name('dashboard.messages');

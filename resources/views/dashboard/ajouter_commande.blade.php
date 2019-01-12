@@ -26,6 +26,16 @@
           <input class="form-control col-md-4" type="text" name="nom" value="">
         </div>
       </form>
+
+          <button type="button" class="btn btn-success btn-lg float-right mr-4 mb-4">Save</button>
+
     </div>
   </div>
+@endsection
+
+@section('js')
+  <script>
+
+  </script>
+
 @endsection
