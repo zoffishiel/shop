@@ -17,23 +17,62 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/commandes', 'CommandesController@index');
-Route::get('/users', 'UsersController@index');
-Route::get('/vendeur/collections', 'UsersController@getCollections');
+// PROTECT DATA
 
-Route::get('/categories', 'CategoriesController@index');
-Route::get('/products', 'ProductsController@index');
+Route::group(["middleware" => "auth"], function(){
 
-Route::group(['prefix' => '/add'], function(){
-  Route::post('/product','ProductsController@addProduct');
-  Route::post('/category','CategoriesController@addCategory');
+  // GET DATA ROUTES
+  Route::get('/commandes', 'CommandesController@index');
+  Route::get('/users', 'UsersController@index');
+  Route::get('/collections', 'UsersController@getCollections');
+  Route::get('/categories', 'CategoriesController@index');
+  Route::get('/products', 'ProductsController@index');
+
+  // GET DATA BY ID ROUTES
+  Route::get('/commande/{id}', 'CommandesController@getCommande');
+  Route::get('/user/{id}', 'UsersController@getUser');
+  Route::get('/category/{id}', 'CategoriesController@getCategory');
+  Route::get('/product/{id}', 'ProductsController@getProduct');
+  Route::get('/tracking/{track_number}', 'TrackingController@track');
+  Route::get('/client/{id}', 'ClientsController@getClient');
+  Route::get('/slider/{id}', 'SliderController@getSlider');
+
+  // ADD ROUTES
+  Route::group(['prefix' => '/add'], function(){
+    Route::post('/category', 'CategoriesController@addCategory');
+    Route::post('/product','ProductsController@addProduct');
+    Route::post('/commande', 'CommandesController@addCommande');
+    Route::post('/client', 'ClientsController@addClient');
+    Route::post('/message', 'MessagesController@addMessage');
+    Route::post('/service', 'ServiceLivrasionController@addService');
+    Route::post('/article', 'ArticlesController@addArticle');
+    Route::post('/slider', 'SliderController@addSlider');
+  });
+
+  // ADD ROUTES
+  Route::group(['prefix' => '/update'], function(){
+    Route::post('/category', 'CategoriesController@updateCategory');
+    Route::post('/product','ProductsController@updateProduct');
+    Route::post('/commande', 'CommandesController@updateCommande');
+    Route::post('/client', 'ClientsController@updateClient');
+    Route::post('/message', 'MessagesController@updateMessage');
+    Route::post('/service', 'ServiceLivrasionController@updateService');
+    Route::post('/article', 'ArticlesController@updateArticle');
+    Route::post('/slider', 'SliderController@updateSlider');
+    Route::post('/user', 'UsersController@updateInfos');
+
+  });
+
+  // DELETE ROUTES
+  Route::group(['prefix' => 'drop'], function(){
+    Route::post('/users', 'UsersController@dropUser');
+    Route::post('/product', 'ProductsController@dropProduct');
+    Route::post('/categories', 'CategoriesController@dropCategory');
+    Route::post('/commande', 'CommandesController@dropCommande');
+    Route::post('/client', 'ClientsController@dropClient');
+    Route::post('/message', 'MessagesController@dropMessage');
+    Route::post('/service', 'ServiceLivrasionController@dropService');
+    Route::post('/article', 'ArticlesController@dropArticle');
+    Route::post('/slider', 'SliderController@dropSlider');
+  });
 });
-
-Route::group(['prefix' => 'drop'], function(){
-  Route::get('/product/{id}', 'ProductsController@dropProduct');
-  Route::get('/category/{id}', 'CategoriesController@dropCategory');
-});
-
-Route::post('/commandes/add', 'CommandesController@addCommande');
-
- // Route::get('/profile','ProfileController@UserProfile');
