@@ -9,13 +9,13 @@
     <h3 class="mb-4 text-center mt-3">Catégories</h3>
 
     <div id="toolbar" class="btn-group row ml-2">
-        <button type="button" class="btn btn-danger col-md-6" name="button"><i class="fa fa-trash"></i></button>
+        <button type="button" id="del" class="btn btn-danger col-md-6" name="button"><i class="fa fa-trash"></i></button>
         <button type="button" class="btn btn-primary col-md-6" name="button" data-toggle="modal" data-target="#add"><i class="fa fa-plus"></i></button>
     </div>
 
     <table id="categories" class="hover striped border ">
         <thead>
-            
+
         </thead>
     </table>
 </div>
@@ -81,6 +81,22 @@
           $.post('/api/add/category', data, (resp) =>{
             if(resp){
               $("#categories").bootstrapTable("refresh");
+            }else{
+              console.log("error");
+            }
+          });
+        });
+
+        $("#del").on('click', ()=>{
+          var ids = $("#categories").bootstrapTable('getSelections').map((row)=>{
+            return row.id;
+          });
+          $.post('/api/drop/categories', {'ids' : ids}, (resp)=>{
+            if(resp){
+              $("#categories").bootstrapTable('remove', {
+                field : 'id',
+                values : ids
+              });
             }else{
               console.log("error");
             }
