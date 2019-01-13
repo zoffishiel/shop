@@ -27,7 +27,7 @@
         </div>
       </form>
 
-          <button type="button" class="btn btn-success btn-lg float-right mr-4 mb-4">Save</button>
+          <button type="button" class="btn btn-success btn-lg float-right mr-4 mb-4">Ajouter</button>
 
     </div>
   </div>

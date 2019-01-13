@@ -25,7 +25,6 @@ class CreateClientsTable extends Migration
             $table->string('ville');
             $table->text('adresse');
             $table->string('tel');
-            $table->Integer('qte');
             $table->engine = 'InnoDB';
 
         });

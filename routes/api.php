@@ -22,11 +22,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(["middleware" => "auth"], function(){
 
   // GET DATA ROUTES
+  Route::get('/messages', 'MessagesController@index');
   Route::get('/commandes', 'CommandesController@index');
   Route::get('/users', 'UsersController@index');
   Route::get('/collections', 'UsersController@getCollections');
   Route::get('/categories', 'CategoriesController@index');
   Route::get('/products', 'ProductsController@index');
+  Route::get('/clients', 'ClientsController@index');
 
   // GET DATA BY ID ROUTES
   Route::get('/commande/{id}', 'CommandesController@getCommande');
@@ -42,7 +44,7 @@ Route::group(["middleware" => "auth"], function(){
     Route::post('/category', 'CategoriesController@addCategory');
     Route::post('/product','ProductsController@addProduct');
     Route::post('/commande', 'CommandesController@addCommande');
-    Route::post('/client', 'ClientsController@addClient');
+    Route::post('/client', 'ClientsController@addClient')->name('addClient');
     Route::post('/message', 'MessagesController@addMessage');
     Route::post('/service', 'ServiceLivrasionController@addService');
     Route::post('/article', 'ArticlesController@addArticle');
@@ -69,7 +71,7 @@ Route::group(["middleware" => "auth"], function(){
     Route::post('/product', 'ProductsController@dropProduct');
     Route::post('/categories', 'CategoriesController@dropCategory');
     Route::post('/commande', 'CommandesController@dropCommande');
-    Route::post('/client', 'ClientsController@dropClient');
+    Route::post('/clients', 'ClientsController@dropClient');
     Route::post('/message', 'MessagesController@dropMessage');
     Route::post('/service', 'ServiceLivrasionController@dropService');
     Route::post('/article', 'ArticlesController@dropArticle');

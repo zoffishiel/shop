@@ -14,7 +14,7 @@ class ClientsController extends Controller
         $clients = Clients::All();
         return response()->json($clients, 200);
       }elseif(Auth::user()->role == "vendeur"){
-        $clients = Clients::where('vendeur', Auth::user()->id);
+        $clients = Clients::where('vendeur', Auth::user()->id)->get();
         return response()->json($clients, 200);
       }else{
         return response("Unauthorized Access", 401);
@@ -32,14 +32,21 @@ class ClientsController extends Controller
     // Add Client
     public function addClient(Request $request)
     {
+      $request['vendeur'] = Auth::user()->id;
       $client = Clients::create($request->all());
-      return $client;
+      return response()->json($client, 200);
+      if($client){
+        return redirect('/dashboard/clients');
+      }else{
+        return redirect('/dashboard/addclients');
+      }
     }
 
     // Drop Client
     public function dropClient(Request $request)
     {
-      $clients = Clients::find($request->all());
+      $clients = Clients::whereIn('id', $request->input('ids'))->delete();
+      return $clients ? 1 : 0;
 
     }
 }

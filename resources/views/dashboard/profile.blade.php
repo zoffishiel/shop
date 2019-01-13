@@ -90,9 +90,28 @@
                         <div class="profile-work">
                             <p>LIENS</p>
                             <hr size="30">
-                            <a href=""><i class="fa fa-link"></i>Site Web</a><br />
-                            <a href="" data-toggle="modal" data-target="#Facebook"><i class="fa fa-facebook-square"></i>Facebook</a><br />
-                            <a href="" data-toggle="modal" data-target="#instagram"><i class="fa fa-instagram"></i>Instagram</a>
+                            <a href="#" data-toggle="modal" data-target="#site"><i class="fa fa-link"></i>Site Web</a><br />
+                            <a href="#" data-toggle="modal" data-target="#Facebook"><i class="fa fa-facebook-square"></i>Facebook</a><br />
+                            <a href="#" data-toggle="modal" data-target="#instagram"><i class="fa fa-instagram"></i>Instagram</a>
+                        </div>
+                    </div>
+                    <div class="modal fade" tabindex="-1" role="dialog" id="site">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title"><i class="fa fa-link"></i>Site Web :</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <label for="siteLink">Link :</label>
+                                    <input type="text" class="form-control" id="siteLink" placeholder="https://www.example.com/">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="modal fade" tabindex="-1" role="dialog" id="Facebook">
@@ -202,7 +221,7 @@
                                     </div>
                                     <div class="col-md-4 profile_mod">
                                         <p>
-                                            {{ Auth::user()->banque }}
+                                            {{ Auth::user()->banque ?? "vide" }}
                                         </p>
                                     </div>
                                 </div>
@@ -212,7 +231,7 @@
                                     </div>
                                     <div class="col-md-4 profile_mod">
                                         <p>
-                                            {{ Auth::user()->rib }}
+                                            {{ Auth::user()->rib ?? "vide" }}
                                         </p>
                                     </div>
                                 </div>
@@ -222,7 +241,7 @@
                                     </div>
                                     <div class="col-md-4 profile_mod">
                                         <p>
-                                            {{ Auth::user()->num_cpt }}
+                                            {{ Auth::user()->num_cpt ?? "vide" }}
                                         </p>
                                     </div>
                                 </div>

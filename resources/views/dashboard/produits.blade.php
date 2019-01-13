@@ -10,7 +10,7 @@
 
     <div id="toolbar" class="btn-group">
       <button type="button" id="del" class="btn btn-danger" name="button"><i class="fa fa-trash"></i> </button>
-      <a type="button" id="add" class="btn btn-primary" name="button" href="{{ route('dashboard.addproduits') }}"><i class="fa fa-plus"></i> </a>
+      <a role="button" id="add" class="btn btn-primary" href="{{ route('dashboard.addproduits') }}"><i class="fa fa-plus"></i> </a>
     </div>
     <table id="Produits" class="table hover striped">
       <thead>

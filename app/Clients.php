@@ -12,7 +12,6 @@ class Clients extends Model
       'ville',
       'adresse',
       'tel',
-      'qte'
     ];
 
     public $timestamps = false;

@@ -63,7 +63,7 @@
                     </div>
                 </div>
 
-                <a type="button" class="btn btn-success btn-lg float-right mt-4 mr-4 mb-4" href="{{ route('dashboard.produits') }}" >Save</a>
+                <a role="button" class="btn btn-success btn-lg float-right mt-4 mr-4 mb-4" href="{{ route('dashboard.produits') }}" >Ajouter</a>
 
             </div>
         </div>

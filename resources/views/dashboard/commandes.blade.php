@@ -31,7 +31,6 @@
         search : true,
         showRefresh : true,
         toolbar : '#toolbar',
-        refresh : true,
       });
     });
   </script>
