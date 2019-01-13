@@ -66,6 +66,7 @@ Route::group(["prefix" => '/dashboard', 'middleware' => 'auth'], function(){
   Route::get('/parametres', function(){
     return view('dashboard.parametres');
   })->name('dashboard.parametres');
+
   Route::get('/profile', 'ProfileController@index')->name('dashboard.profile');
 
 });

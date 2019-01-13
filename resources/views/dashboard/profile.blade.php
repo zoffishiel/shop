@@ -190,7 +190,7 @@
                                     <div class="col-md-4">
                                         <label>Rôle</label>
                                     </div>
-                                    <div class="col-md-4 profile_mod">
+                                    <div class="col-md-4 profile_mod" id="Role">
                                         <p>{{ Auth::user()->role }}</p>
                                     </div>
                                 </div>
@@ -241,8 +241,9 @@
         $(document).ready(function() {
             $(".profile-edit-btn").click(function() {
               $("#vlidate profile-edit-btn").hide();
-                $("#vlidate").html('<button type="button" class="profile-edit-btn btn-success profile_save"><i class="fa fa-save"></i></button>').addClass('animated fadeIn');
-                $(".profile_mod p").html('<input type="text" class="form-control" placeholder="">').addClass('animated fadeInUp');
+                $("#vlidate").html('<a type="button" class="profile-edit-btn btn-success profile_save pl-5 pr-5 pt-2 pb-2"  href="{{ route("dashboard.profile")}}"><i class="fa fa-save"></i></a>').addClass('animated fadeIn');
+                $(".profile_mod p").html('<input type="text" class="form-control" placeholder="" style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); transition: 0.3s;text-align:center;">').addClass('animated fadeInUp');
+                $("#Role").html(' <select class="form-control" name="" style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); transition: 0.3s;text-align:center;"><option value="Non">livreue</option> <option value="Non">Vondeur</option></select>');
             });
 
             $(".profile_save").click(function() {
@@ -250,6 +251,8 @@
                   $('p').hide()
 
             });
+
+
 
             // $(".card").addClass('animated fadeInUp');
             // $(".emp-profile").addClass('animated fadeIn');
