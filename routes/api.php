@@ -18,6 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 // PROTECT DATA
+Route::get('/backup', 'ParametresController@backup');
 
 Route::group(["middleware" => "auth"], function(){
 

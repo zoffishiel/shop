@@ -19,6 +19,8 @@ class CreateMessagesTable extends Migration
             $table->string('ville');
             $table->text('commentaire');
             $table->string('sujet');
+            $table->string('reponse');
+            $table->enum('resolu', ['oui', 'non'])->default('non');
             $table->date('date');
         });
     }

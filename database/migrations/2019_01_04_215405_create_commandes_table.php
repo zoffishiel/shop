@@ -15,13 +15,7 @@ class CreateCommandesTable extends Migration
     {
         Schema::create('commandes', function (Blueprint $table) {
             $table->string('serie', 10)->unique();
-            $table->enum('statut', ['en cours', 'annuler', 'retourner','evoyer', 'deliverer'])->default('en cours');
-            $table->unsignedInteger('produit')->nullable();
-
-            $table->foreign('produit')->references('id')->on('products')
-            ->onDelete('set null')
-            ->onUpdate('cascade');
-
+            $table->enum('statut', ['en attent', 'en cours', 'annuler', 'retourner','evoyer', 'deliverer'])->default('en attent');
             $table->unsignedInteger('vendeur')->nullable();
 
             $table->foreign('vendeur')->references('id')->on('users')
@@ -30,7 +24,6 @@ class CreateCommandesTable extends Migration
 
             $table->date('date')->nullable();
             $table->Integer('prix');
-            $table->Integer('qte');
             $table->unsignedInteger('service')->nullable();
 
             $table->foreign('service')->references('id')->on('service_livraison')
