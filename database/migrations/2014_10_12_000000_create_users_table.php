@@ -31,6 +31,7 @@ class CreateUsersTable extends Migration
             $table->float('total')->default(0);
             $table->float('actuel')->default(0);
             $table->float('garantie')->default(0);
+            $table->string('image')->nullable();
             $table->enum('bloquer', ['oui', 'non'])->default('non');
             $table->engine = 'InnoDB';
         });

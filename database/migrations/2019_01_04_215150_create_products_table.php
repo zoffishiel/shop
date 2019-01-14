@@ -28,7 +28,7 @@ class CreateProductsTable extends Migration
             $table->Integer('prix_general');
             $table->Integer('prix_vente');
             $table->Integer('qte');
-
+            $table->Integer('ventes')->default(0);
             $table->engine = 'InnoDB';
         });
     }
