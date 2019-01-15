@@ -6,9 +6,18 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Commandes;
+use View;
 
 class CommandesController extends Controller
 {
+    public function CommandesView()
+    {
+      $clients = \App\Clients::where("vendeur", Auth::user()->id)->get();
+      $collection = \App\Collections::where('vendeur', Auth::user()->id)->get();
+      $produits = \App\Products::All();
+      return View::make('dashboard.ajouter_commande', compact('clients', 'collection', 'produits'));
+
+    }
     public function index()
     {
       if(!Auth::check()){

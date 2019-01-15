@@ -34,7 +34,6 @@ class ClientsController extends Controller
     {
       $request['vendeur'] = Auth::user()->id;
       $client = Clients::create($request->all());
-      return response()->json($client, 200);
       if($client){
         return redirect('/dashboard/clients');
       }else{

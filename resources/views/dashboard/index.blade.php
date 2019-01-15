@@ -99,27 +99,17 @@
       });
       var ctx = document.getElementById("revenus-canvas").getContext('2d');
 var myChart = new Chart(ctx, {
-    type: 'bar',
+    type: 'line',
     data: {
         labels: mois,
         datasets: [{
-            label: '# of Votes',
+            label: '# des revenues',
             data: [12, 4, 3, 5, 2, 3],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
             ],
             borderColor: [
                 'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
             ],
             borderWidth: 2
         }]
@@ -140,7 +130,7 @@ var myLineChart = new Chart(ctx2, {
     data: {
         labels: mois,
         datasets: [{
-            label: '# Number of sells',
+            label: '# Nombre des ventes',
             data: [12, 19, 3, 15, 22, 13],
             backgroundColor: [
 

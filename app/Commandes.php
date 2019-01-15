@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Commandes extends Model
 {
     protected $primaryKey = 'serie';
-    
+
     protected $fillable = [
       'serie',
       'status',
@@ -23,4 +23,9 @@ class Commandes extends Model
       'commentaire'
     ];
     public $timestamps = false;
+
+    public function produits()
+    {
+      $this->hasMany("App\CommandeProduits", 'commande');
+    }
 }
