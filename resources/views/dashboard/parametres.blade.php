@@ -32,41 +32,104 @@
 
         <div class="col-md-5  col-md-offset-5 mr-3">
 
-            <div class="card" style="width: 22rem;" >
+            <div class="card"  >
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="card-link">Card link</a>
-                    <a href="#" class="card-link">Another link</a>
+                    <h5 class="card-title">Réinitialisation de sauvegarde</h5>
+
+                    <p class="card-text">sauvegarder et télécharger les données sélectionnées des bases de données ou les réinitialiser.</p>
+                    <a href="#" class="card-link" data-toggle="modal" data-target="#Backup">Sauvegarde</a>
+                    <a href="#" class="card-link">Réinitialiser</a>
                 </div>
             </div>
-            {{-- <div class="card-body">
-
-                <div class="card-content">
-                    <h5 class="mb-4 mt-3 text-center">Reset</h5>
-                </div>
-                {{-- <div class="switch">
-                    <input id="cmn-toggle-4" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">
-                    <label for="cmn-toggle-4"></label>
-                </div> --}}
-            {{-- </div> --}}
         </div>
         <div class="col-md-5  col-md-offset-5  ml-3">
 
-          <div class="card" style="width: 22rem;">
+          <div class="card" >
               <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="card-link">Card link</a>
-                  <a href="#" class="card-link">Another link</a>
+                  <h5 class="card-title">Restaurer</h5>
+
+                  <p class="card-text">télécharger les données d'un fichier de réinitialisation, les données téléchargées seront ajoutées automatiquement.</p>
+
+                  <a href="#" class="card-link" data-toggle="modal" data-target="#UploadRestore">Upload</a>
               </div>
-          </div
+          </div>
         </div>
 
     </div>
 </div>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="Backup">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">sélectionner les tables à sauvegarder :</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                  <div class="col-md-6">
+                    <h5 >Commandes :</h5>
+                  </div>
+                  <div class="switch col-md-6 centered">
+                      <input id="Commandes" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">
+                      <label for="Commandes"></label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <h5>Catégories :</h5>
+                  </div>
+                  <div class="switch col-md-6 centered">
+                      <input id="Categories" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">
+                      <label for="Categories"></label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <h5>Produits :</h5>
+                  </div>
+                  <div class="switch col-md-6 centered">
+                      <input id="Produits" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">
+                      <label for="Produits"></label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <h5>Utilisateurs :</h5>
+                  </div>
+                  <div class="switch col-md-6 centered">
+                      <input id="Utilisateurs" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">
+                      <label for="Utilisateurs"></label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <h5>Clients :</h5>
+                  </div>
+                  <div class="switch col-md-6 centered">
+                      <input id="Clients" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">
+                      <label for="Clients"></label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <h5>Messages :</h5>
+                  </div>
+                  <div class="switch col-md-6 centered">
+                      <input id="Messages" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">
+                      <label for="Messages"></label>
+                  </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a type="button" class="btn btn-primary"  id="savebackup" href="https://sample-videos.com/sql/Sample-SQL-File-10rows.sql" download="Example_Backup.sql" >Sauvegarder</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="modal fade" tabindex="-1" role="dialog" id="SelectImg">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -104,6 +167,29 @@
                         </div>
 
                     </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="savebtn" >Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" tabindex="-1" role="dialog" id="UploadRestore">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Sélectionner le fichier de restauration :</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12">
+                  <form action="/file-upload" class="dropzone " id="dropzone"></form>
+    
                 </div>
             </div>
             <div class="modal-footer">
