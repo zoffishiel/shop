@@ -4,6 +4,19 @@
     .list-group-item:hover{
       cursor : pointer;
     }
+    .nav-link{
+      color : black;
+    }
+    #products-modal .modal{
+      margin-top: 100px;
+      margin-left: 200px;
+    }
+    #products-modal .modal, .modal-dialog, .modal-content{
+      width: 900px;
+    }
+    #products-modal .modal-dialog{
+      margin: 0px;
+    }
   </style>
 
 @endsection
@@ -47,7 +60,7 @@
         <button type="button" data-toggle="modal" data-target="#produits" class="btn btn-success" name="button"><i class="fa fa-plus"></i> Ajouter Produit</button>
       </div>
 
-      {{-- CHOISIR UN CLIENT --}}
+      {{-- CHOISIR UN CLIENT MODAL --}}
       <div class="modal fade" tabindex="-1" role="dialog" id="clients">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
@@ -74,33 +87,50 @@
           </div>
         </div>
       </div>
-      {{-- END --}}
-      <div class="modal fade" tabindex="-1" role="dialog" id="produits">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Clients :</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              @if (!empty($clients))
-                <div class="list-group">
-                  @foreach ($clients as $client)
-                    <p client="{{ $client->id }}" class="list-group-item align-left border-left-0 border-right-0 border-top-0">Nom : {{ $client->nom }} <br/> ville : {{ $client->ville }}</p>
-                  @endforeach
+      {{-- END CHOISIR UN CLIENT MODAL --}}
+
+      {{-- AJOUTER PRODUITS MODAL --}}
+      <div id="products-modal">
+        <div class="modal fade" tabindex="-1" role="dialog" id="produits">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Ajouter Produits :</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <ul class="nav nav-tabs" id="produits" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="collection-tab" data-toggle="tab" href="#col" role="tab" aria-controls="collection" aria-selected="true">Collection</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="produits-tab" data-toggle="tab" href="#prod" role="tab" aria-controls="produits" aria-selected="false">Produits</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                  <div class="tab-pane fade show active" id="col" role="tabpanel" aria-labelledby="collection-tab">
+                    @if ($collections->count() == 0)
+                      <p class="mt-4">Aucun Produit dans votre collection</p>
+                    @endif
+                  </div>
+                  <div class="tab-pane fade" id="prod" role="tabpanel" aria-labelledby="produits-tab">
+                    @if ($produits->count() == 0)
+                      <p class="mt-4">Aucun Produit pour ce moment</p>
+                    @endif
+                  </div>
                 </div>
-              @else
-                <h5>Aucun Client</h5>
-              @endif
-            </div>
-            <div class="modal-footer">
-              <button type="button" data-dismiss="modal" class="btn btn-outline-secondary" name="button">Fermer</button>
+              </div>
+              <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn btn-outline-secondary" name="button">Fermer</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
+      {{-- END AJOUTER PRODUITS MODAL --}}
     </div>
   </div>
 @endsection

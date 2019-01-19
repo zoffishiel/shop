@@ -3,18 +3,6 @@
 @section('css')
 <link rel="stylesheet" href="{{ asset('/css/profile.css') }}">
 <link rel="stylesheet" href="{{ asset('/css/animate.css') }}">
-<style media="screen">
-    .navbar{
-      background-image: none;
-      background-color: white;
-    }
-  .navbar-brand, .nav-link, .nav-item i{
-    color: black !important;
-  }
-  .solde{
-    color : orange;
-  }
-  </style>
 @endsection
 @section('content')
 
@@ -22,7 +10,7 @@
     <div id="Data">
         <div class="container emp-profile">
           <h3 class="mb-5 text-center">Profile</h3>
-            <form method="post">
+            <form method="post" action="test">
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
@@ -82,7 +70,7 @@
                     </div>
                     <div class="col-md-2 mx-auto" id='vlidate'>
                         {{-- <input type="submit" class="" name="btnAddMore" value="Edit Profile" /> --}}
-                        <button type="button" name="button" class="profile-edit-btn" value="" >Edit Profile</button>
+                        <button type="button" name="button" class="profile-edit-btn" value="">Edit Profile</button>
                     </div>
                 </div>
                 <div class="row">
@@ -190,9 +178,7 @@
                                         <label>Email</label>
                                     </div>
                                     <div class="col-md-4 profile_mod">
-                                        <p>
-                                            {{ Auth::user()->email }}
-                                        </p>
+                                        <p>{{ Auth::user()->email }}</p>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -200,9 +186,7 @@
                                         <label>Téléphone</label>
                                     </div>
                                     <div class="col-md-4 profile_mod">
-                                        <p>
-                                            {{ Auth::user()->tel }}
-                                        </p>
+                                        <p>{{ Auth::user()->tel }}</p>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -220,9 +204,7 @@
                                         <label>Banque</label>
                                     </div>
                                     <div class="col-md-4 profile_mod">
-                                        <p>
-                                            {{ Auth::user()->banque ?? "vide" }}
-                                        </p>
+                                        <p>{{ Auth::user()->banque ?? "vide" }}</p>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -230,9 +212,7 @@
                                         <label>RIB</label>
                                     </div>
                                     <div class="col-md-4 profile_mod">
-                                        <p>
-                                            {{ Auth::user()->rib ?? "vide" }}
-                                        </p>
+                                        <p>{{ Auth::user()->rib ?? "vide" }}</p>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -240,9 +220,7 @@
                                         <label>Numéro Compte</label>
                                     </div>
                                     <div class="col-md-4 profile_mod">
-                                        <p>
-                                            {{ Auth::user()->num_cpt ?? "vide" }}
-                                        </p>
+                                        <p>{{ Auth::user()->num_cpt ?? "vide" }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -260,9 +238,19 @@
         $(document).ready(function() {
             $(".profile-edit-btn").click(function() {
               $("#vlidate profile-edit-btn").hide();
-                $("#vlidate").html('<a type="button" class="profile-edit-btn btn-success profile_save pl-5 pr-5 pt-2 pb-2"  href="{{ route("dashboard.profile")}}"><i class="fa fa-save"></i></a>').addClass('animated fadeIn');
-                $(".profile_mod p").html('<input type="text" class="form-control" placeholder="" style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); transition: 0.3s;text-align:center;">').addClass('animated fadeInUp');
-                $("#Role").html(' <select class="form-control" name="" style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); transition: 0.3s;text-align:center;"><option value="Non">livreue</option> <option value="Non">Vondeur</option></select>');
+                $.map($('.profile_mod p'), function(row){
+                  $(row).html('<input type="text" class="form-control" placeholder="" style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); transition: 0.3s;text-align:center;" value="'+$(row).text()+'">').addClass('animated fadeInUp');
+                });
+                $("#vlidate").html('<button type="submit" class="profile-edit-btn btn-success profile_save pl-5 pr-5 pt-2 pb-2"><i class="fa fa-save"></i></button>').addClass('animated fadeIn');
+                $("#Role").html('<select class="form-control"'+
+                ' name="" style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); transition: 0.3s;text-align:center;">'+
+                '<option value="livreur" @if(Auth::user()->role == "livreur") selected @endif>Livreur</option>'+
+                '<option value="vendeur" @if(Auth::user()->role == "vendeur") selected @endif>Vendeur</option>'+
+                @if (Auth::user()->role == "admin")
+                  '<option value="admin" selected>Admin</option>'+
+                @endif
+                '</select>');
+
             });
 
             $(".profile_save").click(function() {

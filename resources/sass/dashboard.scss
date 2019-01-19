@@ -39,7 +39,7 @@ header{
   .list-group-item{
     border: none;
     width: 100%;
-    color: $primary-blue;
+    color: #ff6b21;
   }
 
   .fa{
@@ -51,11 +51,11 @@ header{
     width: 100%;
   }
   .active{
-    background-color: $secondary-blue;
+    background-color: #F8F9FA;
  }
   a:hover{
-    background-color: $secondary-blue;
-    color: $primary-blue;
+    background-color: #F8F9FA;
+    // color: $primary-blue;
   }
 }
 

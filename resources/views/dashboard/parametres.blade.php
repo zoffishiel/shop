@@ -32,7 +32,7 @@
 
         <div class="col-md-5  col-md-offset-5 mr-3">
 
-            <div class="card"  >
+            <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Réinitialisation de sauvegarde</h5>
 
@@ -70,7 +70,7 @@
             <div class="modal-body">
                 <div class="row">
                   <div class="col-md-6">
-                    <h5 >Commandes :</h5>
+                    <h5 >Base de données :</h5>
                   </div>
                   <div class="switch col-md-6 centered">
                       <input id="Commandes" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">
@@ -79,52 +79,16 @@
                 </div>
                 <div class="row">
                   <div class="col-md-6">
-                    <h5>Catégories :</h5>
+                    <h5>Fichiers :</h5>
                   </div>
                   <div class="switch col-md-6 centered">
                       <input id="Categories" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">
                       <label for="Categories"></label>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-md-6">
-                    <h5>Produits :</h5>
-                  </div>
-                  <div class="switch col-md-6 centered">
-                      <input id="Produits" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">
-                      <label for="Produits"></label>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-6">
-                    <h5>Utilisateurs :</h5>
-                  </div>
-                  <div class="switch col-md-6 centered">
-                      <input id="Utilisateurs" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">
-                      <label for="Utilisateurs"></label>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-6">
-                    <h5>Clients :</h5>
-                  </div>
-                  <div class="switch col-md-6 centered">
-                      <input id="Clients" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">
-                      <label for="Clients"></label>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-6">
-                    <h5>Messages :</h5>
-                  </div>
-                  <div class="switch col-md-6 centered">
-                      <input id="Messages" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">
-                      <label for="Messages"></label>
-                  </div>
-                </div>
             </div>
             <div class="modal-footer">
-                <a type="button" class="btn btn-primary"  id="savebackup" href="https://sample-videos.com/sql/Sample-SQL-File-10rows.sql" download="Example_Backup.sql" >Sauvegarder</a>
+                <button rol="button" class="btn btn-primary"  id="savebackup">Sauvegarder</button>
             </div>
         </div>
     </div>
@@ -189,7 +153,7 @@
             <div class="modal-body">
                 <div class="col-md-12">
                   <form action="/file-upload" class="dropzone " id="dropzone"></form>
-    
+
                 </div>
             </div>
             <div class="modal-footer">

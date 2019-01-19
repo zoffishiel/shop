@@ -4,16 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Exceptions\Handler;
 use Artisan;
 use Storage;
+use View;
 
 class ParametresController extends Controller
 {
     public function index()
     {
-
+      $sliders = \App\Sliders::All();
+      return View::make('dashboard.parametres', compact('sliders'));
     }
-    
+
     public function backup()
     {
       try{
@@ -21,7 +24,7 @@ class ParametresController extends Controller
         $backup = Artisan::output();
         Log::info(Auth::user()->nom." a creer un nouveau backup.");
         return 1;
-      }catch(Exception e){
+      }catch(Exception $e){
         return 0;
       }
     }

@@ -18,20 +18,28 @@
       .nav-link{
         color: #FFFFFF;
       }
+      #sidebar-toggle{
+        color: #f12711;
+        border-color: #f12711;
+      }
+      #sidebar-toggle:hover{
+        background-color: #f12711;
+        color: white;
+      }
     </style>
     @yield('css')
   </head>
   <body>
-    <header class="navbar navbar-expand-lg navbar-light border-bottom">
+    <header class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
       <div class="container">
         <a href="{{ route('dashboard.index') }}" class="navbar-brand">LOGO</a>
-        <button type="button" id="sidebar-toggle" class="btn btn-outline-primary ml-5" name="button"><i class="fa fa-bars"></i> </button>
+        <button type="button" id="sidebar-toggle" class="btn ml-5" name="button"><i class="fa fa-bars"></i> </button>
         <ul class="navbar-nav ml-auto">
           <li class="nav-item mr-5 mt-2">
-            <i class="fa fa-bell"></i>
+            <i class="fa text-white fa-bell"></i>
           </li>
           <li class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown">{{ Auth::user()->nom }}</a>
+            <a href="#" class="nav-link text-white dropdown-toggle" role="button" data-toggle="dropdown">{{ Auth::user()->nom }}</a>
             <div class="dropdown-menu dropdown-menu-right">
               <a href="{{ route('dashboard.profile') }}" class="dropdown-item"><i class="fa fa-user-circle-o mr-2"></i>Profile</a>
               <a href="/logout" class="dropdown-item"><i class="fa fa-sign-out mr-2"></i>Déconnexion</a>

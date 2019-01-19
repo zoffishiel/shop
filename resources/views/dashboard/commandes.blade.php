@@ -12,11 +12,7 @@
     </div>
     <table id="commandes" class="table hover striped">
       <thead>
-        <th>Tracking</th>
-        <th>Client</th>
-        <th>Telephone</th>
-        <th>Ville</th>
-        <th>Adresse</th>
+
       </thead>
     </table>
   </div>
@@ -27,6 +23,38 @@
   <script type="text/javascript">
     $(function(){
       $("#commandes").bootstrapTable({
+        columns : [
+          {
+            field : 'serie',
+            title : 'Tracking',
+            align : 'center',
+          },
+          {
+            field : 'nom_client',
+            title : 'Client',
+            align : 'center',
+          },
+          {
+            field : 'tel',
+            title : 'Telephone',
+            align : 'center',
+          },
+          {
+            field : 'ville',
+            title : 'Ville',
+            align : 'center',
+          },
+          {
+            field : 'adresse',
+            title : 'Adresse',
+            align : 'center',
+          },
+          {
+            field : 'statut',
+            title : 'Statut',
+            align : 'center',
+          }
+        ],
         url : '/api/commandes',
         search : true,
         showRefresh : true,

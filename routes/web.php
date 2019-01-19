@@ -61,9 +61,7 @@ Route::group(["prefix" => '/dashboard', 'middleware' => 'auth'], function(){
 
   Route::get('ajouter/commande', 'CommandesController@CommandesView')->name('dashboard.add_commande');
 
-  Route::get('/parametres', function(){
-    return view('dashboard.parametres');
-  })->name('dashboard.parametres');
+  Route::get('/parametres', 'ParametresController@index')->name('dashboard.parametres');
 
   Route::get('/profile', 'ProfileController@index')->name('dashboard.profile');
 
