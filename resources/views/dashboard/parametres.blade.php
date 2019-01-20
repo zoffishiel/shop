@@ -69,7 +69,9 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                  <div class="col-md-6">
+                  <div cl
+
+ass="col-md-6">
                     <h5 >Base de données :</h5>
                   </div>
                   <div class="switch col-md-6 centered">
@@ -81,6 +83,8 @@
                   <div class="col-md-6">
                     <h5>Fichiers :</h5>
                   </div>
+
+
                   <div class="switch col-md-6 centered">
                       <input id="Categories" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">
                       <label for="Categories"></label>
@@ -92,13 +96,17 @@
             </div>
         </div>
     </div>
+
+
 </div>
 
 <div class="modal fade" tabindex="-1" role="dialog" id="SelectImg">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Selectioner Images/Video principale :</h5>
+                <h5 class
+
+="modal-title">Selectioner Images/Video principale :</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -121,6 +129,8 @@
 
                             </div>
                         </div>
+
+
 
                         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                             <div class="product-chooser-item">
