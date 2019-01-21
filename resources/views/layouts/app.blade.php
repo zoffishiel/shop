@@ -18,6 +18,12 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style media="screen">
+    .shadow{
+
+       box-shadow: 5px 10px 18px #888888;
+    }
+    </style>
 </head>
 <body>
     <div id="app">
@@ -96,7 +102,7 @@
             </div>
         </nav>
 
-        <div class="container-fluid p-0 m-0">
+        <div class="container-fluid p-0 m-0 shadow ">
             @yield('content')
         </div>
     </div>

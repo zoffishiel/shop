@@ -1,0 +1,297 @@
+#myFooter {
+    background-color: #3c3d41;
+    color: white;
+    padding-top: 30px;
+}
+
+#myFooter .footer-copyright {
+    background-color: #333333;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    text-align: center;
+}
+
+#myFooter .row {
+    margin-bottom: 60px;
+}
+
+#myFooter .navbar-brand {
+    margin-top: 45px;
+    height: 65px;
+}
+
+#myFooter .footer-copyright p {
+    margin: 10px;
+    color: #ccc;
+}
+
+#myFooter ul {
+    list-style-type: none;
+    padding-left: 0;
+    line-height: 1.7;
+}
+
+#myFooter h5 {
+    font-size: 18px;
+    color: white;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+#myFooter h2 a{
+    font-size: 50px;
+    text-align: center;
+    color: #fff;
+}
+
+#myFooter a {
+    color: #d2d1d1;
+    text-decoration: none;
+}
+
+#myFooter a:hover,
+#myFooter a:focus {
+    text-decoration: none;
+    color: white;
+}
+
+#myFooter .social-networks {
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 16px;
+}
+
+#myFooter .social-networks a {
+    font-size: 32px;
+    color: #f9f9f9;
+    padding: 10px;
+    transition: 0.2s;
+}
+
+#myFooter .social-networks a:hover {
+    text-decoration: none;
+}
+
+#myFooter .facebook:hover {
+    color: #0077e2;
+}
+
+#myFooter .google:hover {
+    color: #ef1a1a;
+}
+
+#myFooter .twitter:hover {
+    color: #00aced;
+}
+
+#myFooter .btn {
+    color: white;
+    background-color: #d84b6b;
+    border-radius: 20px;
+    border: none;
+    width: 150px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 10px;
+    line-height: 25px;
+}
+
+@media screen and (max-width: 767px) {
+    #myFooter {
+        text-align: center;
+    }
+}
+
+
+/* CSS used for positioning the footers at the bottom of the page. */
+/* You can remove this. */
+
+html{
+    height: 100%;
+}
+
+body{
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    height: 100%;
+}
+
+.content{
+   flex: 1 0 auto;
+   -webkit-flex: 1 0 auto;
+   min-height: 200px;
+}
+
+#myFooter{
+   flex: 0 0 auto;
+   -webkit-flex: 0 0 auto;
+}
+@import url('http://fonts.googleapis.com/css?family=Open+Sans:400,700');
+
+.navigation {
+    background-color: #35393E;;
+    margin-top: 0;
+    text-align: center;
+    flex-basis: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.navigation .header{
+    background-color: #316BA0;
+    padding: 30px 20px;
+}
+
+.navigation .header h1{
+    font: bold 22px/1.5 'Open Sans', sans-serif;
+    color: #fff;
+    margin: 0 0 20px;
+}
+
+.navigation .header a{
+    color:#fff;
+    text-decoration: none;
+    display: block;
+    padding: 13px 50px;
+    border-radius: 3px;
+    font: bold 14px/1 'Open Sans', sans-serif;
+    text-transform: uppercase;
+    background-color:#F05283;
+}
+
+
+.items{
+    overflow: auto;
+    padding: 30px 0 0;
+}
+
+.navigation ul{
+    list-style: none;
+    box-sizing: border-box;
+    padding: 0 20px 10px;
+}
+
+.navigation ul li.category{
+    width: 100%;
+    box-sizing: border-box;
+    color: #FFF;
+    background-color: #316BA0;
+    padding: 10px 16px;
+    margin-top: 8px;
+    line-height: 1;
+    cursor: default;
+}
+
+.navigation ul li a{
+    width: 100%;
+    box-sizing: border-box;
+    text-decoration: none;
+    color: #fff;
+    text-align: left;
+    background-color: #222;
+    padding: 10px 16px;
+    opacity: 0.8;
+    margin-top: 4px;
+    display: block;
+    line-height: 1;
+    outline: none;
+
+    transition: 0.2s ease;
+}
+
+.navigation ul li a.active{
+    background-color: #E82E68;
+    pointer-events: none;
+}
+
+.navigation a:hover {
+    opacity: 1;
+}
+
+.navigation label{
+    font: normal 16px 'Open Sans', sans-serif;
+    margin-right: 10px;
+    display: none;
+    color: #fff;
+}
+
+.navigation select{
+    display: none;
+}
+
+@media (max-width: 600px) {
+
+    body{
+        flex-direction: column;
+    }
+
+    .navigation{
+        flex-basis: auto;
+    }
+
+    .navigation .header{
+        padding: 20px 20px;
+    }
+
+    .navigation .header h1{
+        font: bold 20px/1.5 'Open Sans', sans-serif;
+        margin: 0 0 20px;
+    }
+
+    .navigation .items{
+        display: none;
+    }
+
+    .navigation label{
+        display: inline;
+        margin-top: 20px;
+    }
+
+    .navigation select{
+        display: block;
+        width: 80%;
+        margin: 20px auto;
+    }
+
+
+}
+
+.main-content{
+    overflow: auto;
+    position: relative;
+    flex-grow:1;
+}
+
+.main-content iframe{
+    position: absolute;
+    left:0;
+    top:0;
+    border:none;
+    width: 100%;
+    height: 100%;
+}
+
+
+/* -- Demo ads -- */
+
+#bsaHolder {
+    margin-top: 25px;
+}
+
+@media (max-width: 1200px) {
+    #bsaHolder{ display:none;}
+}
+
+/* -- Link to Tutorialzine -- */
+
+.tz-link{
+    text-decoration: none;
+    color: #fff !important;
+    font: bold 36px Arial,Helvetica,sans-serif !important;
+}
+
+.tz-link span{
+    color: #da431c;
+}
