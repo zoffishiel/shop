@@ -42,11 +42,13 @@ class ProductsController extends Controller
         'cid' => ['required', 'numeric'],
         'titre' => ['required', 'string', 'max:200'],
         'description' => ['string'],
-        'main_image' => ['required', 'mimetypes:image/jpeg,image/png'],
+        'main_image' => ['required', 'mimetypes:image/jpeg,image/png,image/jpg'],
         'video' => ['string', 'max:255'],
         'prix_general' => ['required', 'numeric', 'between:0,10000.0'],
         'prix_vente' => ['required', 'numeric', 'between:0,10000.0'],
+        'qte' => ['required', 'numeric', 'min:1'],
       ];
+
       $validator = Validator::make($request->except("images"), $rules);
       if($validator->fails()){
         return response()->json($validator->errors(), 200);
@@ -61,7 +63,7 @@ class ProductsController extends Controller
               Images::create(['pid' => $product['id'], 'path' => $image->store('img', ['disk' => 'images'])]);
             }
           }
-          return 1;
+          return redirect('/dashboard/produits');
         }else{
           return 0;
         }
@@ -70,6 +72,13 @@ class ProductsController extends Controller
     }
 
     public function dropProduct(Request $request){
-      $product = Products::find($request->all());
+      $product = Products::whereIn('id', $request->input('ids'))->delete();
+      return $product ? 1 : 0;
+    }
+
+    public function tempImage(Request $request){
+      $file = $request->file('image');
+      $image = $file->store('tmp', ['disk' => 'temp']);
+      return $image;
     }
 }

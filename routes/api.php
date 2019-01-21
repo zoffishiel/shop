@@ -19,7 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 // PROTECT DATA
 Route::get('/backup', 'ParametresController@backup');
-
+Route::post('image/temp', 'ProductsController@tempImage');
 Route::group(["middleware" => "auth"], function(){
 
   // GET DATA ROUTES
@@ -43,7 +43,7 @@ Route::group(["middleware" => "auth"], function(){
   // ADD ROUTES
   Route::group(['prefix' => '/add'], function(){
     Route::post('/category', 'CategoriesController@addCategory');
-    Route::post('/product','ProductsController@addProduct');
+    Route::post('/product','ProductsController@addProduct')->name('addProduct');
     Route::post('/commande', 'CommandesController@addCommande');
     Route::post('/client', 'ClientsController@addClient')->name('addClient');
     Route::post('/message', 'MessagesController@addMessage');

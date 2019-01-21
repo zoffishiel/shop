@@ -32,7 +32,7 @@
   <body>
     <header class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
       <div class="container">
-        <a href="{{ route('dashboard.index') }}" class="navbar-brand">LOGO</a>
+        <a href="{{ route('welcome') }}" class="navbar-brand">Shop</a>
         <button type="button" id="sidebar-toggle" class="btn ml-5" name="button"><i class="fa fa-bars"></i> </button>
         <ul class="navbar-nav ml-auto">
           <li class="nav-item mr-5 mt-2">

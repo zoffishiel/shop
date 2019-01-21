@@ -33,7 +33,7 @@ class CategoriesController extends Controller
         return 0;
       }else{
         $res = Categories::create($request->all());
-        return 1;
+        return $res;
       }
 
     }
@@ -43,10 +43,10 @@ class CategoriesController extends Controller
     {
       $category = Categories::find($request->input('id'));
       if(is_null($category)){
-        return response("Catégorie Introuvable");
+        return 0;
       }else{
-        $category->update($request->all());
-        return response("Catégorie est modifié");
+        $category->update($request->except("id"));
+        return 1;
       }
     }
 

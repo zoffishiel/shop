@@ -60,6 +60,12 @@ return [
           'root' => public_path(),
           'visibility' => 'public',
         ],
+        
+        'temp' => [
+          'driver' => 'local',
+          'root' => public_path(),
+          'visibility' => 'public',
+        ],
 
         's3' => [
             'driver' => 's3',

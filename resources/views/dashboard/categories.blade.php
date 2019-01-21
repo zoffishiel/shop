@@ -19,6 +19,7 @@
         </thead>
     </table>
 </div>
+{{-- AJOUTER CATEGORIE MODAL --}}
 <div class="modal fade" tabindex="-1" role="dialog" id="add">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -32,9 +33,10 @@
                 <div class="col-md-12">
                     <div class=" mt-3">
                         <div class="form-group">
-                            <label for="Nom" class="ml-3">Nom :</label>
+                            <label for="Nom">Nom :</label>
                             <input type="text" name="nom" class="form-control" id="Nom">
                         </div>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">
@@ -43,12 +45,33 @@
         </div>
     </div>
 </div>
+{{-- END AJOUTER CATEGORIE MODAL --}}
+
 @endsection
 
 @section('js')
 <script src="{{ asset('js/bootstrap-table/bootstrap-table.js') }}" charset="utf-8"></script>
 <script type="text/javascript">
     $(function() {
+      $("#categories").on('dbl-click-cell.bs.table', function(e, key, value, element, cell){
+        $(cell).html("<input type='text' id='edit' class='form-controll' value='"+value+"' />");
+
+        $('#edit').on("keypress", function(e){
+          if(e.which == 13){
+            var data = {
+              "id" : element.id,
+              "nom" : $("#edit").val()
+            };
+            $.post("/api/update/category", data, function(resp){
+              if(resp){
+                $(cell).text($("#edit").val());
+              }else{
+                console.log("error");
+              }
+            });
+          }
+        });
+      });
         $("#categories").bootstrapTable({
             columns : [
               {
@@ -75,12 +98,16 @@
             search: true,
             sorting: true,
             toolbar: '#toolbar',
+            pagination : true,
+            pageSize : 5,
+            pageList : [5, 10, 25, 50, "ALL"]
         });
         $("#ajouterBtn").on('click', function(){
           var data = {"nom" : $("#Nom").val()};
           $.post('/api/add/category', data, (resp) =>{
             if(resp){
-              $("#categories").bootstrapTable("refresh");
+              $("#Nom").val("");
+              $("#categories").bootstrapTable("append", resp);
             }else{
               console.log("error");
             }

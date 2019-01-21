@@ -26,6 +26,7 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
+        $schedule->exec('rm ' . str_replace("\\", "/", public_path('tmp')) .'/*')->everyMinute();
     }
 
     /**
