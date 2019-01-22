@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -49,7 +53,9 @@ Route::group(["prefix" => '/dashboard', 'middleware' => 'auth'], function(){
   Route::get('/addclients', function(){
     return view('dashboard.addclients');
   })->name('dashboard.addclients');
+
   // addclients
+
 
   Route::get('/messages', function(){
     return view('dashboard.messages');
@@ -64,6 +70,7 @@ Route::group(["prefix" => '/dashboard', 'middleware' => 'auth'], function(){
   Route::get('/parametres', 'ParametresController@index')->name('dashboard.parametres');
 
   Route::get('/profile', 'ProfileController@index')->name('dashboard.profile');
+
 
 });
 
