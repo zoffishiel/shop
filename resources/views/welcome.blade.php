@@ -63,47 +63,45 @@
     </style>
 </header>
 
-
-
 <div class="row m-0 p-0 shadow">
-    <div id="carouselExampleIndicators" class="carousel slide w-100  " data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner" style="height: 500px !important;">
-            <div class="carousel-item active ">
-                <img src="https://loremflickr.com/g/1200/500/paris" class="d-block  w-100 ">
-                <div class="carousel-caption d-none d-md-block" >
-                  <h4><b>Lorem ipsum dolor sit ame</b></h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="https://loremflickr.com/g/1200/500/paris" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block" >
-                  <h4><b>Lorem ipsum dolor sit ame</b></h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="https://loremflickr.com/g/1200/500/paris" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block" >
-                    <h4><b>Lorem ipsum dolor sit ame</b></h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
-                </div>
+  <div id="sliders" class="carousel slide w-100">
+    <ol class="carousel-indicators">
+      @for ($i=0; $i < $sliders->count(); $i++)
+        @if ($i == 0)
+          <li data-target="#sliders" data-slide-to="{{$i}}" class="active"></li>
+        @else
+          <li data-target="#sliders" data-slide-to="{{$i}}"></li>
+        @endif
+
+      @endfor
+    </ol>
+    <div class="carousel-inner" style="height: 500px !important" data-ride="slider">
+      @foreach ($sliders as $index => $slider)
+
+        @if (!$index)
+          <div class="carousel-item active">
+        @else
+          <div class="carousel-item">
+        @endif
+        <a href="{{ $slider->lien }}">
+            <img src="/{{ $slider->image }}" class="d-block  w-100">
+            <div class="carousel-caption d-none d-md-block">
+              <h4><b>{{ $slider->titre }}</b></h4>
+                <p>{{ $slider->description }}</p>
             </div>
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
         </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
+      @endforeach
     </div>
+    <a class="carousel-control-prev" href="#sliders" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#sliders" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+  </div>
 
 </div>
 
@@ -143,7 +141,7 @@
             {{-- <span class='numscroller' data-min='1' data-max='1000' data-delay='5' data-increment='10'>1000</span> --}}
             <div id="counter">
                 <div class="counter-value" data-count="6500">0</div>
-                <h4>Vente</h4>
+                <h4>Ventes</h4>
             </div>
 
         </div>
@@ -152,7 +150,7 @@
             {{-- <span class='numscroller' data-min='1' data-max='1000' data-delay='5' data-increment='10'>1000</span> --}}
             <div id="counter">
                 <div class="counter-value" data-count="3000">+0</div>
-                <h4>Utilistaeur</h4>
+                <h4>Utilisateurs</h4>
             </div>
 
         </div>
@@ -161,7 +159,7 @@
             {{-- <span class='numscroller' data-min='1' data-max='1000' data-delay='5' data-increment='10'>1000</span> --}}
             <div id="counter">
                 <div class="counter-value" data-count="40000">0</div>
-                <h4>Produit</h4>
+                <h4>Produits</h4>
             </div>
 
         </div>
@@ -204,7 +202,7 @@
                     <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
                     <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
                 </div>
-                <a type="button" class="btn btn-default" href="{{ route('contact') }}">Contactez nous</a>
+                <a role="button" class="btn btn-default" href="{{ route('contact') }}">Contactez nous</a>
             </div>
         </div>
     </div>
@@ -260,13 +258,11 @@
             selected_link,
             href;
 
-
         $(window).on('hashchange', function() {
 
             if (window.location.hash) {
                 href = window.location.hash.substring(1);
                 selected_link = $('a[href$="' + href + '"]');
-
                 // Check if the hash is valid - it should exist as one of the menu items.
                 if (selected_link.length) {
                     iframe.contentWindow.location.replace(href + '.html');
@@ -279,14 +275,11 @@
                 menu_links.removeClass('active');
                 $(menu_links[0]).addClass('active');
             }
-
         });
-
 
         if (window.location.hash) {
             $(window).trigger('hashchange');
         }
-
 
         menu_links.on('click', function(e) {
             e.preventDefault();
@@ -294,10 +287,8 @@
             window.location.hash = $(this).attr('href');
         });
 
-
         $('#template-select').on('change', function(e) {
             e.preventDefault();
-
             window.location.hash = $(this).find(':selected').data('href');
         });
 

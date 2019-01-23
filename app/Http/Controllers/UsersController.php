@@ -53,7 +53,7 @@ class UsersController extends Controller
       $user = User::find(Auth::user()->id);
       $res = $user->update($request->all());
       if($res){
-        return response("Infos Updated", 200);
+        return redirect("/dashboard/profile");
       }else{
         return response("Error Updating infos", 200);
       }

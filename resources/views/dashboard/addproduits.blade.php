@@ -1,4 +1,10 @@
-@extends('layouts.dashboard')
+@if(Auth::user()->role == "admin")
+  @extends('layouts.admin')
+@elseif (Auth::user()->role == "vendeur")
+  @extends('layouts.vendeur')
+@else
+  @extends('layouts.livreur')
+@endif
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/bootstrap-table/bootstrap-table.min.css') }}">
@@ -6,6 +12,16 @@
 <style media="screen">
   #dropzone{
     height: 300px;
+  }
+  #dropzone:hover{
+    cursor: pointer;
+  }
+  .dropzone:hover{
+    cursor: pointer;
+  }
+  .dropzone{
+    border: 2px dashed gray;
+    border-radius: 10px;
   }
 </style>
 @endsection
@@ -61,13 +77,19 @@
                           </div>
                       </div>
                   </div>
+                  <div class="col-md-9 mt-4">
+                    <div id="dropImages" class="dropzone" ondrop="multiDrop(event)" ondragover="return false">
+                      <p class="text-center my-5">Ajouter des images</p>
+                    </div>
+                    <input type="file" id="images" class="d-none" name="images[]" value="" multiple>
+                  </div>
                   <div class="form-group col-md-4">
                     <button type="submit" class="btn btn-lg btn-success my-4">Ajouter</button>
                   </div>
               </div>
               <div class="col-md-3 mt-5">
                 <div id="dropzone" ondrop="drop(event)" ondragover="return false">
-                  <p class="text-center mt-3">Ajouter l'image principale</p>
+                  <p class="text-center mt-5">Ajouter l'image principale</p>
                 </div>
                 <input type="file" id="file" name="main_image" class="form-control d-none" value="">
               </div>
@@ -90,6 +112,12 @@
         temp(e.target.files[0]);
       });
     });
+    $("#dropImages").on("click", ()=>{
+      $("#images").click();
+      $("#images").on("change", (e)=>{
+        $("#dropImages").html("<p class='my-5'>Vous avez ajouter "+ e.target.files.length + " images</p>");
+      });
+    });
   });
     function temp(image){
       var data = new FormData();
@@ -110,6 +138,13 @@
       var file_list = document.getElementById("file");
       file_list.files = event.dataTransfer.files[0];
       temp(event.dataTransfer.files[0]);
+    }
+
+    function multiDrop(event){
+      event.preventDefault();
+      var file_list = document.getElementById("images");
+      file_list.files = event.dataTransfer.files;
+      $("#dropImages").html("<p class='my-5'>Vous avez ajouter "+ event.dataTransfer.files.length + " images</p>");
     }
 </script>
 @endsection

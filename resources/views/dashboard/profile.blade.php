@@ -1,4 +1,10 @@
-@extends('layouts.dashboard')
+@if(Auth::user()->role == "admin")
+  @extends('layouts.admin')
+@elseif (Auth::user()->role == "vendeur")
+  @extends('layouts.vendeur')
+@else
+  @extends('layouts.livreur')
+@endif
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('/css/profile.css') }}">
@@ -10,7 +16,7 @@
     <div id="Data">
         <div class="container emp-profile">
           <h3 class="mb-5 text-center">Profile</h3>
-            <form method="post" action="test">
+            <form method="post" action="{{ route('updateProfile') }}">
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
@@ -59,10 +65,10 @@
 
                                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                                     <li class="nav-item">
-                                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Infos Personnel</a>
+                                        <a class="nav-link text-dark active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Infos Personnel</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Banque</a>
+                                        <a class="nav-link text-dark" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Banque</a>
                                     </li>
                                 </ul>
                             </div>
@@ -94,7 +100,7 @@
                                 </div>
                                 <div class="modal-body">
                                     <label for="siteLink">Link :</label>
-                                    <input type="text" class="form-control" id="siteLink" placeholder="https://www.example.com/">
+                                    <input type="text" name="site" class="form-control" id="siteLink" placeholder="https://www.example.com/">
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
@@ -113,34 +119,14 @@
                                 </div>
                                 <div class="modal-body">
                                     <label for="FbLink">Link :</label>
-                                    <input type="text" class="form-control" id="FbLink" placeholder="https://www.facebook.com/...">
+                                    <input type="text" name="facebook" class="form-control" id="FbLink" placeholder="https://www.facebook.com/...">
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="modal fade" tabindex="-1" role="dialog" id="whatsapp">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title"><i class="fa fa-whatsapp"></i>Whatsapp :</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <label for="whatsapplink">Link :</label>
-                                    <input type="text" class="form-control" id="whatsapplink">
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                  </div>
 
                     <div class="modal fade" tabindex="-1" role="dialog" id="instagram">
                         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -153,7 +139,7 @@
                                 </div>
                                 <div class="modal-body">
                                     <label for="instagramlink">Link :</label>
-                                    <input type="text" class="form-control" id="instagram">
+                                    <input type="text" name="instagram" class="form-control" id="instagram">
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
@@ -170,7 +156,7 @@
                                         <label>Nom</label>
                                     </div>
                                     <div class="col-md-4 profile_mod">
-                                        <p>{{ Auth::user()->nom }}</p>
+                                        <p name="nom">{{ Auth::user()->nom }}</p>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -178,7 +164,7 @@
                                         <label>Email</label>
                                     </div>
                                     <div class="col-md-4 profile_mod">
-                                        <p>{{ Auth::user()->email }}</p>
+                                        <p name="email">{{ Auth::user()->email }}</p>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -186,7 +172,7 @@
                                         <label>Téléphone</label>
                                     </div>
                                     <div class="col-md-4 profile_mod">
-                                        <p>{{ Auth::user()->tel }}</p>
+                                        <p name="tel">{{ Auth::user()->tel }}</p>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -204,7 +190,7 @@
                                         <label>Banque</label>
                                     </div>
                                     <div class="col-md-4 profile_mod">
-                                        <p>{{ Auth::user()->banque ?? "vide" }}</p>
+                                        <p name="banque">{{ Auth::user()->banque ?? "vide" }}</p>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -212,7 +198,7 @@
                                         <label>RIB</label>
                                     </div>
                                     <div class="col-md-4 profile_mod">
-                                        <p>{{ Auth::user()->rib ?? "vide" }}</p>
+                                        <p name="rib">{{ Auth::user()->rib ?? "vide" }}</p>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -220,7 +206,7 @@
                                         <label>Numéro Compte</label>
                                     </div>
                                     <div class="col-md-4 profile_mod">
-                                        <p>{{ Auth::user()->num_cpt ?? "vide" }}</p>
+                                        <p name="num_cpt">{{ Auth::user()->num_cpt ?? "vide" }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -239,11 +225,11 @@
             $(".profile-edit-btn").click(function() {
               $("#vlidate profile-edit-btn").hide();
                 $.map($('.profile_mod p'), function(row){
-                  $(row).html('<input type="text" class="form-control" placeholder="" style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); transition: 0.3s;text-align:center;" value="'+$(row).text()+'">').addClass('animated fadeInUp');
+                  $(row).html('<input type="text" name="'+$(row).attr("name")+'" class="form-control" placeholder="" style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); transition: 0.3s;text-align:center;" value="'+$(row).text()+'">').addClass('animated fadeInUp');
                 });
                 $("#vlidate").html('<button type="submit" class="profile-edit-btn btn-success profile_save pl-5 pr-5 pt-2 pb-2"><i class="fa fa-save"></i></button>').addClass('animated fadeIn');
                 $("#Role").html('<select class="form-control"'+
-                ' name="" style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); transition: 0.3s;text-align:center;">'+
+                ' name="role" style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); transition: 0.3s;text-align:center;">'+
                 '<option value="livreur" @if(Auth::user()->role == "livreur") selected @endif>Livreur</option>'+
                 '<option value="vendeur" @if(Auth::user()->role == "vendeur") selected @endif>Vendeur</option>'+
                 @if (Auth::user()->role == "admin")

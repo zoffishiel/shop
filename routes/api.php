@@ -49,7 +49,7 @@ Route::group(["middleware" => "auth"], function(){
     Route::post('/message', 'MessagesController@addMessage');
     Route::post('/service', 'ServiceLivrasionController@addService');
     Route::post('/article', 'ArticlesController@addArticle');
-    Route::post('/slider', 'SliderController@addSlider');
+    Route::post('/slider', 'SliderController@addSlider')->name("addSlider");
   });
 
   // ADD ROUTES
@@ -62,7 +62,7 @@ Route::group(["middleware" => "auth"], function(){
     Route::post('/service', 'ServiceLivrasionController@updateService');
     Route::post('/article', 'ArticlesController@updateArticle');
     Route::post('/slider', 'SliderController@updateSlider');
-    Route::post('/user', 'UsersController@updateInfos');
+    Route::post('/user', 'UsersController@updateInfos')->name('updateProfile');
 
   });
 

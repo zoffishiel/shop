@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Shop') }}</title>
+    <title>{{ config('app.name', 'Store') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -20,15 +20,15 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <style media="screen">
     .shadow{
-
        box-shadow: 5px 10px 18px #888888;
     }
+
     </style>
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-            <div class="container-fluid">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark navbar-laravel">
+            <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
@@ -44,6 +44,12 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Blog</a>
+                      </li>
+                      <li class="nav-item mr-5">
+                        <a class="nav-link" href="#">Contactez-nous</a>
+                      </li>
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -102,7 +108,7 @@
             </div>
         </nav>
 
-        <div class="container-fluid p-0 m-0 shadow ">
+        <div class="container-fluid p-0 m-0">
             @yield('content')
         </div>
     </div>

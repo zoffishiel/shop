@@ -1,15 +1,62 @@
-@extends('layouts.dashboard')
+@if(Auth::user()->role == "admin")
+  @extends('layouts.admin')
+@elseif (Auth::user()->role == "vendeur")
+  @extends('layouts.vendeur')
+@else
+  @extends('layouts.livreur')
+@endif
 
 @section('css')
   <link rel="stylesheet" href="{{ asset('css/dropzone.css') }}">
-<link rel="stylesheet" href="{{ asset('css/animate.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
 @endsection
 
 @section('content')
   <div class="card mt-3 p-3">
-    <h4 class="mb-4 mt-3 text-center">Parametres</h4>
-    <h5 class="">Aucun Slider est trouver</h5>
-    <a role="button" data-toggle="modal" data-target="#slider" href="#">Ajouter Slider</a>
+    <h3 class="mb-4 mt-3 text-center">Parametres</h3>
+    <h4 class="text-center my-3">Sliders</h4>
+    @if ($sliders->count() == 0)
+      <h5 class="">Aucun Slider est trouver</h5>
+    @else
+      <div id="sliders" class="carousel slide w-100">
+        <ol class="carousel-indicators">
+          @for ($i=0; $i < $sliders->count(); $i++)
+            @if ($i == 0)
+              <li data-target="#sliders" data-slide-to="{{$i}}" class="active"></li>
+            @else
+              <li data-target="#sliders" data-slide-to="{{$i}}"></li>
+            @endif
+
+          @endfor
+        </ol>
+        <div class="carousel-inner">
+          @foreach ($sliders as $index => $slider)
+            @if (!$index)
+              <div class="carousel-item active">
+            @else
+              <div class="carousel-item">
+            @endif
+                <img src="/{{ $slider->image }}" class="d-block  w-100">
+                <div class="carousel-caption d-none d-md-block">
+                  <button type="button" class="btn btn-danger delete mb-4">Supprimer</button>
+                  <h4><b>{{ $slider->titre }}</b></h4>
+                    <p>{{ $slider->description }}</p>
+                </div>
+            </div>
+          @endforeach
+        </div>
+        <a class="carousel-control-prev" href="#sliders" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#sliders" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+      </div>
+    @endif
+
+    <a role="button" class="mt-3" style="font-size: 20px" data-toggle="modal" data-target="#slider" href="#">Ajouter Slider</a>
 
     <div class="row mt-5">
       <div class="col-md-6">
@@ -68,7 +115,6 @@ ass="col-md-6">
 
 
 </div>
-<<<<<<< HEAD
 {{-- END BACKUP MODAL --}}
 
 {{-- SLIDER MODAL --}}
@@ -82,7 +128,7 @@ ass="col-md-6">
               </button>
           </div>
           <div class="modal-body">
-            <form class="" action="" method="post">
+            <form class="" action="{{ route('addSlider') }}" method="post" enctype="multipart/form-data">
               <div class="form-group">
                 <label for="">Titre :</label>
                 <input type="text" name="titre" class="form-control" value="">
@@ -97,66 +143,16 @@ ass="col-md-6">
               </div>
               <div class="custom-file">
                 <label class="custom-file-label" for="customFile">Choose file</label>
-                <input type="file" class="custom-file-input" id="customFile">
+                <input type="file" name="image" class="custom-file-input" id="customFile">
               </div>
-            </form>
+
           </div>
           <div class="modal-footer">
-              <button type="button" class="btn btn-primary" id="savebackup">Ajouter</button>
+              <button type="submit" class="btn btn-primary" id="savebackup">Ajouter</button>
           </div>
+          </form>
       </div>
   </div>
-=======
-
-<div class="modal fade" tabindex="-1" role="dialog" id="SelectImg">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class
-
-="modal-title">Selectioner Images/Video principale :</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="col-md-12">
-                    <div class="row  product-chooser">
-
-                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                            <div class="product-chooser-item selected">
-                                <img src="https://www.plantronics.com/content/dam/plantronics/products/backbeat/backbeat-500-dark-grey-straight-on.png.transform/hero-image/img.png" class=" img-fluid col-xs-4 col-sm-4 col-md-12 col-lg-12" alt="....">
-
-                            </div>
-                        </div>
-
-                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                            <div class="product-chooser-item">
-                                <img src="https://www.plantronics.com/content/dam/plantronics/products/backbeat/backbeat-500-dark-grey-straight-on.png.transform/hero-image/img.png" class="img-fluid col-xs-4 col-sm-4 col-md-12 col-lg-12" alt=".....">
-
-
-                            </div>
-                        </div>
-
-
-
-                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                            <div class="product-chooser-item">
-                                <img src="https://www.plantronics.com/content/dam/plantronics/products/backbeat/backbeat-500-dark-grey-straight-on.png.transform/hero-image/img.png" class="img-fluid col-xs-4 col-sm-4 col-md-12 col-lg-12" alt=".....">
-
-
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal" id="savebtn" >Save</button>
-            </div>
-        </div>
-    </div>
->>>>>>> 77d66911185200185bca57a1377d035d9d595e0b
 </div>
 {{-- END SLIDER MODAL --}}
 
@@ -164,9 +160,9 @@ ass="col-md-6">
 
 @section('js')
 <script type="text/javascript">
-    $(document).ready(function() {
-      $("#customFile").on("change", (e)=>{
-        $(".custom-file-label").html(e.target.files[0].name);
+    $(function() {
+      $("#sliders").on("click", ".delete", function(e){
+        console.log(e.target);
       });
     });
 </script>
