@@ -1,10 +1,11 @@
-@if(Auth::user()->role == "admin")
-  @extends('layouts.admin')
-@elseif (Auth::user()->role == "vendeur")
-  @extends('layouts.vendeur')
-@else
-  @extends('layouts.livreur')
+@if(Auth::user()->role === "admin")
+  @php ($theme = "layouts.admin")
+@elseif (Auth::user()->role === "vendeur")
+  @php ($theme = "layouts.vendeur")
+@elseif(Auth::user()->role === "livreur")
+  @php ($theme = "layouts.livreur")
 @endif
+@extends($theme)
 
 @section('css')
   <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">

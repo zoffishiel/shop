@@ -44,12 +44,6 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
-                      <li class="nav-item">
-                        <a class="nav-link" href="#">Blog</a>
-                      </li>
-                      <li class="nav-item mr-5">
-                        <a class="nav-link" href="#">Contactez-nous</a>
-                      </li>
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -61,47 +55,13 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->nom }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <a class="dropdown-item" href="{{ route('dashboard.index') }}">
-                                        {{ __('Dashboard') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-
-                                </div>
-
-
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdowndashboad">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-
-                                </div>
-
-
-
-
-                            </li>
+                          <li class="nav-item dropdown">
+                            <a href="#" class="nav-link text-white dropdown-toggle" role="button" data-toggle="dropdown">{{ Auth::user()->nom }}</a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                              <a href="{{ route('dashboard.profile') }}" class="dropdown-item"><i class="fa fa-user-circle-o mr-2"></i>Profile</a>
+                              <a href="/logout" class="dropdown-item"><i class="fa fa-sign-out mr-2"></i>Déconnexion</a>
+                            </div>
+                          </li>
                         @endguest
                     </ul>
                 </div>
@@ -112,5 +72,6 @@
             @yield('content')
         </div>
     </div>
+    <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
