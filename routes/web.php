@@ -59,6 +59,9 @@ Route::group(["prefix" => '/dashboard', 'middleware' => 'auth'], function(){
     return view('dashboard.utilisateurs');
   })->name('dashboard.utilisateurs');
 
+  Route::get('/details/produit', function(){
+    return view('dashboard.details_produit');
+  });
   Route::get('ajouter/commande', 'CommandesController@CommandesView')->name('dashboard.add_commande');
 
   Route::get('/parametres', 'ParametresController@index')->name('dashboard.parametres');
