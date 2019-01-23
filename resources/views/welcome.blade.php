@@ -51,6 +51,15 @@
         .number_Center {
             line-height: 200px;
         }
+
+        .carousel-item{
+          height: 500px !important;
+        }
+        .carousel-item img{
+          height: 500px !important;
+        }
+
+
     </style>
 </header>
 
@@ -63,26 +72,26 @@
             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
         </ol>
-        <div class="carousel-inner" style="height: 600px !important;">
+        <div class="carousel-inner" style="height: 500px !important;">
             <div class="carousel-item active ">
-                <img src="https://loremflickr.com/g/1200/1200/paris" class="d-block  w-100 ">
+                <img src="https://loremflickr.com/g/1200/500/paris" class="d-block  w-100 ">
                 <div class="carousel-caption d-none d-md-block" >
-                    <h5>Lorem ipsum dolor sit ame</h5>
+                  <h4><b>Lorem ipsum dolor sit ame</b></h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="https://loremflickr.com/g/1200/1200/paris" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>...</h5>
-                    <p>...</p>
+                <img src="https://loremflickr.com/g/1200/500/paris" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block" >
+                  <h4><b>Lorem ipsum dolor sit ame</b></h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="https://loremflickr.com/g/1200/1200/paris" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>...</h5>
-                    <p>...</p>
+                <img src="https://loremflickr.com/g/1200/500/paris" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block" >
+                    <h4><b>Lorem ipsum dolor sit ame</b></h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
                 </div>
             </div>
         </div>
@@ -195,7 +204,7 @@
                     <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
                     <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
                 </div>
-                <button type="button" class="btn btn-default">Contactez nous</button>
+                <a type="button" class="btn btn-default" href="{{ route('contact') }}">Contactez nous</a>
             </div>
         </div>
     </div>
