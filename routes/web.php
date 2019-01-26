@@ -26,6 +26,10 @@ Route::group(["prefix" => '/dashboard', 'middleware' => 'auth'], function(){
     return view('dashboard.index');
   })->name('dashboard.index');
 
+  Route::get('/articles', function(){
+    return view('dashboard.articles');
+  });
+
   Route::get('/clients', function(){
     return view('dashboard.clients');
   })->name('dashboard.clients');
@@ -38,9 +42,7 @@ Route::group(["prefix" => '/dashboard', 'middleware' => 'auth'], function(){
     return view('dashboard.commandes');
   })->name('dashboard.commandes');
 
-  Route::get('/produits', function(){
-    return view('dashboard.produits');
-  })->name('dashboard.produits');
+  Route::get('/produits', 'ProductsController@paginate')->name('dashboard.produits');
 
   Route::get('/categories', function(){
     return view('dashboard.categories');
@@ -63,9 +65,7 @@ Route::group(["prefix" => '/dashboard', 'middleware' => 'auth'], function(){
     return view('dashboard.utilisateurs');
   })->name('dashboard.utilisateurs');
 
-  Route::get('/details/produit', function(){
-    return view('dashboard.details_produit');
-  });
+  Route::get('/details/produit/{id}', 'ProductsController@getProduct')->name("details");
   Route::get('ajouter/commande', 'CommandesController@CommandesView')->name('dashboard.add_commande');
 
   Route::get('/parametres', 'ParametresController@index')->name('dashboard.parametres');

@@ -13,7 +13,7 @@
 @endsection
 
 @section('content')
-  <div class="card mt-3 p-3">
+  <div class="card my-3 p-3">
     <h3 class="mb-4 mt-3 text-center">Parametres</h3>
     <h4 class="text-center my-3">Sliders</h4>
     @if ($sliders->count() == 0)
@@ -39,7 +39,7 @@
             @endif
                 <img src="/{{ $slider->image }}" class="d-block  w-100">
                 <div class="carousel-caption d-none d-md-block">
-                  <button type="button" class="btn btn-danger delete mb-4">Supprimer</button>
+                  <button type="button" id="{{ $slider->id }}" class="btn btn-danger delete mb-4">Supprimer</button>
                   <h4><b>{{ $slider->titre }}</b></h4>
                     <p>{{ $slider->description }}</p>
                 </div>
@@ -163,7 +163,13 @@ ass="col-md-6">
 <script type="text/javascript">
     $(function() {
       $("#sliders").on("click", ".delete", function(e){
-        console.log(e.target);
+        $.get("/api/drop/slider/"+e.target.id, (resp)=>{
+          if(resp == 1){
+            location.reload();
+          }else{
+            alert('Erreur de suppression du slider');
+          }
+        });
       });
     });
 </script>
