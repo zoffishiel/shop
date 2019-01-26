@@ -9,6 +9,8 @@
     <title>Contactez Nous</title>
     <link rel="stylesheet" href="/css/contact.css">
     <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
+
+
 </head>
 
 <body>
@@ -24,13 +26,13 @@
                 <section class=" card Material-contact-section section-padding section-dark">
                     <div class="container">
                         <div class="row">
-                            <!-- Section Titile -->
+
                             <div class="col-md-12 wow animated fadeInLeft" data-wow-delay=".2s">
                                 <h1 class="section-title">Nous aimons avoir de vos nouvelles</h1>
                             </div>
                         </div>
                         <div class="row mt-3">
-                            <!-- Section Titile -->
+
                             <div class="col-md-6 mt-3 contact-widget-section2 wow animated fadeInLeft" data-wow-delay=".2s">
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 
@@ -49,6 +51,7 @@
                                 </div>
                                 <div class="find-widget">
                                     Program: <a href="#"  class="ml-2">Lun-Sam: 09:30 AM - 10.30 PM</a>
+
                                 </div>
                             </div>
                             <!-- contact form -->

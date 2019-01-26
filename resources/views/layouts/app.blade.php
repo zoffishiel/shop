@@ -22,6 +22,11 @@
     .shadow{
        box-shadow: 5px 10px 18px #888888;
     }
+    a{
+
+      font-family: Nunito !important;
+      font-size:16px;
+    }
 
     </style>
 </head>
@@ -44,10 +49,11 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                      <a class="nav-link mr-3" href="{{ route('blog') }}">Blog</a>
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link mr-3" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
