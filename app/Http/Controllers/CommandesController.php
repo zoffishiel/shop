@@ -51,11 +51,9 @@ class CommandesController extends Controller
     {
       $rules = [
         'serie' => ['bail', 'required', 'string', 'max:10', 'unique:commandes'],
-        'produit' => ['required'],
         'vendeur' => ['required'],
         'date' => ['date'],
         'prix' => 'required',
-        'qte' => 'required',
         'service' => 'string',
         'adresse' => ['required', 'string', 'max:255'],
         'ville' => ['required', 'string', 'max:100'],
@@ -64,8 +62,6 @@ class CommandesController extends Controller
         'commantaire' => 'string',
       ];
 
-      $string = strtoupper(str_random(10));
-      $request['serie'] = $string;
       $validator = Validator::make($request->all(), $rules);
       if($validator->fails()){
         return response()->json($validator->errors(), 200);
@@ -74,17 +70,6 @@ class CommandesController extends Controller
         return $commande ? 1 : 0;
       }
     }
-
-    // public function dropCommande(Request $request)
-    // {
-    //   $commande = Commandes::find($request->all());
-    //   if(is_null($commande)){
-    //     return 0;
-    //   }else{
-    //     $commande->delete();
-    //     return 1;
-    //   }
-    // }
 
     public function updateStatus($id, $status)
     {

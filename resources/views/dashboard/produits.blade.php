@@ -9,9 +9,25 @@
 
 @section('css')
   <link rel="stylesheet" href="{{ asset('css/bootstrap-table/bootstrap-table.min.css') }}">
+  <style media="screen">
+    #Produits{
+      table-layout: fixed;
+    }
+    #Produits .id{
+      width: 60px;
+    }
+    #Produits .desc{
+      overflow: hidden !important;
+      width: 200px !important;
+    }
+    .fa-eye:hover , .fa-wrench:hover{
+      cursor: pointer;
+    }
+  </style>
 @endsection
 
 @section('content')
+  @if(Auth::user()->role == "admin")
   <div class="mt-3 card p-3">
     <h4 class="mb-4 mt-3 text-center">Produits</h4>
 
@@ -25,74 +41,32 @@
       </thead>
     </table>
   </div>
+  @else
+  <div class=" container row mt-4">
+    @foreach ($products as $product)
+      <div class="col-md-3">
+        <div class="card">
+          <img class="card-img-top" height="160" src="/{{ $product->image }}" alt="">
+          <div class="card-body">
+            <h5 class="card-title">{{ $product->titre }}</h5>
+            <div class="card-text">
+              <p class="text-left">Prix Général : {{$product->prix_general}}DH</p>
+              <p class="text-left">Prix de Vente : {{$product->prix_vente}}DH</p>
+              <p class="text-left">Quantité disponible : {{$product->qte}}</p>
+              <a href="/dashboard/details/produit/{{$product->id}}">Détails</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    @endforeach
+  </div>
+  @endif
 @endsection
 
+
 @section('js')
-  <script src="{{ asset('js/bootstrap-table/bootstrap-table.js') }}" charset="utf-8"></script>
-
-  <script type="text/javascript">
-  $(function(){
-    $("#del").on('click', function(){
-      var ids = $.map($("#Produits").bootstrapTable('getSelections'), function(row){
-        return row.id;
-      });
-      $.post('/api/drop/product', {'ids' : ids}, (resp)=>{
-        if(resp){
-          $("#Produits").bootstrapTable('remove', {
-            field : 'id',
-            values : ids,
-          });
-        }
-      });
-    });
-    $("#Produits").bootstrapTable({
-      columns : [
-        {
-          checkbox : true,
-          align : 'center',
-        },
-        {
-          field : 'id',
-          title : 'ID',
-          sortable : true,
-          align : 'center',
-        },{
-          field : 'titre',
-          title : 'titre',
-          sortable : true,
-          align : 'center',
-        },{
-          field : 'description',
-          title : 'description',
-          sortable : true,
-          align : 'center',
-        },{
-          field : 'prix_general',
-          title : 'Prix Général',
-          sortable : true,
-          align : 'center',
-        },{
-          field : 'prix_vente',
-          title : 'Prix de Vente',
-          sortable : true,
-          align : 'center',
-        },{
-          field : 'qte',
-          title : 'Quantité',
-          sortable : true,
-          align : 'center',
-        }
-      ],
-      url : '/api/products',
-      toggle : "table",
-      showRefresh : true,
-      toolbar : '#toolbar',
-      search : true,
-      pagination : true,
-      pageSize : 5,
-      pageList : [5, 10, 25, 50, "ALL"]
-    });
-  });
-
-  </script>
+  @if (Auth::user()->role == "admin")
+    <script src="{{ asset('js/bootstrap-table/bootstrap-table.js') }}" charset="utf-8"></script>
+    <script src="{{ asset('js/produits.js') }}" charset="utf-8"></script>
+  @endif
 @endsection

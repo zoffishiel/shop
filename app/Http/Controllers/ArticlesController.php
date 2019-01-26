@@ -26,6 +26,7 @@ class ArticlesController extends Controller
     {
       $rules = [
         "titre" => ["required", "string", "max:255"],
+        "image" => ["required", "mimetypes:image/png,image/jpeg"],
         "content" => ["required", "string"],
       ];
       $validator = Validator::make($request->all(), $rules);
@@ -48,13 +49,13 @@ class ArticlesController extends Controller
           "titre" => ["string", "max:255"],
           "content" => ["string"],
         ];
-        $validator Validator::make($request->all(), $rules);
+        $validator = Validator::make($request->all(), $rules);
         if($validator->fails()){
           return response()->json($validator->errors(), 200);
         }else{
           $res = $article->update($request->except("id"));
           return $res ? response("L'article est modifier", 200) : response("Erreur de modification", 200);
-        }    
+        }
       }
     }
 

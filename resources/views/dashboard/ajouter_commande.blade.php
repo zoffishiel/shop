@@ -46,8 +46,11 @@
   <div class="container card">
     <h4 class="text-center mt-3 mb-5">Ajouter Commande</h4>
     <div class="card-content row">
-      <div class="col-md-6">
-        <form class="" action="#" method="post">
+      <div id="commande" class="col-md-6">
+          <div class="form-inline mb-3">
+            <label class="col-md-4" for="">Tracking : </label>
+            <input class="form-control col-md-6" type="text" name="serie" value="">
+          </div>
           <div class="form-inline mb-3">
             <label class="col-md-4" for="">Nom Client : </label>
             <input class="form-control col-md-6" type="text" name="nom" value="">
@@ -66,10 +69,15 @@
             <input class="form-control col-md-6" type="text" name="adresse" value="">
           </div>
           <div class="form-inline mb-3">
+            <label class="col-md-4" for="">Date de Livraison : </label>
+            <input class="form-control col-md-6" type="date" name="date" value="">
+          </div>
+          <div class="form-inline mb-3">
             <label class="col-md-4" for="">Service Livraison : </label>
-            <select class="form-control col-md-6" name="">
-              <option value="">AMANA</option>
-              <option value="">DHL</option>
+            <select class="form-control col-md-6" name="service">
+              <option value="amana">AMANA</option>
+              <option value="dhl">DHL</option>
+              <option value="gratuit">GRATUIT</option>
             </select>
           </div>
           <div class="form-inline mb-3">
@@ -77,9 +85,8 @@
             <textarea name="commentaire" class="form-control col-md-6" rows="4" cols="80"></textarea>
           </div>
           <div class="form-inline">
-            <button type="submit" class="btn btn-success offset-4 my-4">Ajouter</button>
+            <button id="ajouter" type="submit" class="btn btn-success offset-4 my-4">Ajouter</button>
           </div>
-        </form>
       </div>
       <div class="col-md-6">
         <button type="button" data-toggle="modal" data-target="#products" class="btn btn-success" name="button"><i class="fa fa-plus"></i> Ajouter Produit</button>
@@ -149,12 +156,12 @@
                     @else
                       <div class="row mt-3 container-fluid">
                         @foreach ($produits as $produit)
-                          <div class="card col-md-4 mr-5" product="product{{ $produit->id }}">
+                          <div class="card col-md-4 mr-1" product="product{{ $produit->id }}" productId="{{$produit->id}}">
                             <img height="200" src="/{{ $produit->image }}" alt="">
                             <div class="card-body">
                               <h5 class="card-title">{{ $produit->titre }}</h5>
                               <div class="card-text">
-                                <p class="float-left">Prix General : <strong class="prixG">{{ $produit->prix_general }}</strong>DH</p>
+                                <p class="float-left">Prix General : <b class="prixG">{{ $produit->prix_general }}</b>DH</p>
                                 <div class="form-inline float-left mb-2">
                                   <label style="width: 100px">Prix de Vente : </label>
                                   <input type="number" class="form-control" style="width:100px" name="prix_vente" value="{{ $produit->prix_vente }}">
@@ -187,50 +194,6 @@
 @endsection
 
 @section('js')
-  <script type="text/javascript">
-    $(function(){
-
-      $("#clients").on("click", ".list-group-item", (e)=>{
-        var id = e.target.getAttribute("client");
-        var data = null;
-        $.get('/api/client/'+id, function(resp){
-          $.map($(".card-content").find("input"), function(input){
-            data = resp[input["name"]];
-            if(data != undefined){
-              input.value = data;
-            }
-          });
-          $("#clients").modal("toggle");
-        });
-
-      });
-      var p = null;
-      $("#products").on('dblclick', '.card', function(){
-        var product = $(this);
-        $(this).toggleClass('shadow');
-        p = [
-          "<li class='list-group-item text-left' id='",
-          product.attr("product"),
-          "' >",
-          product.find('.card-title')[0].innerHTML,
-          "<b class='ml-4'>",
-          product.find('input[name="prix_vente"]')[0].value,
-          "DH</b>",
-          "<i class='fa fa-close float-right del_prod'></i>",
-          "</li>",
-        ].join('');
-        $("#close").on('click', function(){
-
-          $("#addProducts").append(p);
-          p = [];
-        });
-      });
-      $("#addProducts").on("click",".del_prod", function(e){
-        var id = $(e.target).parent().attr("id");
-        $("div[product='"+id+"']").removeClass("shadow");
-        $(e.target).parent().remove();
-      });
-    });
-  </script>
+  <script src="{{ asset('js/commande.js') }}" charset="utf-8"></script>
 
 @endsection

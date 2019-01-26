@@ -11,7 +11,6 @@ class Commandes extends Model
     protected $fillable = [
       'serie',
       'status',
-      'produit',
       'vendeur',
       'date',
       'qte',

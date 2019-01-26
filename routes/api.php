@@ -30,6 +30,7 @@ Route::group(["middleware" => "auth"], function(){
   Route::get('/categories', 'CategoriesController@index');
   Route::get('/products', 'ProductsController@index');
   Route::get('/clients', 'ClientsController@index');
+  Route::get('/articles', 'ArticlesController@index');
 
   // GET DATA BY ID ROUTES
   Route::get('/commande/{id}', 'CommandesController@getCommande');
@@ -76,6 +77,6 @@ Route::group(["middleware" => "auth"], function(){
     Route::post('/message', 'MessagesController@dropMessage');
     Route::post('/service', 'ServiceLivrasionController@dropService');
     Route::post('/article', 'ArticlesController@dropArticle');
-    Route::post('/slider', 'SliderController@dropSlider');
+    Route::get('/slider/{id}', 'SliderController@dropSlider');
   });
 });

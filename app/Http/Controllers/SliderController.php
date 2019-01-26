@@ -53,7 +53,12 @@ class SliderController extends Controller
 
     public function dropSlider($id)
     {
-      $slider = Sliders::find($id)->delete();
-      return $slider ? 1 : 0;
+      $slider = Sliders::find($id);
+      if(!is_null($slider)){
+        $res = $slider->delete();
+      }else{
+        return 0;
+      }
+      return $res ? 1 : 0;
     }
 }

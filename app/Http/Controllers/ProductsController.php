@@ -19,6 +19,17 @@ class ProductsController extends Controller
       }else{
         $products = Products::paginate();
         return $products;
+        return response("Acces non autoriser", 401);
+      }
+    }
+
+    public function paginate()
+    {
+      if(Auth::user()->role == "admin"){
+        return view('dashboard.produits');
+      }else{
+        $products = Products::paginate();
+        return View::make('dashboard.produits', compact('products'));
       }
     }
 
@@ -31,11 +42,8 @@ class ProductsController extends Controller
     public function getProduct($id)
     {
       $product = Products::find($id);
-      if(is_null($product)){
-        return 0;
-      }else{
-        return response()->json($product, 200);
-      }
+      return View::make("dashboard.details_produit", compact("product"));
+
     }
 
     public function addProduct(Request $request){

@@ -16,6 +16,9 @@ class CreateArticlesTable extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('titre');
+            $table->string('image');
+            $table->date("date");
+            $table->enum("publier", ["OUI", "NON"])->default("NON");
             $table->text('content');
         });
     }

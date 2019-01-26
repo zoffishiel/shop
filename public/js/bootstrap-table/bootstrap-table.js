@@ -142,11 +142,11 @@
         }
       },
       4: {
-        iconsPrefix: 'fa',
+        iconsPrefix: 'fas',
         icons: {
           paginationSwitchDown: 'fa-caret-square-down',
           paginationSwitchUp: 'fa-caret-square-up',
-          refresh: 'fa-refresh',
+          refresh: 'fa-sync-alt',
           toggleOff: 'fa-toggle-off',
           toggleOn: 'fa-toggle-on',
           columns: 'fa-th-list',

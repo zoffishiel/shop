@@ -28,7 +28,7 @@ Route::group(["prefix" => '/dashboard', 'middleware' => 'auth'], function(){
 
   Route::get('/articles', function(){
     return view('dashboard.articles');
-  });
+  })->name('dashboard.articles');
 
   Route::get('/clients', function(){
     return view('dashboard.clients');

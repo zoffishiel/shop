@@ -8,7 +8,6 @@
 @extends($theme)
 
 @section('css')
-  <link rel="stylesheet" href="{{ asset('css/dropzone.css') }}">
   <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
 @endsection
 
@@ -59,7 +58,7 @@
 
     <a role="button" class="mt-3" style="font-size: 20px" data-toggle="modal" data-target="#slider" href="#">Ajouter Slider</a>
 
-    <div class="row mt-5">
+    <div class="row mt-5 mb-4">
       <div class="col-md-6">
         <h5 class="text-center">Créer Backup</h5>
         <a role="button" href="#" data-toggle="modal" data-target="#Backup">Créer</a>
@@ -72,14 +71,6 @@
           <a role="button" href="#">Ajouter Logo</a>
         @endif
       </div>
-    </div>
-    <h4 class="text-center my-3">Blog</h4>
-    <div class=" row mt-5 mb-4">
-      <div class="col-md-12">
-        <h5 class="text-center">Ajouter un Article</h5>
-        {{-- <a role="button" href="{{route('addBlog') }}" >Créer</a> --}}
-      </div>
-
     </div>
   </div>
   {{-- BACKUP MODAL --}}

@@ -55,31 +55,31 @@
           <div class="list-group pt-3">
             <a href="{{ route('dashboard.index') }}" class="list-group-item @if(Route::currentRouteName() == 'dashboard.index') active @endif ">
               <i class="fa fa-dashboard mr-3 float-left"></i>
-              <i class="sidebar-text ">Dashboard</i>
+              <b class="sidebar-text ">Dashboard</b>
             </a>
             <a href="{{ route('dashboard.commandes') }}" class="list-group-item @if(Route::currentRouteName() == 'dashboard.commandes') active @endif">
               <i class="fa fa-shopping-cart mr-3 float-left"></i>
-              <i class="sidebar-text">Commandes</i>
+              <b class="sidebar-text">Commandes</b>
             </a>
             <a href="{{ route('dashboard.produits') }}" class="list-group-item @if(Request::is('dashboard/produits')) active @endif">
               <i class="fa fa-star mr-3 float-left"></i>
-              <i class="sidebar-text">Collection</i>
+              <b class="sidebar-text">Collection</b>
             </a>
             <a href="{{ route('dashboard.categories') }}" class="list-group-item @if(Request::is('dashboard/categories')) active @endif">
               <i class="fa fa-archive mr-3 float-left"></i>
-              <i class="sidebar-text">Catégories</i>
+              <b class="sidebar-text">Catégories</b>
             </a>
             <a href="{{ route('dashboard.produits') }}" class="list-group-item @if(Request::is('dashboard/produits')) active @endif">
               <i class="fa fa-tag mr-3 float-left"></i>
-              <i class="sidebar-text">Produits</i>
+              <b class="sidebar-text">Produits</b>
             </a>
             <a href="{{ route('dashboard.clients') }}" class="list-group-item @if(Request::is('dashboard/clients')) active @endif">
               <i class="fa fa-user mr-3 float-left"></i>
-              <i class="sidebar-text">Clients</i>
+              <b class="sidebar-text">Clients</b>
             </a>
             <a href="{{ route('dashboard.messages') }}" class="list-group-item @if(Request('dashboard/messages')) active @endif">
               <i class="fa fa-envelope mr-3 float-left"></i>
-              <i class="sidebar-text">Messages</i>
+              <b class="sidebar-text">Messages</b>
             </a>
           </div>
         </div>

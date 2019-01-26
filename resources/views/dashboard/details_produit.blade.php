@@ -13,18 +13,37 @@
 
 @section('content')
   <div class="card mt-3 p-3">
-    <div class="row">
+    <div class="row mt-4">
       <div class="col-md-4">
-
+        <img id="main_image" width="330" src="/{{ $product->image }}" alt="">
+        @if ($product->images()->count() > 0)
+          <ul class="list-inline">
+            <li class="list-inline-item"><img class="sec" width="50" height="50" src="/{{ $product->image }}" alt=""> </li>
+            @foreach ($product->images()->get() as $image)
+              <li class="list-inline-item"><img class="sec" width="50" height="50" src="/{{ $image->path }}" alt=""> </li>
+            @endforeach
+          </ul>
+        @endif
       </div>
       <div class="col-md-7 text-left">
-        <h3 class="mb-5">Titre du produit</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
-        <p>Prix général : 70DH</p>
-        <p>Prix de vente : 130DH</p>
-        <p>Quantité Disponible : 30</p>
+        <h3 class="mb-5">{{ $product->titre }}</h3>
+        <p>{{ $product->description }}</p>
+        <p>Prix général : {{ $product->prix_general }}DH</p>
+        <p>Prix de vente : {{ $product->prix_vente }}DH</p>
+        <p>Quantité Disponible : {{ $product->qte }}</p>
         <a role="button" class="offset-3" href="#">Ajouter a votre collection</a>
       </div>
     </div>
   </div>
+@endsection
+
+@section('js')
+  <script type="text/javascript">
+    $(function(){
+      $(".sec").on('click', (e)=>{
+        var img = $(e.target).attr('src');
+        $("#main_image").attr('src', img);
+      });
+    });
+  </script>
 @endsection

@@ -10,7 +10,9 @@ class Articles extends Model
       'titre',
       'description',
       'image',
-      'video'
+      'video',
+      'date',
+      'publier',
     ];
     public $timestamps = false;
 }
