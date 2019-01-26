@@ -75,6 +75,16 @@ Route::group(["prefix" => '/dashboard', 'middleware' => 'auth'], function(){
 
 });
 
+
+  Route::get('/blog', function(){
+    return view('blog.index');
+  })->name('blog');
+
+  Route::get('/post', function(){
+    return view('blog.post');
+  })->name('blog.post');
+
+
 Route::get('/logout', function(){
   Auth::logout();
   return Redirect::to('/login');

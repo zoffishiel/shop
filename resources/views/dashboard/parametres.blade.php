@@ -13,13 +13,13 @@
 @endsection
 
 @section('content')
-  <div class="card my-3 p-3">
+  <div class="card mt-3 p-3 mb-4">
     <h3 class="mb-4 mt-3 text-center">Parametres</h3>
     <h4 class="text-center my-3">Sliders</h4>
     @if ($sliders->count() == 0)
       <h5 class="">Aucun Slider est trouver</h5>
     @else
-      <div id="sliders" class="carousel slide w-100">
+      <div id="sliders" class="carousel slide w-100 " >
         <ol class="carousel-indicators">
           @for ($i=0; $i < $sliders->count(); $i++)
             @if ($i == 0)
@@ -30,14 +30,14 @@
 
           @endfor
         </ol>
-        <div class="carousel-inner">
+        <div class="carousel-inner" style="height: 400px !important">
           @foreach ($sliders as $index => $slider)
             @if (!$index)
               <div class="carousel-item active">
             @else
               <div class="carousel-item">
             @endif
-                <img src="/{{ $slider->image }}" class="d-block  w-100">
+                <img src="/{{ $slider->image }}" class="d-block  w-100" style="height: 400px !important">
                 <div class="carousel-caption d-none d-md-block">
                   <button type="button" id="{{ $slider->id }}" class="btn btn-danger delete mb-4">Supprimer</button>
                   <h4><b>{{ $slider->titre }}</b></h4>
@@ -73,6 +73,14 @@
         @endif
       </div>
     </div>
+    <h4 class="text-center my-3">Blog</h4>
+    <div class=" row mt-5 mb-4">
+      <div class="col-md-12">
+        <h5 class="text-center">Ajouter un Article</h5>
+        {{-- <a role="button" href="{{route('addBlog') }}" >Créer</a> --}}
+      </div>
+
+    </div>
   </div>
   {{-- BACKUP MODAL --}}
 <div class="modal fade" tabindex="-1" role="dialog" id="Backup">
@@ -86,9 +94,7 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                  <div cl
-
-ass="col-md-6">
+                  <div class="col-md-6">
                     <h5 >Base de données :</h5>
                   </div>
                   <div class="switch col-md-6 centered">
@@ -156,6 +162,7 @@ ass="col-md-6">
   </div>
 </div>
 {{-- END SLIDER MODAL --}}
+
 
 @endsection
 
