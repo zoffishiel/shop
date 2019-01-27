@@ -13,7 +13,7 @@
 
 @section('content')
   <div class="mt-3 card p-3">
-    <h4 class="mb-4 mt-3 text-center">Commandes (0)</h4>
+    <h4 class="mb-4 mt-3 text-center">Commandes</h4>
     <div id="toolbar" class="btn-group">
       <a href="{{ route('dashboard.add_commande') }}" class="btn btn-success" name="button"><i class="fa fa-plus"></i> Ajouter</a>
     </div>

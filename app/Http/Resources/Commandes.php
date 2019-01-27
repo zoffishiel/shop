@@ -23,6 +23,7 @@ class Commandes extends JsonResource
           'adresse' => $this->adresse,
           'ville' => $this->ville,
           'tel' => $this->tel,
+          'statut' => $this->statut,
           'nom_client' => $this->nom_client,
           'commantaire' => $this->commantaire,
         ];

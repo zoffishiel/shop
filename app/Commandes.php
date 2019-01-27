@@ -23,6 +23,7 @@ class Commandes extends Model
       'commentaire'
     ];
     public $timestamps = false;
+    public $incrementing = false;
 
     public function produits()
     {
