@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Http\Resources\Collections as CollectionResource;
 use App\User;
+use View;
 
 class UsersController extends Controller
 {
@@ -35,7 +37,19 @@ class UsersController extends Controller
 
     public function getCollections()
     {
-      return response()->json(Auth::user()->collections());
+      $collection = CollectionResource::collection(Auth::user()->collections()->get());
+      
+      return View::make('dashboard.collections', compact("collection"));
+    }
+
+    public function addCollection($id)
+    {
+      $collection = new \App\Collections();
+      $collection->vendeur = Auth::user()->id;
+      $collection->produit = $id;
+      $res = $collection->save();
+
+      return $res ? 1 : 0;
     }
 
     public function dropUser(Request $request)

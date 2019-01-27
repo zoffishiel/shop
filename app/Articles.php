@@ -8,9 +8,8 @@ class Articles extends Model
 {
     protected $fillable = [
       'titre',
-      'description',
+      'body',
       'image',
-      'video',
       'date',
       'publier',
     ];

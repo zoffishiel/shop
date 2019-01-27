@@ -54,14 +54,14 @@
 
           <div class="list-group pt-3">
             <a href="{{ route('dashboard.index') }}" class="list-group-item @if(Route::currentRouteName() == 'dashboard.index') active @endif ">
-              <i class="fa fa-dashboard mr-3 float-left"></i>
+              <i class="fa fa-tachometer-alt mr-3 float-left"></i>
               <b class="sidebar-text ">Dashboard</b>
             </a>
             <a href="{{ route('dashboard.commandes') }}" class="list-group-item @if(Route::currentRouteName() == 'dashboard.commandes') active @endif">
               <i class="fa fa-shopping-cart mr-3 float-left"></i>
               <b class="sidebar-text">Commandes</b>
             </a>
-            <a href="{{ route('dashboard.produits') }}" class="list-group-item @if(Request::is('dashboard/produits')) active @endif">
+            <a href="{{ route('dashboard.collections') }}" class="list-group-item @if(Request::is('dashboard/produits')) active @endif">
               <i class="fa fa-star mr-3 float-left"></i>
               <b class="sidebar-text">Collection</b>
             </a>

@@ -54,7 +54,7 @@
 
           <div class="list-group pt-3">
             <a href="{{ route('dashboard.index') }}" class="list-group-item @if(Route::currentRouteName() == 'dashboard.index') active @endif ">
-              <i class="fa fa-dashboard mr-3 float-left"></i>
+              <i class="fa fa-tachometer-alt mr-3 float-left"></i>
               <i class="sidebar-text ">Dashboard</i>
             </a>
             <a href="{{ route('dashboard.commandes') }}" class="list-group-item @if(Route::currentRouteName() == 'dashboard.commandes') active @endif">

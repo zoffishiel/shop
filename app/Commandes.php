@@ -13,6 +13,7 @@ class Commandes extends Model
       'status',
       'vendeur',
       'date',
+      'prix',
       'qte',
       'service',
       'adresse',

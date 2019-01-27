@@ -44,12 +44,15 @@
           title : 'ID',
           sortable : true,
           align : 'center',
-        },{
+        },
+        @if(Auth::user()->role == "admin"){
           field : 'vendeur',
           title : 'Vendeur',
           sortable : true,
           align : 'center',
-        },{
+        },
+        @endif
+        {
           field : 'nom',
           title : 'Nom',
           sortable : true,

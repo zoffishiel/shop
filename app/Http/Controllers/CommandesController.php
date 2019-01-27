@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Resources\Collections as CollectionResource;
+use App\Http\Resources\Commmandes as CommandesResource;
 use App\Commandes;
+use App\CommandeProduits;
 use View;
 
 class CommandesController extends Controller
@@ -13,7 +16,7 @@ class CommandesController extends Controller
     public function CommandesView()
     {
       $clients = \App\Clients::where("vendeur", Auth::user()->id)->get();
-      $collections = \App\Collections::where('vendeur', Auth::user()->id)->get();
+      $collections = CollectionResource::collection(\App\Collections::where('vendeur', Auth::user()->id)->get());
       $produits = \App\Products::All();
       return View::make('dashboard.ajouter_commande', compact('clients', 'collections', 'produits'));
 
@@ -26,11 +29,11 @@ class CommandesController extends Controller
 
       if(Auth::user()->role == "admin")
       {
-        $commandes = Commandes::All();
-        return response()->json($commandes, 200);
+        $commandes = CommandesResource::collection(Commandes::All());
+        return $commandes;
 
       }elseif(Auth::user()->role == "vendeur"){
-        return response()->json(Auth::user()->commandes());
+        return response()->json(Auth::user()->commandes()->get());
 
       }elseif(Auth::user()->role == "livreur"){
         $commandes = Commandes::where("ville", Auth::user()->ville);
@@ -52,22 +55,29 @@ class CommandesController extends Controller
       $rules = [
         'serie' => ['bail', 'required', 'string', 'max:10', 'unique:commandes'],
         'vendeur' => ['required'],
-        'date' => ['date'],
         'prix' => 'required',
         'service' => 'string',
         'adresse' => ['required', 'string', 'max:255'],
         'ville' => ['required', 'string', 'max:100'],
         'tel' => ['required', 'string', 'max:13'],
         'nom_client' => ['required', 'string', 'max:100'],
-        'commantaire' => 'string',
+        'commentaire' => 'string',
       ];
-
-      $validator = Validator::make($request->all(), $rules);
+      $request["vendeur"] = Auth::user()->id;
+      $validator = Validator::make($request->except("products"), $rules);
       if($validator->fails()){
         return response()->json($validator->errors(), 200);
       }else{
-        $commande = Commandes::create($request->all());
-        return $commande ? 1 : 0;
+        $commande = Commandes::create($request->except("products"));
+        foreach($request->input("products") as $product){
+          $cp = new CommandeProduits();
+          $cp->produit = $product["id"];
+          $cp->commande = $request->input("serie");
+          $cp->prix = $product["prix_vente"];
+          $cp->qte = $product["qte"];
+          $cp->save();
+        }
+        return 1;
       }
     }
 

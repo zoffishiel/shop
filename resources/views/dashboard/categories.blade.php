@@ -61,23 +61,29 @@
 <script type="text/javascript">
     $(function() {
       $("#categories").on('dbl-click-cell.bs.table', function(e, key, value, element, cell){
-        $(cell).html("<input type='text' id='edit' class='form-controll' value='"+value+"' />");
+        if($(cell).hasClass("editable")){
+          $(cell).html("<input type='text' id='edit' value='"+value+"' />");
+          $("#edit").focus();
+          $('#edit').on("keypress", function(e){
+            if(e.which == 13){
+              var data = {
+                "id" : element.id,
+                "nom" : $("#edit").val()
+              };
+              $.post("/api/update/category", data, function(resp){
+                if(resp){
+                  $(cell).text($("#edit").val());
+                }else{
+                  console.log("error");
+                }
+              });
+            }
+          });
+          $("#edit").on("focusout", (e)=>{
+            $(cell).text($("#edit").val());
+          });
+        }
 
-        $('#edit').on("keypress", function(e){
-          if(e.which == 13){
-            var data = {
-              "id" : element.id,
-              "nom" : $("#edit").val()
-            };
-            $.post("/api/update/category", data, function(resp){
-              if(resp){
-                $(cell).text($("#edit").val());
-              }else{
-                console.log("error");
-              }
-            });
-          }
-        });
       });
         $("#categories").bootstrapTable({
             columns : [
@@ -92,6 +98,7 @@
               },{
                 field : 'nom',
                 title : 'Nom',
+                class : 'editable',
                 align : 'center',
                 sortable : true,
               },{

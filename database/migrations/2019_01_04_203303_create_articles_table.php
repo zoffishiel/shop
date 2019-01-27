@@ -19,7 +19,7 @@ class CreateArticlesTable extends Migration
             $table->string('image');
             $table->date("date");
             $table->enum("publier", ["OUI", "NON"])->default("NON");
-            $table->text('content');
+            $table->text('body');
         });
     }
 
