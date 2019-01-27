@@ -29,8 +29,6 @@
 
                         </div>
                     </div>
-
-
                     <div class="col-md-6">
                         <div class="profile-head">
                             <div class="row mt-5">
@@ -86,15 +84,15 @@
                             <p>LIENS</p>
                             <hr size="30">
                             <a href="#" data-toggle="modal" data-target="#site"><i class="fa fa-link"></i>Site Web</a><br />
-                            <a href="#" data-toggle="modal" data-target="#Facebook"><i class="fa fa-facebook-square"></i>Facebook</a><br />
-                            <a href="#" data-toggle="modal" data-target="#instagram"><i class="fa fa-instagram"></i>Instagram</a>
+                            <a href="#" data-toggle="modal" data-target="#Facebook"><i class="fab fa-facebook-square"></i>Facebook</a><br />
+                            <a href="#" data-toggle="modal" data-target="#instagram"><i class="fab fa-instagram"></i>Instagram</a>
                         </div>
                     </div>
                     <div class="modal fade" tabindex="-1" role="dialog" id="site">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title"><i class="fa fa-link"></i>Site Web :</h5>
+                                    <h5 class="modal-title"><i class="fa fa-link mr-1"></i>Site Web :</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -113,7 +111,7 @@
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title"><i class="fa fa-facebook-square"></i>Facebook :</h5>
+                                    <h5 class="modal-title"><i class="fab fa-facebook-square"></i>Facebook :</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -133,7 +131,7 @@
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title"><i class="fa fa-instagram"></i>Instagram :</h5>
+                                    <h5 class="modal-title"><i class="fab fa-instagram"></i>Instagram :</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -241,16 +239,9 @@
             });
 
             $(".profile_save").click(function() {
-                  // location.reload();
-                  $('p').hide()
+                  $('p').hide();
 
             });
-
-
-
-            // $(".card").addClass('animated fadeInUp');
-            // $(".emp-profile").addClass('animated fadeIn');
-
         });
     </script>
 

@@ -66,6 +66,10 @@
               <i class="fa fa-shopping-cart mr-3 float-left"></i>
               <b class="sidebar-text">Commandes</b>
             </a>
+            <a href="{{ route('dashboard.commandes') }}" class="list-group-item @if(Route::currentRouteName() == 'dashboard.commandes') active @endif">
+              <i class="fa fa-file-pdf mr-3 float-left"></i>
+              <b class="sidebar-text">Bons</b>
+            </a>
             <a href="{{ route('dashboard.categories') }}" class="list-group-item @if(Request::is('dashboard/')) active @endif">
               <i class="fa fa-archive mr-3 float-left"></i>
               <b class="sidebar-text">Catégories</b>

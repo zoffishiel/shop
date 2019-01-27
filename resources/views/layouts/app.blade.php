@@ -34,7 +34,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark navbar-laravel">
             <div class="container">
-              <a href="{{ href('/') }}" class="navbar-brand">
+              <a href="{{ route('welcome') }}" class="navbar-brand">
                 @if (is_file('/img/logo.png'))
                 <img src="/img/logo.png" alt="">
                 @else

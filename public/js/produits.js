@@ -4,6 +4,9 @@ $(function(){
     'click .fa-eye' : function(e, value, row, index){
       window.location = '/dashboard/details/produit/'+row.id;
     },
+    'click .fa-wrench' : function(e, value, row, index){
+      window.location = '/dashboard/modifier/produit/'+row.id;
+    }
   };
   function actionFormatter(){
     return [
