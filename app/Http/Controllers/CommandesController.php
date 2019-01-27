@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Resources\Collections as CollectionResource;
-use App\Http\Resources\Commmandes as CommandesResource;
+use App\Http\Resources\Commandes as CommandesResource;
 use App\Commandes;
 use App\CommandeProduits;
 use View;
@@ -33,7 +33,7 @@ class CommandesController extends Controller
         return $commandes;
 
       }elseif(Auth::user()->role == "vendeur"){
-        return response()->json(Auth::user()->commandes()->get());
+        return response()->json(Auth::user()->commandes()->get(), 200);
 
       }elseif(Auth::user()->role == "livreur"){
         $commandes = Commandes::where("ville", Auth::user()->ville);

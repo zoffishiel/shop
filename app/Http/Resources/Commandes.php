@@ -16,10 +16,10 @@ class Commandes extends JsonResource
     {
         return [
           'serie' => $this->serie,
-          'vendeur' => \App\User::find($this->vendeur)->get(["nom"]),
+          'vendeur' => \App\User::find($this->vendeur)->get(["nom"])->first()->nom,
           'date' => $this->date,
           'prix' => $this->prix,
-          'service' => \App\ServiceLivraison::find($this->service)->get(["nom"]),
+          'service' => \App\ServiceLivraison::find($this->service)->get(["nom"])->first()->nom,
           'adresse' => $this->adresse,
           'ville' => $this->ville,
           'tel' => $this->tel,
