@@ -78,6 +78,11 @@
             align : 'center',
           },
           {
+            field : 'prix',
+            title : 'Revenus',
+            align : 'center',
+          },
+          {
             field : 'statut',
             title : 'Statut',
             align : 'center',
