@@ -57,6 +57,7 @@ Route::group(["middleware" => "auth"], function(){
 
   // ADD ROUTES
   Route::group(['prefix' => '/update'], function(){
+    Route::get('/statut/{id}/{status}', 'CommandesController@updateStatus');
     Route::post('/category', 'CategoriesController@updateCategory');
     Route::post('/product','ProductsController@updateProduct');
     Route::post('/commande', 'CommandesController@updateCommande');

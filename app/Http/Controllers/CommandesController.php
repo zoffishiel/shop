@@ -89,6 +89,7 @@ class CommandesController extends Controller
       }else{
         $commande->statut = $status;
         $commande->save();
+        $track = \App\Tracking::create(["commande" => $id, "status" => $status]);
         return 1;
       }
     }
