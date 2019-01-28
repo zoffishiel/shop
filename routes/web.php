@@ -61,6 +61,10 @@ Route::group(["prefix" => '/dashboard', 'middleware' => 'auth'], function(){
     return view('dashboard.messages');
   })->name('dashboard.messages');
 
+  Route::get('/addarticle', function(){
+    return view('dashboard.ajouter_article');
+  })->name('dashboard.ajouter_article');
+
   Route::get('/utilisateurs', function(){
     return view('dashboard.utilisateurs');
   })->name('dashboard.utilisateurs');
@@ -83,6 +87,10 @@ Route::group(["prefix" => '/dashboard', 'middleware' => 'auth'], function(){
   Route::get('/post', function(){
     return view('blog.post');
   })->name('blog.post');
+
+  Route::get('/about', function(){
+    return view('about');
+  })->name('about');
 
 
 Route::get('/logout', function(){

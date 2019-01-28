@@ -15,6 +15,10 @@
       <input type="file" name="image" class="custom-file-input" id="customFile">
     </div>
     <textarea name="name" rows="8" cols="80"></textarea>
+    <div class="col-md-12">
+  <button type="button" class="btn btn-success mt-4  float-right">Save</button>
+    </div>
+
   </div>
 
 @endsection
