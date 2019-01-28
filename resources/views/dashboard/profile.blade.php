@@ -69,6 +69,9 @@
                                     <li class="nav-item">
                                         <a class="nav-link text-dark" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Banque</a>
                                     </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" id="extra-tab" data-toggle="tab" href="#extra" role="tab" aria-controls="profile" aria-selected="false">Extra</a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -208,6 +211,30 @@
                                         <p name="num_cpt">{{ Auth::user()->num_cpt ?? "vide" }}</p>
                                     </div>
                                 </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="extra" role="tabpanel" aria-labelledby="profile-tab">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-8">
+
+                                        <button type="button"  class="profile-edit-btn" name="button">changer le mot de passe</button>
+                                    </div>
+
+                                </div>
+                                <div class="row justify-content-center">
+                                  <div class="col-md-8 mt-4">
+                                  <button type="button"  class="profile-edit-btn" name="button">demande de paiement</button>
+                                </div>
+
+                                </div>
+                                {{-- <div class="row">
+                                    <div class="col-md-4">
+                                        <label>Numéro Compte</label>
+                                    </div>
+                                    <div class="col-md-4 profile_mod">
+                                        <p name="num_cpt">{{ Auth::user()->num_cpt ?? "vide" }}</p>
+                                    </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>

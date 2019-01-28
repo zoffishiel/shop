@@ -30,7 +30,7 @@
         <textarea name="body" rows="8" cols="80"></textarea>
         <button type="submit" class="btn btn-success col-md-2 mt-4">Ajouter</button>
     </div>
-<<<<<<< HEAD
+{{-- <<<<<<< HEAD
     <div class="custom-file mb-4 col-md-4 offset-2">
       <label class="custom-file-label" for="customFile">Image</label>
       <input type="file" name="image" class="custom-file-input" id="customFile">
@@ -42,9 +42,9 @@
 
   </div>
 
-=======
+======= --}}
     </form>
->>>>>>> c6663697bc281d7b51283cf207eec058147be9a6
+{{-- >>>>>>> c6663697bc281d7b51283cf207eec058147be9a6 --}}
 @endsection
 
 @section('js')
