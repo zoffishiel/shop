@@ -15,7 +15,7 @@ class CreateCommandesTable extends Migration
     {
         Schema::create('commandes', function (Blueprint $table) {
             $table->string('serie', 10)->unique();
-            $table->enum('statut', ['en attent', 'en cours', 'annuler', 'retourner','evoyer', 'deliverer'])->default('en attent');
+            $table->enum('statut', ['en attent', 'en cours', 'annuler', 'retourner','envoyer', 'deliverer'])->default('en attent');
             $table->unsignedInteger('vendeur')->nullable();
 
             $table->foreign('vendeur')->references('id')->on('users')

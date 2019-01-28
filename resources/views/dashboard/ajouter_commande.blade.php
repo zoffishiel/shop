@@ -53,7 +53,7 @@
           </div>
           <div class="form-inline mb-3">
             <label class="col-md-4" for="">Nom Client : </label>
-            <input class="form-control col-md-6" type="text" name="nom" value="">
+            <input class="form-control col-md-6" type="text" name="nom_client" value="">
             <button type="button" data-toggle="modal" data-target="#clients" class="btn btn-secondary ml-1" name="button">Choisir</button>
           </div>
           <div class="form-inline mb-3">
@@ -75,9 +75,9 @@
           <div class="form-inline mb-3">
             <label class="col-md-4" for="">Service Livraison : </label>
             <select class="form-control col-md-6" name="service">
-              <option value="amana">AMANA</option>
-              <option value="dhl">DHL</option>
-              <option value="gratuit">GRATUIT</option>
+              <option value="1">AMANA</option>
+              <option value="2">DHL</option>
+              <option value="3">GRATUIT</option>
             </select>
           </div>
           <div class="form-inline mb-3">
@@ -93,6 +93,9 @@
         <ul class="list-group mt-4 w-75" style="margin-left: 100px;" id="addProducts">
 
         </ul>
+        <div class="mt-3">
+          <p class="text-center">Votres Revenus : <b id="revenus">0DH</b> </p>
+        </div>
       </div>
 
       {{-- CHOISIR UN CLIENT MODAL --}}
@@ -148,6 +151,28 @@
                   <div class="tab-pane fade show active" id="col" role="tabpanel" aria-labelledby="collection-tab">
                     @if ($collections->count() == 0)
                       <p class="mt-4">Aucun Produit dans votre collection</p>
+                    @else
+                      <div class="row mt-3 container-fluid">
+                        @foreach ($collections as $item)
+                          <div class="card col-md-4 mr-1" product="product{{ $item->product->id }}" productId="{{$item->product->id}}">
+                            <img height="200" src="/{{ $item->product->image }}" alt="">
+                            <div class="card-body">
+                              <h5 class="card-title">{{ $item->product->titre }}</h5>
+                              <div class="card-text">
+                                <p class="float-left">Prix General : <b class="prixG">{{ $item->product->prix_general }}</b>DH</p>
+                                <div class="form-inline float-left mb-2">
+                                  <label style="width: 100px">Prix de Vente : </label>
+                                  <input type="number" class="form-control" style="width:100px" name="prix_vente" value="{{ $item->product->prix_vente }}">
+                                </div>
+                                <div class="form-inline float-left mb-2">
+                                  <label style="width: 100px">Quantité : </label>
+                                  <input type="number" class="form-control" min="1" max="{{ $item->product->qte }}" style="width:100px" name="qte" value="1">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        @endforeach
+                      </div>
                     @endif
                   </div>
                   <div class="tab-pane fade" id="prod" role="tabpanel" aria-labelledby="produits-tab">

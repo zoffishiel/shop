@@ -34,9 +34,12 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark navbar-laravel">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
+              <a href="{{ route('welcome') }}" class="navbar-brand">
+                @if (is_file('/img/logo.png'))
+                <img src="/img/logo.png" alt="">
+                @else
+                  {{ config('app.name', 'Store') }}
+              @endif</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>

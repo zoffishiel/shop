@@ -11,4 +11,9 @@ class Collections extends Model
       'produit'
     ];
     public $timestamps = false;
+
+    public function product()
+    {
+      return $this->belongsTo('App\Products', 'produit');
+    }
 }

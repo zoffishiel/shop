@@ -29,14 +29,15 @@ Route::group(["prefix" => '/dashboard', 'middleware' => 'auth'], function(){
   Route::get('/articles', function(){
     return view('dashboard.articles');
   })->name('dashboard.articles');
+  Route::get('/ajouter/article', function(){
+    return view('dashboard.ajouter_article');
+  })->name('dashboard.ajouter_article');
 
   Route::get('/clients', function(){
     return view('dashboard.clients');
   })->name('dashboard.clients');
 
-  Route::get('/collections', function(){
-    return view('dashboard.collections');
-  })->name('dashboard.collections');
+  Route::get('/collections', 'UsersController@getCollections')->name('dashboard.collections');
 
   Route::get('/commandes', function(){
     return view('dashboard.commandes');

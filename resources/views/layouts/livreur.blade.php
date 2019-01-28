@@ -32,7 +32,12 @@
   <body>
     <header class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
       <div class="container">
-        <a href="{{ route('welcome') }}" class="navbar-brand">Shop</a>
+        <a href="{{ route('welcome') }}" class="navbar-brand">
+          @if (is_file('/img/logo.png'))
+          <img src="/img/logo.png" alt="">
+          @else
+            {{ config('app.name', 'Store') }}
+        @endif</a>
         <button type="button" id="sidebar-toggle" class="btn ml-5" name="button"><i class="fa fa-bars"></i> </button>
         <ul class="navbar-nav ml-auto">
           <li class="nav-item mr-5 mt-2">
@@ -54,7 +59,7 @@
 
           <div class="list-group pt-3">
             <a href="{{ route('dashboard.index') }}" class="list-group-item @if(Route::currentRouteName() == 'dashboard.index') active @endif ">
-              <i class="fa fa-dashboard mr-3 float-left"></i>
+              <i class="fa fa-tachometer-alt mr-3 float-left"></i>
               <i class="sidebar-text ">Dashboard</i>
             </a>
             <a href="{{ route('dashboard.commandes') }}" class="list-group-item @if(Route::currentRouteName() == 'dashboard.commandes') active @endif">

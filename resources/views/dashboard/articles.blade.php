@@ -10,6 +10,7 @@
     <h4 class="text-center my-5">Articles</h4>
     <div id="toolbar" class="btn-group">
       <button class="btn btn-danger" type="button" name="button"><i class="fas fa-trash"></i> </button>
+      <a role="button" class="btn btn-primary" href="{{ route('dashboard.ajouter_article') }}"><i class="fas fa-plus"></i> </a>
     </div>
     <table id="articles" class="table hover stripped">
       <thead>
@@ -27,7 +28,8 @@
       function publierFormatter(value, row, index){
         return [
           '<div class="switch col-md-6 centered">',
-          '<input class="cmn-toggle cmn-toggle-round-flat" type="checkbox">',
+          '<input id="publier" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">',
+          '<label for="publier"></label>',
           '</div>'
         ].join("");
       }
@@ -38,13 +40,20 @@
             checkbox : true,
             align : "center"
           },{
+            field : "id",
+            title : "ID",
+            align : "center",
+            sortable : true
+          },{
             field : "titre",
             title : "Titre",
             align : "center",
+            sortable : true
           },{
             field : "date",
             title : "Date",
             align : "center",
+            sortable : true
           },{
             field : "publier",
             title : "Publier",

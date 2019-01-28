@@ -27,13 +27,21 @@ class ArticlesController extends Controller
       $rules = [
         "titre" => ["required", "string", "max:255"],
         "image" => ["required", "mimetypes:image/png,image/jpeg"],
-        "content" => ["required", "string"],
+        "body" => ["required", "string"],
       ];
       $validator = Validator::make($request->all(), $rules);
       if($validator->fails()){
         return response()->json($validator->errors(), 200);
       }else{
-        $res = Articles::create($request->all());
+        $image = $request->file("image");
+        $path = $image->store("img", ["disk" => "images"]);
+        $article = new Articles();
+        $article->titre = $request->input("titre");
+        $article->image = "/".$path;
+        $article->body = $request->input("body");
+        $article->publier = $request->input("publier");
+        $article->date = date("d-M-Y");
+        $res = $article->save();
         return response()->json($res, 200);
       }
     }
@@ -47,7 +55,8 @@ class ArticlesController extends Controller
       }else{
         $rules = [
           "titre" => ["string", "max:255"],
-          "content" => ["string"],
+          "body" => ["string"],
+          "image" => ["mimetypes:image/jpeg,image/png"],
         ];
         $validator = Validator::make($request->all(), $rules);
         if($validator->fails()){

@@ -17,9 +17,4 @@ class TrackingController extends Controller
       }
     }
 
-    public function updateTrack(Request $request)
-    {
-      $track = Tracking::create($request->all());
-      return $track ? 1 : 0;
-    }
 }

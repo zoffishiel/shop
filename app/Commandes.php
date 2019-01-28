@@ -13,6 +13,7 @@ class Commandes extends Model
       'status',
       'vendeur',
       'date',
+      'prix',
       'qte',
       'service',
       'adresse',
@@ -22,6 +23,7 @@ class Commandes extends Model
       'commentaire'
     ];
     public $timestamps = false;
+    public $incrementing = false;
 
     public function produits()
     {

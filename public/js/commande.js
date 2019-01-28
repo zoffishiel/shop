@@ -9,12 +9,15 @@ $(function(){
 
   // VERIFIER INPUTS
   $("input").on("focusout", (e)=>{
-    if(e.target.value === ""){
-      $(e.target).addClass("is-invalid");
-    }else{
-      $(e.target).removeClass("is-invalid");
-      $(e.target).addClass("is-valid");
+    if(e.target.name != "date"){
+      if(e.target.value === ""){
+        $(e.target).addClass("is-invalid");
+      }else{
+        $(e.target).removeClass("is-invalid");
+        $(e.target).addClass("is-valid");
+      }
     }
+
   });
 
   // CHOISIR UN CLIENT
@@ -23,7 +26,12 @@ $(function(){
     var data = null;
     $.get('/api/client/'+id, function(resp){
       $.map($(".card-content").find("input"), function(input){
-        data = resp[input["name"]];
+        if(input["name"] == "nom_client"){
+          data = resp["nom"];
+        }else{
+          data = resp[input["name"]];
+        }
+
         if(data != undefined){
           input.value = data;
         }
@@ -48,23 +56,29 @@ $(function(){
           $(product).attr("product"),
           "' >",
           $(product).find('.card-title')[0].innerHTML,
-          "<i class='fa fa-close float-right del_prod'></i>",
+          "<i class='fas fa-times float-right del_prod'></i>",
           "<br><b class='vente'>Prix Vente : ",
           $(product).find('input[name="prix_vente"]')[0].value,
           "DH</b>",
           "<br><b class='general'>Prix General : ",
           $(product).find('.prixG')[0].innerHTML,
           "DH</b>",
+          "<br><b class='qte'>Quantité : ",
+          $(product).find('input[name="qte"]')[0].value,
+          "</b>",
           "</li>",
         ].join('');
         prods.push(p);
-        total_general += parseInt($(product).find('.prixG')[0].innerHTML);
-        total_vente += parseInt($(product).find('input[name="prix_vente"]')[0].value);
+        var qte = parseInt($(product).find('input[name="qte"]')[0].value);
+        total_general += parseInt($(product).find('.prixG')[0].innerHTML) * qte;
+        total_vente += parseInt($(product).find('input[name="prix_vente"]')[0].value) * qte;
         products.push({
           "id" : $(product).attr("productId"),
-          "prix" : $(product).find('input[name="prix_vente"]')[0].value,
+          "prix_vente" : $(product).find('input[name="prix_vente"]')[0].value,
+          "prix_general" : $(product).find('.prixG')[0].innerHTML,
           "qte" : $(product).find('input[name="qte"]')[0].value
         });
+        $("#revenus").html("" + (total_vente - total_general) + "DH");
       }
     });
     $("#addProducts").append(prods.join(""));
@@ -76,24 +90,54 @@ $(function(){
     var element = $(e.target).parent();
     var id = element.attr("id");
     $("div[product='"+id+"']").removeClass("shadow");
+    var qte = element.find('.qte')[0].innerHTML;
+    qte = parseInt(qte.substr(11,4));
     var price = element.find(".vente")[0].innerHTML;
     price = price.substr(13,6);
-    total_vente -= parseInt(price);
-    console.log(total_vente);
+    total_vente -= parseInt(price)*qte;
+    price = element.find('.general')[0].innerHTML;
+    price = price.substr(15,6);
+    total_general -= parseInt(price)*qte;
+    $("#revenus").html("" + (total_vente - total_general) + "DH");
     element.remove();
+    var id = $("div[product='"+id+"']").attr("productId");
+    products = products.filter((e)=>{
+      if(e.id != id){
+        return e;
+      }
+    });
   });
-
+  // AJOUTER UNE COMMANDE
   $("#ajouter").on("click", ()=>{
+    if(!products.length){
+      alert("Vous-devez ajouter un produit");
+      return false;
+    }
     data = {};
-    var valid = $.map($("#commande input"), (input)=>{
-      if($(input).hasClass('is-invalid')){
-        alert("Le champ "+input.name+" est obligatoire");
-        return false;
+    var valid = true;
+    $.map($("#commande input"), (input)=>{
+      if($(input).hasClass('is-invalid') || $(input).val() === ""){
+        if($(input).attr("name") != "date"){
+          alert("Le champ "+input.name+" est obligatoire");
+          valid = false;
+          return false;
+        }
+
       }
     })[0];
     if(valid){
       $.map($("#commande").find("input, select, textarea"), (input)=>{
         data[input.name] = input.value;
+      });
+      data["products"] = products;
+      data["prix"] = total_vente - total_general;
+      console.log(data);
+      $.post('/api/add/commande', data, (resp)=>{
+        if(resp == 1){
+          window.location = "/dashboard/commandes";
+        }else{
+          console.log(resp);
+        }
       });
     }
   });

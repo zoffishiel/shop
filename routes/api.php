@@ -18,10 +18,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 // PROTECT DATA
-Route::get('/backup', 'ParametresController@backup');
-Route::post('image/temp', 'ProductsController@tempImage');
+
 Route::group(["middleware" => "auth"], function(){
 
+  Route::get('/backup', 'ParametresController@backup');
+  Route::post('image/temp', 'ProductsController@tempImage');
   // GET DATA ROUTES
   Route::get('/messages', 'MessagesController@index');
   Route::get('/commandes', 'CommandesController@index');
@@ -49,12 +50,14 @@ Route::group(["middleware" => "auth"], function(){
     Route::post('/client', 'ClientsController@addClient')->name('addClient');
     Route::post('/message', 'MessagesController@addMessage');
     Route::post('/service', 'ServiceLivrasionController@addService');
-    Route::post('/article', 'ArticlesController@addArticle');
+    Route::post('/article', 'ArticlesController@addArticle')->name("addArticle");
     Route::post('/slider', 'SliderController@addSlider')->name("addSlider");
+    Route::get('/collection/{id}', 'UsersController@addCollection');
   });
 
   // ADD ROUTES
   Route::group(['prefix' => '/update'], function(){
+    Route::get('/statut/{id}/{status}', 'CommandesController@updateStatus');
     Route::post('/category', 'CategoriesController@updateCategory');
     Route::post('/product','ProductsController@updateProduct');
     Route::post('/commande', 'CommandesController@updateCommande');

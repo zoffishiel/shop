@@ -31,7 +31,7 @@
         <p>Prix général : {{ $product->prix_general }}DH</p>
         <p>Prix de vente : {{ $product->prix_vente }}DH</p>
         <p>Quantité Disponible : {{ $product->qte }}</p>
-        <a role="button" class="offset-3" href="#">Ajouter a votre collection</a>
+        <a role="button" class="offset-3 send" id="{{ $product->id }}" href="#">Ajouter a votre collection</a>
       </div>
     </div>
   </div>
@@ -43,6 +43,11 @@
       $(".sec").on('click', (e)=>{
         var img = $(e.target).attr('src');
         $("#main_image").attr('src', img);
+      });
+      $(".send").on("click", (e)=>{
+        $.get("/api/collection/"+e.target.id, (resp)=>{
+          console.log(resp);
+        });
       });
     });
   </script>
